@@ -57,10 +57,6 @@ education:
 skills:
   - name: Technical Skills
     items:
-      - name: Python
-        description: ''
-        percent: 60
-        icon: code-bracket
       - name: R
         description: ''
         percent: 100
@@ -80,7 +76,7 @@ skills:
       - name: Climbing
         description: ''
         percent: 50
-        icon: climb-the-stairs.svg
+        icon: icons/climb-the-stairs.svg
       - name: Biking
         description: ''
         percent: 50
