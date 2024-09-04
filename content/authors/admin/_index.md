@@ -81,10 +81,10 @@ skills:
         description: ''
         percent: 50
         icon: mountains
-      - name: Photography
+      - name: Biking
         description: ''
-        percent: 80
-        icon: camera
+        percent: 50
+        icon: bike
 
 languages:
   - name: French
