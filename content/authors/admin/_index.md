@@ -80,7 +80,7 @@ skills:
       - name: Climbing
         description: ''
         percent: 50
-        icon: climb-the-stairs
+        icon: assets/media/icons/climb-the-stairs
       - name: Biking
         description: ''
         percent: 50
