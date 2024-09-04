@@ -59,15 +59,15 @@ skills:
     items:
       - name: Python
         description: ''
-        percent: 80
+        percent: 60
         icon: code-bracket
-      - name: Data Science
+      - name: R
         description: ''
         percent: 100
         icon: chart-bar
-      - name: SQL
+      - name: Statistics
         description: ''
-        percent: 40
+        percent: 100
         icon: circle-stack
   - name: Hobbies
     color: '#eeac02'
@@ -80,7 +80,7 @@ skills:
       - name: Climbing
         description: ''
         percent: 50
-        icon: mountains
+        icon: climb-the-stairs
       - name: Biking
         description: ''
         percent: 50
