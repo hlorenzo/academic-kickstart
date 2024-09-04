@@ -115,5 +115,4 @@ triple tutelage of the CNRS, **AMU** and the École Centrale de
 Marseille.
 
 I unreasonably work on R and you can view the current stage on my
-packages on [**GitHub**](https://github.com/hlorenzo). My wish is to be
-useful to both of the communities which have so much to share!
+packages on [**GitHub**](https://github.com/hlorenzo).
