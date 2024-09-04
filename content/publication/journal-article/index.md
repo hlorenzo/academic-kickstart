@@ -1,5 +1,4 @@
-\documentclass{article}
-\begin{document}
-\nocite{*}
-\bibliography{cite}
-\end{document}
+---
+bibliography: cite.bib
+nocite: "@*"
+---
