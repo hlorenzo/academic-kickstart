@@ -80,7 +80,7 @@ skills:
       - name: Climbing
         description: ''
         percent: 50
-        icon: 🧗
+        icon: mountains
       - name: Photography
         description: ''
         percent: 80
