@@ -87,12 +87,14 @@ skills:
         icon: camera
 
 languages:
-  - name: English
+  - name: French
     percent: 100
-  - name: Chinese
-    percent: 75
-  - name: Portuguese
-    percent: 25
+  - name: English
+    percent: 90
+  - name: Czech
+    percent: 60
+  - name: Italian
+    percent: 30
 
 # Awards.
 #   Add/remove as many awards below as you like.
