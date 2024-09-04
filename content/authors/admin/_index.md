@@ -77,10 +77,10 @@ skills:
         description: ''
         percent: 60
         icon: person-simple-walk
-      - name: Cats
+      - name: Climbing
         description: ''
-        percent: 100
-        icon: cat
+        percent: 50
+        icon: 🧗
       - name: Photography
         description: ''
         percent: 80
