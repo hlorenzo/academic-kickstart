@@ -24,7 +24,7 @@ sections:
         color: black
         image:
           # Add your image background to `assets/media/`.
-          filename: high_dim_climb.jpg
+          filename: high_dim_climb_small.jpg
           filters:
             brightness: 1.0
           size: cover
