@@ -21,7 +21,7 @@ role: Associate Professor
 
 # Organizations/Affiliations to display in Biography blox
 organizations:
-  - name: Aix Marseille Université (**AMU**)
+  - name: Aix Marseille Université
     url: https://www.univ-amu.fr/
 
 # Social network links
@@ -98,34 +98,29 @@ languages:
 #   Add/remove as many awards below as you like.
 #   Only `title`, `awarder`, and `date` are required.
 #   Begin multi-line `summary` with YAML's `|` or `|2-` multi-line prefix and indent 2 spaces below.
-awards:
-  - title: Neural Networks and Deep Learning
-    url: https://www.coursera.org/learn/neural-networks-deep-learning
-    date: '2023-11-25'
-    awarder: Coursera
-    icon: coursera
-    summary: |
-      I studied the foundational concept of neural networks and deep learning. By the end, I was familiar with the significant technological trends driving the rise of deep learning; build, train, and apply fully connected deep neural networks; implement efficient (vectorized) neural networks; identify key parameters in a neural network’s architecture; and apply deep learning to your own applications.
-  - title: Blockchain Fundamentals
-    url: https://www.edx.org/professional-certificate/uc-berkeleyx-blockchain-fundamentals
-    date: '2023-07-01'
-    awarder: edX
-    icon: edx
-    summary: |
-      Learned:
-      - Synthesize your own blockchain solutions
-      - Gain an in-depth understanding of the specific mechanics of Bitcoin
-      - Understand Bitcoin’s real-life applications and learn how to attack and destroy Bitcoin, Ethereum, smart contracts and Dapps, and alternatives to Bitcoin’s Proof-of-Work consensus algorithm
-  - title: 'Object-Oriented Programming in R'
-    url: https://www.datacamp.com/courses/object-oriented-programming-with-s3-and-r6-in-r
-    certificate_url: https://www.datacamp.com
-    date: '2023-01-21'
-    awarder: datacamp
-    icon: datacamp
-    summary: |
-      Object-oriented programming (OOP) lets you specify relationships between functions and the objects that they can act on, helping you manage complexity in your code. This is an intermediate level course, providing an introduction to OOP, using the S3 and R6 systems. S3 is a great day-to-day R programming tool that simplifies some of the functions that you write. R6 is especially useful for industry-specific analyses, working with web APIs, and building GUIs.
 ---
 
 ## About Me
 
-Chien Shiung Wu is a professor of artificial intelligence at the Stanford AI Lab. Her research interests include distributed robotics, mobile computing and programmable matter. She leads the Robotic Neurobiology group, which develops self-reconfiguring robots, systems of self-organizing robots, and mobile sensor networks.
+I am an Associate Professor at Aix-Marseille University (**AMU**). I
+teach for all university degrees at the **AMU**. My reserches are
+performed in the Statistical group of the [**ALEA
+team**](https://www.i2m.univ-amu.fr/la-recherche/groupes-scientifiques/groupe-mathematiques-de-laleatoire-alea/equipe-statistique-sta/),
+one of the teams of the Institut de Mathématiques de Marseille
+[(**I2M**, UMR 7373)](https://www.i2m.univ-amu.fr/en/home/).
+
+I currently teach to
+
+-   [Licence Mathématiques et Informatique Appliquées aux Sciences
+    Humaines et Sociales
+    (**MIASHS**)](https://sciences.univ-amu.fr/fr/formation/licences/licence-miashs)
+-   [Master Mathématiques Appliquées, Statistique
+    (**MAS**)](https://sciences.univ-amu.fr/fr/formation/masters/master-mathematiques-appliquees-statistique)
+
+**I2M** is an Joint Research Unit (UMR in french) placed under the
+triple tutelage of the CNRS, **AMU** and the École Centrale de
+Marseille.
+
+I unreasonably work on R and you can view the current stage on my
+packages on [**GitHub**](https://github.com/hlorenzo). My wish is to be
+useful to both of the communities which have so much to share!
