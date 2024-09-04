@@ -27,7 +27,6 @@ sections:
           filename: high_dim_climb_small.jpg
           filters:
             brightness: 1.0
-          size: cover
           position: center
           parallax: false
   - block: collection
