@@ -19,6 +19,6 @@ sections:
         folders:
           - teaching
     design:
-      view: article-grid
+      view: compact
       columns: 2
 ---
