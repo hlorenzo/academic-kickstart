@@ -1,9 +1,8 @@
 ---
 title: "References"
+output: html_document
 bibliography: bib.bib
 ---
-
-# References
 
 @rechtien2017systems
 
