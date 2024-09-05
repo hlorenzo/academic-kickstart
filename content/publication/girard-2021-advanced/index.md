@@ -9,5 +9,4 @@ publishDate: '2024-09-05T11:35:06.160538Z'
 publication_types:
 - article-journal
 publication: '*Journal of Multivariate Analysis*'
-url: https://inria.hal.science/hal-03367798
 ---
