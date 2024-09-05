@@ -13,6 +13,7 @@ sections:
   - block: collection
     id: teaching
     content:
+      count: 0
       title: Teaching
       filters:
         folders:
