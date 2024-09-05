@@ -30,14 +30,4 @@ sections:
           size: cover
           position: center
           parallax: false
-  - block: collection
-    content:
-      title: Recent Publications
-      text: ""
-      filters:
-        folders:
-          - publication
-        exclude_featured: false
-    design:
-      view: citation
 ---
