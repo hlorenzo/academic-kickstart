@@ -1,7 +1,7 @@
 ---
 title: Data-Driven Sparse Partial Least Squares
 authors:
-- Hadrien Lorenzo
+- admin
 - Olivier Cloarec
 - Rodolphe Thiébaut
 - Jérôme Saracco
