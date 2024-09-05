@@ -107,3 +107,8 @@ references:
   type: article-journal
 ---
 
+\documentclass{article}
+\begin{document}
+\nocite{*}
+\bibliography{sample}
+\end{document}
