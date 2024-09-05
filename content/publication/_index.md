@@ -12,10 +12,10 @@ sections:
     content:
       title: Published articles
       #text: Add any **markdown** formatted content here - text, images, videos, galleries - and even HTML code!
-      # Display content from the `content/post/` folder
+      # Display content from the `content/publication/` folder
       filters:
         folders:
-          - post
+          - publication
     design:
       # Choose how many columns the section has. Valid values: '1' or '2'.
       columns: '1'
