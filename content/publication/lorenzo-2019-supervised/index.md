@@ -1,7 +1,7 @@
 ---
 title: Supervised Learning for Multi-Block Incomplete Data
 authors:
-- Hadrien LORENZO
+- admin
 - Jérôme SARACCO
 - Rodolphe THIÉBAUT
 date: '2019-01-01'

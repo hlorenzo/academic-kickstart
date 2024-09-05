@@ -4,7 +4,7 @@ title: Systems vaccinology identifies an early innate immune signature as a corr
 authors:
 - Anne Rechtien
 - Laura Richert
-- Hadrien Lorenzo
+- admin
 - Gloria Martrus
 - Boris Hejblum
 - Christine Dahlke
