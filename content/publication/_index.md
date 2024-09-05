@@ -10,7 +10,7 @@ sections:
   - block: collection
     id: section-1
     content:
-      title: Published articles
+      #title: Published articles
       #text: Add any **markdown** formatted content here - text, images, videos, galleries - and even HTML code!
       # Display content from the `content/publication/` folder
       filters:
