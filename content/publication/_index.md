@@ -1,5 +1,4 @@
 ---
-title: "References"
 output: html_document
 bibliography: bib.bib
 ---
@@ -15,3 +14,5 @@ bibliography: bib.bib
 @lorenzo2021data
 
 @girard2021advanced
+
+# References
