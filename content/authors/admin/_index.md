@@ -114,5 +114,4 @@ I currently teach to
 triple tutelage of the CNRS, **AMU** and the École Centrale de
 Marseille.
 
-I unreasonably work on R and you can view the current stage on my
-packages on [**GitHub**](https://github.com/hlorenzo).
+I preferentially work on R and mainly publish implementations through [**GitHub**](https://github.com/hlorenzo).
