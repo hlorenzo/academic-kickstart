@@ -3,7 +3,7 @@ title: An Original Methodology for the Selection of Biomarkers of Tenderness in 
   Different Muscles
 authors:
 - Marie-Pierre Ellies-Oury
-- Hadrien Lorenzo
+- admin
 - Christophe Denoyelle
 - Jérôme Saracco
 - Brigitte Picard
