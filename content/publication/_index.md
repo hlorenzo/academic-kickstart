@@ -11,8 +11,8 @@ sections:
     id: section-1
     content:
       count: 0
-      #title: Published articles
-      #text: Add any **markdown** formatted content here - text, images, videos, galleries - and even HTML code!
+      title: Published articles
+      text: I mainly work on dimension reduction questions in link with the SIR and the PLS approaches. Recently I started to explore its applications to the context of extremes.
       # Display content from the `content/publication/` folder
       filters:
         folders:
