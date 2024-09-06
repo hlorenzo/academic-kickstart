@@ -12,7 +12,7 @@ sections:
     content:
       count: 0
       title: Published articles
-      text: I mainly work on dimension reduction questions in link with the SIR and the PLS approaches. Recently I started to explore its applications to the context of extremes.
+      text: I mainly work on dimension reduction questions in link with the SIR and the PLS approaches. Recently I started to explore their behaviors in the extremes context.
       # Display content from the `content/publication/` folder
       filters:
         folders:
