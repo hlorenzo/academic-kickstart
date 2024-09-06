@@ -107,11 +107,3 @@ triple tutelage of the CNRS, **AMU** and the École Centrale de
 Marseille.
 
 I preferentially work on R and mainly publish implementations through [**GitHub**](https://github.com/hlorenzo).
-
-{{< markmap >}}
-- Hugo Modules
-  - blox-tailwind
-  - blox-plugins-netlify
-  - blox-plugins-netlify-cms
-  - blox-plugins-reveal
-{{< /markmap >}}
