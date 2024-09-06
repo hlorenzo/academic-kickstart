@@ -31,3 +31,21 @@ sections:
           position: center
           parallax: false
 ---
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Markmap Example</title>
+  <script src="https://cdn.jsdelivr.net/npm/markmap-autoloader"></script>
+</head>
+<body>
+  <pre>
+  # Exemple
+  - Node 1
+    - Subnode 1.1
+  - Node 2
+    - Subnode 2.1
+  </pre>
+</body>
+</html>
