@@ -102,14 +102,6 @@ team**](https://www.i2m.univ-amu.fr/la-recherche/groupes-scientifiques/groupe-ma
 one of the teams of the Institut de Mathématiques de Marseille
 [(**I2M**, UMR 7373)](https://www.i2m.univ-amu.fr/en/home/).
 
-I currently teach to
-
--   [Licence Mathématiques et Informatique Appliquées aux Sciences
-    Humaines et Sociales
-    (**MIASHS**)](https://sciences.univ-amu.fr/fr/formation/licences/licence-miashs)
--   [Master Mathématiques Appliquées, Statistique
-    (**MAS**)](https://sciences.univ-amu.fr/fr/formation/masters/master-mathematiques-appliquees-statistique)
-
 **I2M** is an Joint Research Unit (UMR in french) placed under the
 triple tutelage of the CNRS, **AMU** and the École Centrale de
 Marseille.
