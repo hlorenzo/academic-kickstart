@@ -18,7 +18,7 @@ sections:
         folders:
           - teaching
       title: Teaching
-      text: I currently teach to [Licence Mathématiques et Informatique Appliquées aux Sciences Humaines et Sociales (**MIASHS**)](https://sciences.univ-amu.fr/fr/formation/licences/licence-miashs). [Master Mathématiques Appliquées, Statistique (**MAS**)](https://sciences.univ-amu.fr/fr/formation/masters/master-mathematiques-appliquees-statistique).
+      text: I currently teach to the Licence Mathématiques et Informatique Appliquées aux Sciences Humaines et Sociales (**MIASHS**) and to the Master Mathématiques Appliquées, Statistique (**MAS**).
     design:
       view: compact
       columns: 1
