@@ -107,3 +107,23 @@ triple tutelage of the CNRS, **AMU** and the École Centrale de
 Marseille.
 
 I preferentially work on R and mainly publish implementations through [**GitHub**](https://github.com/hlorenzo).
+
+```markmap
+- Mindmaps
+  - Links
+    - [Hugo Blox Docs](https://hugoblox.com/docs/)
+    - [Discord Community](https://discord.gg/z8wNYzb)
+    - [GitHub](https://github.com/HugoBlox/hugo-blox-builder)
+  - Features
+    - Markdown formatting
+    - **inline** ~~text~~ *styles*
+    - multiline
+      text
+    - `inline code`
+    -
+      ```js
+      console.log('hello');
+      console.log('code block');
+      ```
+    - Math: $x = {-b \pm \sqrt{b^2-4ac} \over 2a}$
+```
