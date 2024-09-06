@@ -108,10 +108,10 @@ Marseille.
 
 I preferentially work on R and mainly publish implementations through [**GitHub**](https://github.com/hlorenzo).
 
-```markmap {height="200px"}
+{{< markmap >}}
 - Hugo Modules
   - blox-tailwind
   - blox-plugins-netlify
   - blox-plugins-netlify-cms
   - blox-plugins-reveal
-```
+{{< /markmap >}}
