@@ -18,4 +18,9 @@ publishDate: '2024-09-05T11:35:06.111967Z'
 publication_types:
 - article-journal
 publication: '*Cell reports*'
+links:
+  - icon_pack: fab
+    icon: pdf
+    name: pdf
+    url: 'https://www.cell.com/action/showPdf?pii=S2211-1247%2817%2931115-4'
 ---
