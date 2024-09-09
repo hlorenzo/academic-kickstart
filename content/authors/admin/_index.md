@@ -107,22 +107,3 @@ triple tutelage of the **CNRS**, **AMU** and the **École Centrale de
 Marseille**.
 
 I preferentially work on **R** and mainly publish implementations through [**GitHub**](https://github.com/hlorenzo).
-
-## Mindmap
-
-```mermaid
-mindmap
-  root((mindmap))
-    Origins
-      Long history
-        - 2000 BCE
-        - 500 BCE
-      Modern history
-        - 1900
-        - 1950
-    Uses
-      Creative techniques
-      Strategic planning
-      Problem solving
-      Decision making
-```
