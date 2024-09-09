@@ -40,7 +40,7 @@ interests:
   -  Extreme Value Theory
   -  Bayesian Statistics
   -  PLS
-  -  Missing Value Treatment
+  -  Missing Values
   -  Variable selection
 
 education:
