@@ -9,5 +9,9 @@ publishDate: '2024-09-05T11:35:06.111967Z'
 publication_types:
 - article-journal
 publication: '*Statistics and Computing*'
-url_code: https://www.researchgate.net/publication/379143035_Shrinkage_for_Extreme_Partial_Least-Squares
+links:
+  - icon_pack: fab
+    icon: pdf
+    name: pdf
+    url: 'https://www.researchgate.net/publication/379143035_Shrinkage_for_Extreme_Partial_Least-Squares'
 ---
