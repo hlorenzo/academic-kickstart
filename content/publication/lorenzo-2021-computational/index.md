@@ -3,7 +3,7 @@ title: Computational Outlier Detection Methods in Sliced Inverse Regression
 authors:
 - admin
 - Jérôme Saracco
-date: '2021-01-01'
+date: '2021-10-07'
 publishDate: '2024-09-05T11:35:06.142638Z'
 publication_types:
 - chapter
