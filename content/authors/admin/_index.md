@@ -103,7 +103,7 @@ one of the teams of the Institut de Mathématiques de Marseille
 [(**I2M**, UMR 7373)](https://www.i2m.univ-amu.fr/en/home/).
 
 **I2M** is an Joint Research Unit (UMR in french) placed under the
-triple tutelage of the CNRS, **AMU** and the École Centrale de
-Marseille.
+triple tutelage of the **CNRS**, **AMU** and the **École Centrale de
+Marseille**.
 
-I preferentially work on R and mainly publish implementations through [**GitHub**](https://github.com/hlorenzo).
+I preferentially work on **R** and mainly publish implementations through [**GitHub**](https://github.com/hlorenzo).
