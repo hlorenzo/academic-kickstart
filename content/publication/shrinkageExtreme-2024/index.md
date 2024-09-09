@@ -13,5 +13,5 @@ links:
   - icon_pack: fab
     icon: pdf
     name: pdf
-    url: 'https://www.researchgate.net/publication/379143035_Shrinkage_for_Extreme_Partial_Least-Squares'
+    url: 'https://hal.science/hal-04251783/document'
 ---
