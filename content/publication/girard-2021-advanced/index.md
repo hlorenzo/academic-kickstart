@@ -13,5 +13,5 @@ links:
   - icon_pack: fab
     icon: pdf
     name: pdf
-    url: 'https://www.sciencedirect.com/science/article/abs/pii/S0047259X21001305'
+    url: 'https://inria.hal.science/hal-03367798/file/SIR-revised.pdf'
 ---
