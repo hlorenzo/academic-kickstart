@@ -125,3 +125,4 @@ mindmap
       Strategic planning
       Problem solving
       Decision making
+```
