@@ -108,14 +108,20 @@ Marseille**.
 
 I preferentially work on **R** and mainly publish implementations through [**GitHub**](https://github.com/hlorenzo).
 
-```markmap {height="200px"}
-- Hugo Modules
-  - blox-tailwind
-  - blox-plugins-netlify
-  - blox-plugins-netlify-cms
-  - blox-plugins-reveal
-```
+## Mindmap
 
-{{% callout note %}}
-A Markdown callout is useful for displaying notices, hints, or definitions to your readers.
-{{% /callout %}}
+```mermaid
+mindmap
+  root((mindmap))
+    Origins
+      Long history
+        - 2000 BCE
+        - 500 BCE
+      Modern history
+        - 1900
+        - 1950
+    Uses
+      Creative techniques
+      Strategic planning
+      Problem solving
+      Decision making
