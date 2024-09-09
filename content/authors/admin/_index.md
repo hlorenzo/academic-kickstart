@@ -115,3 +115,7 @@ I preferentially work on **R** and mainly publish implementations through [**Git
   - blox-plugins-netlify-cms
   - blox-plugins-reveal
 ```
+
+{{% callout note %}}
+A Markdown callout is useful for displaying notices, hints, or definitions to your readers.
+{{% /callout %}}
