@@ -13,5 +13,5 @@ links:
   - icon_pack: fab
     icon: pdf
     name: pdf
-    url: 'https://hal.science/hal-04251783/document'
+    url: 'SEPLS_final.pdf'
 ---
