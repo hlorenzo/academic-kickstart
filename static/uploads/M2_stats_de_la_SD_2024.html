@@ -738,8 +738,8 @@ m_{i,j} = \left\{
 </p>
 </section></section>
 <section>
-<section id="régression-et-imputation" class="title-slide slide level1 center">
-<h1>Régression et imputation</h1>
+<section id="imputation-ou-prédiction" class="title-slide slide level1 center">
+<h1>Imputation ou prédiction ?</h1>
 
 </section>
 <section id="modèle-linéaire-simple-à-une-covariable" class="slide level2">
@@ -877,9 +877,9 @@ y = x + \epsilon
 <p>On répète un nombre <span class="math inline">\(M=\)</span> 20 d’imputations du jeu de données intitiales. En voici 3 versions.</p>
 
 <img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center r-stretch" width="518"><p>La moyenne empirique des <span class="math inline">\(M=\)</span> 20 estimations pour chacun des 3 coefficients: <span class="math display">\[
-\hat{\alpha}_N\approx 0.032\pm 0.038, \
-\hat{\beta}_N\approx 1.011\pm 0.038,\
-\hat{\sigma}^2_N\approx 0.113
+\hat{\alpha}_N\approx -0.033\pm 0.044, \
+\hat{\beta}_N\approx 1.047\pm 0.046,\
+\hat{\sigma}^2_N\approx 0.147
 \]</span></p>
 </section>
 <section id="le-boxplot-toujours-aussi-utile" class="slide level2">
@@ -915,27 +915,27 @@ y = x + \epsilon
 <p>On obtient des estimations :</p>
 <ul>
 <li><p>Via bootstrap : <span class="math display">\[
-\hat{\alpha}_\text{Boot}\approx 0.014\pm 0.041, \
-\hat{\beta}_\text{Boot}\approx 1.005\pm 0.041, \
-\hat{\sigma}^2_\text{Boot}\approx 0.133
+\hat{\alpha}_\text{Boot}\approx -0.039\pm 0.049, \
+\hat{\beta}_\text{Boot}\approx 1.047\pm 0.051, \
+\hat{\sigma}^2_\text{Boot}\approx 0.186
 \]</span></p></li>
 <li><p>Via la postérieure/bayésienne : <span class="math display">\[
-\hat{\alpha}_\text{Bayes}\approx 0.031\pm 0.046, \
-\hat{\beta}_\text{Bayes}\approx 1.006\pm 0.046,\
-\hat{\sigma}^2_\text{Bayes}\approx 0.169
+\hat{\alpha}_\text{Bayes}\approx -0.026\pm 0.052, \
+\hat{\beta}_\text{Bayes}\approx 1.05\pm 0.055,\
+\hat{\sigma}^2_\text{Bayes}\approx 0.218
 \]</span></p></li>
 </ul>
 <p>Pour rappel, dans les cas impropres : <span class="math display">\[
 \begin{array}{lccc}
-\text{Moyenne}&amp;\hat{\alpha}_0\approx -0.011\pm 0.068 &amp;
-\hat{\beta}_0\approx 0.524\pm 0.068 &amp;
-\hat{\sigma}^2_0\approx 0.371\\
-\text{Régression linéaire}&amp;\hat{\alpha}_l\approx 0.03\pm 0.036 &amp;
-\hat{\beta}_l\approx 1.013\pm 0.036 &amp;
-\hat{\sigma}^2_l\approx 0.104\\
-\text{Régression stochastique}&amp;\hat{\alpha}_N\approx 0.032\pm 0.038 &amp;
-\hat{\beta}_N\approx 1.011\pm 0.038 &amp;
-\hat{\sigma}^2_N\approx 0.113
+\text{Moyenne}&amp;\hat{\alpha}_0\approx -0.035\pm 0.067 &amp;
+\hat{\beta}_0\approx 0.699\pm 0.071 &amp;
+\hat{\sigma}^2_0\approx 0.36\\
+\text{Régression linéaire}&amp;\hat{\alpha}_l\approx -0.031\pm 0.041 &amp;
+\hat{\beta}_l\approx 1.048\pm 0.043 &amp;
+\hat{\sigma}^2_l\approx 0.134\\
+\text{Régression stochastique}&amp;\hat{\alpha}_N\approx -0.033\pm 0.044 &amp;
+\hat{\beta}_N\approx 1.047\pm 0.046 &amp;
+\hat{\sigma}^2_N\approx 0.147
 \end{array}
 \]</span> </p>
 </section>
@@ -1212,16 +1212,16 @@ Q(\theta|\theta_k,X) = \mathbb{E}_{\theta_k}\left[\ell_c(\theta|X,Z)\right] = -\
 </section>
 <section id="un-petit-exemple-6" class="slide level2">
 <h2>Un petit exemple (6)</h2>
-<p>Application numérique avec <span class="math inline">\(\theta=30\)</span>, <span class="math inline">\(n_1=400\)</span>, <span class="math inline">\(n_2=250\)</span> et <span class="math inline">\(a=30.21\)</span> :</p>
+<p>Application numérique avec <span class="math inline">\(\theta=30\)</span>, <span class="math inline">\(n_1=400\)</span>, <span class="math inline">\(n_2=250\)</span> et <span class="math inline">\(a=30.26\)</span> :</p>
 
 <img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-24-1.png" class="quarto-figure quarto-figure-center r-stretch" width="544"></section>
 <section id="algorithme-em-retour-à-notre-exemple" class="slide level2">
 <h2>Algorithme <strong>EM</strong>, retour à notre exemple</h2>
 
 <img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/emResult-1.png" class="quarto-figure quarto-figure-center r-stretch" width="388"><p>Les valeurs estimées sont alors <span class="math display">\[
-\hat{\alpha}_\text{EM}\approx -0.015\pm 0.037, \
-\hat{\beta}_\text{EM}\approx 1.069\pm 0.037,\
-\hat{\sigma}^2_\text{EM}\approx 0.129
+\hat{\alpha}_\text{EM}\approx -0.024\pm 0.047, \
+\hat{\beta}_\text{EM}\approx 1.032\pm 0.048,\
+\hat{\sigma}^2_\text{EM}\approx 0.185
 \]</span></p>
 </section></section>
 <section>
@@ -1326,7 +1326,7 @@ Q(\theta|\theta_k,X) = (x_2+x_3)\log(1-\theta) + (&lt;\!\!z_2\!\!&gt;_k+x_4)\log
 <section id="exemple-des-cellules-4" class="slide level2">
 <h2>Exemple des cellules (4)</h2>
 <p><span class="math display">\[
-(x_1,x_2,x_3,x_4) = (115,30,30,15)\quad \text{et} \quad \theta=0.3
+(x_1,x_2,x_3,x_4) = (120,35,40,15)\quad \text{et} \quad \theta=0.3
 \]</span></p>
 <p><br>
 </p>
@@ -1508,29 +1508,29 @@ p(Z,\theta|X) \approx q_Z(Z|X)q_\theta(\theta|X)=q(Z,\theta|X).
 <section id="au-total-1" class="slide level2">
 <h2>Au total</h2>
 <p><span class="math display">\[
-\hat{\alpha}_\text{EM}\approx -0.015\pm 0.037, \
-\hat{\beta}_\text{EM}\approx 1.069\pm 0.037,\
-\hat{\sigma}^2_\text{EM}\approx 0.129
+\hat{\alpha}_\text{EM}\approx -0.024\pm 0.047, \
+\hat{\beta}_\text{EM}\approx 1.032\pm 0.048,\
+\hat{\sigma}^2_\text{EM}\approx 0.185
 \]</span> <span class="math display">\[
-\hat{\alpha}_\text{Boot}\approx 0.014\pm 0.041, \
-\hat{\beta}_\text{Boot}\approx 1.005\pm 0.041, \
-\hat{\sigma}^2_\text{Boot}\approx 0.133
+\hat{\alpha}_\text{Boot}\approx -0.039\pm 0.049, \
+\hat{\beta}_\text{Boot}\approx 1.047\pm 0.051, \
+\hat{\sigma}^2_\text{Boot}\approx 0.186
 \]</span> <span class="math display">\[
-\hat{\alpha}_\text{Bayes}\approx 0.031\pm 0.046, \
-\hat{\beta}_\text{Bayes}\approx 1.006\pm 0.046,\
-\hat{\sigma}^2_\text{Bayes}\approx 0.169
+\hat{\alpha}_\text{Bayes}\approx -0.026\pm 0.052, \
+\hat{\beta}_\text{Bayes}\approx 1.05\pm 0.055,\
+\hat{\sigma}^2_\text{Bayes}\approx 0.218
 \]</span> <span class="math display">\[
-\hat{\alpha}_\text{0}\approx -0.011\pm 0.068, \
-\hat{\beta}_\text{0}\approx 0.524\pm 0.068, \
-\hat{\sigma}^2_\text{0}\approx 0.371
+\hat{\alpha}_\text{0}\approx -0.035\pm 0.067, \
+\hat{\beta}_\text{0}\approx 0.699\pm 0.071, \
+\hat{\sigma}^2_\text{0}\approx 0.36
 \]</span> <span class="math display">\[
-\hat{\alpha}_l\approx 0.03\pm 0.036, \
-\hat{\beta}_l\approx 1.013\pm 0.036, \
-\hat{\sigma}^2_l\approx 0.104
+\hat{\alpha}_l\approx -0.031\pm 0.041, \
+\hat{\beta}_l\approx 1.048\pm 0.043, \
+\hat{\sigma}^2_l\approx 0.134
 \]</span> <span class="math display">\[
-\hat{\alpha}_\text{N}\approx 0.032\pm 0.038, \
-\hat{\beta}_\text{N}\approx 1.011\pm 0.038, \
-\hat{\sigma}^2_\text{N}\approx 0.113
+\hat{\alpha}_\text{N}\approx -0.033\pm 0.044, \
+\hat{\beta}_\text{N}\approx 1.047\pm 0.046, \
+\hat{\sigma}^2_\text{N}\approx 0.147
 \]</span></p>
 </section>
 <section id="une-petite-acp-les-individus" class="slide level2">
