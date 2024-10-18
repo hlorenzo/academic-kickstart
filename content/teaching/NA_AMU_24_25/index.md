@@ -20,3 +20,5 @@ external_link = "M2_stats_de_la_SD_2024.html"
   # Options: Smart, Center, TopLeft, Top, TopRight, Left, Right, BottomLeft, Bottom, BottomRight
   focal_point = "Right"
 +++
+
+[<i class="fa fa-file-pdf fa-2x"></i>](M2_stats_de_la_SD_2024.html)
