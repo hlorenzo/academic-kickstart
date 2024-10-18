@@ -8,5 +8,5 @@ summary = "AMU"
 tags = ["French","Formation continue","Visualization","Missing values"]
 
 # Optional external URL for project (replaces project detail page).
-external_link = "../../static/uploads/M2_stats_de_la_SD_2024.html"
+external_link = "/uploads/M2_stats_de_la_SD_2024.html"
 +++
