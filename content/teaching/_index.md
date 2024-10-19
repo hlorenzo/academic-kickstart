@@ -19,6 +19,8 @@ sections:
           - teaching
       title: Teaching
       text: I currently teach to the Licence Mathématiques et Informatique Appliquées aux Sciences Humaines et Sociales (**MIASHS**) and to the Master Mathématiques Appliquées, Statistique (**MAS**).
+      # M2 DS AMU 2024 2025:
+        - [Course]("/uploads/M2_DS/M2_stats_de_la_SD_2024.html")
     design:
       view: compact
       columns: 1
