@@ -8,10 +8,8 @@ summary = "AMU"
 tags = ["French","Formation continue","Visualization","Missing values"]
 
 # Optional external URL for project (replaces project detail page).
-# external_link = "/uploads/M2_DS/M2_stats_de_la_SD_2024.html"
+external_link = "/uploads/M2_DS/M2_stats_de_la_SD_2024.html"
 +++
-
-[Course]("uploads/M2_DS/M2_stats_de_la_SD_2024.html")
 
 1. **Definition of Missing Data**:
    - Data is considered missing when a variable's observation is unavailable. 
