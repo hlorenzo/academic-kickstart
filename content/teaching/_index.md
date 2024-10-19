@@ -25,7 +25,3 @@ sections:
       background:
         color: '#F8E0E6'
 ---
-
-# M2 DS AMU 2024 2025:
-
-   - [Course]("/uploads/M2_DS/M2_stats_de_la_SD_2024.html")
