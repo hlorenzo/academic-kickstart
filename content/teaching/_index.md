@@ -18,7 +18,7 @@ sections:
         folders:
           - teaching
       title: Teaching
-      text: I currently teach to the Licence Mathématiques et Informatique Appliquées aux Sciences Humaines et Sociales (**MIASHS**) and to the Master Mathématiques Appliquées, Statistique (**MAS** : [Course missing values]("/uploads/M2_DS/M2_stats_de_la_SD_2024.html")).
+      text: I currently teach to the Licence Mathématiques et Informatique Appliquées aux Sciences Humaines et Sociales (**MIASHS**) and to the Master Mathématiques Appliquées, Statistique (**MAS**)
     design:
       view: compact
       columns: 1
