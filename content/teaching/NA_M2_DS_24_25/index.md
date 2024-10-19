@@ -11,7 +11,7 @@ tags = ["French","Formation continue","Visualization","Missing values"]
 # external_link = "/uploads/M2_DS/M2_stats_de_la_SD_2024.html"
 +++
 
-[Course]("./uploads/M2_DS/M2_stats_de_la_SD_2024.html")
+[Course]("uploads/M2_DS/M2_stats_de_la_SD_2024.html")
 
 1. **Definition of Missing Data**:
    - Data is considered missing when a variable's observation is unavailable. 
