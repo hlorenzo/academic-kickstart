@@ -877,9 +877,9 @@ y = x + \epsilon
 <p>On répète un nombre <span class="math inline">\(M=\)</span> 20 d’imputations du jeu de données intitiales. En voici 3 versions.</p>
 
 <img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center r-stretch" width="518"><p>La moyenne empirique des <span class="math inline">\(M=\)</span> 20 estimations pour chacun des 3 coefficients: <span class="math display">\[
-\hat{\alpha}_N\approx -0.022\pm 0.05, \
-\hat{\beta}_N\approx 0.758\pm 0.045,\
-\hat{\sigma}^2_N\approx 0.192
+\hat{\alpha}_N\approx 0.063\pm 0.042, \
+\hat{\beta}_N\approx 1.017\pm 0.043,\
+\hat{\sigma}^2_N\approx 0.135
 \]</span></p>
 </section>
 <section id="le-boxplot-toujours-aussi-utile" class="slide level2">
@@ -949,27 +949,27 @@ y = x + \epsilon
 <p>On obtient des estimations :</p>
 <ul>
 <li><p>Via bootstrap : <span class="math display">\[
-\hat{\alpha}_\text{Boot}\approx -0.044\pm 0.054, \
-\hat{\beta}_\text{Boot}\approx 0.787\pm 0.05, \
-\hat{\sigma}^2_\text{Boot}\approx 0.227
+\hat{\alpha}_\text{Boot}\approx 0.056\pm 0.047, \
+\hat{\beta}_\text{Boot}\approx 1.021\pm 0.047, \
+\hat{\sigma}^2_\text{Boot}\approx 0.17
 \]</span></p></li>
 <li><p>Via la postérieure/bayésienne : <span class="math display">\[
-\hat{\alpha}_\text{Bayes}\approx 0.001\pm 0.009, \
-\hat{\beta}_\text{Bayes}\approx 0.965\pm 0.012,\
-\hat{\sigma}^2_\text{Bayes}\approx 0.265
+\hat{\alpha}_\text{Bayes}\approx 0\pm 0.01, \
+\hat{\beta}_\text{Bayes}\approx 0.963\pm 0.013,\
+\hat{\sigma}^2_\text{Bayes}\approx 0.198
 \]</span></p></li>
 </ul>
 <p>Pour rappel, dans les cas impropres : <span class="math display">\[
 \begin{array}{lccc}
-\text{Moyenne}&amp;\hat{\alpha}_0\approx 0.055\pm 0.067 &amp;
-\hat{\beta}_0\approx 0.368\pm 0.06 &amp;
-\hat{\sigma}^2_0\approx 0.353\\
-\text{Régression linéaire}&amp;\hat{\alpha}_l\approx -0.023\pm 0.047 &amp;
-\hat{\beta}_l\approx 0.756\pm 0.042 &amp;
-\hat{\sigma}^2_l\approx 0.171\\
-\text{Régression stochastique}&amp;\hat{\alpha}_N\approx -0.022\pm 0.05 &amp;
-\hat{\beta}_N\approx 0.758\pm 0.045 &amp;
-\hat{\sigma}^2_N\approx 0.192
+\text{Moyenne}&amp;\hat{\alpha}_0\approx 0.171\pm 0.066 &amp;
+\hat{\beta}_0\approx 0.684\pm 0.068 &amp;
+\hat{\sigma}^2_0\approx 0.344\\
+\text{Régression linéaire}&amp;\hat{\alpha}_l\approx 0.064\pm 0.039 &amp;
+\hat{\beta}_l\approx 1.022\pm 0.041 &amp;
+\hat{\sigma}^2_l\approx 0.123\\
+\text{Régression stochastique}&amp;\hat{\alpha}_N\approx 0.063\pm 0.042 &amp;
+\hat{\beta}_N\approx 1.017\pm 0.043 &amp;
+\hat{\sigma}^2_N\approx 0.135
 \end{array}
 \]</span> </p>
 </section>
@@ -1020,7 +1020,7 @@ y = x + \epsilon
 <p>Soit une fonction de densité paramétrique <span class="math inline">\(p(x|\theta)\)</span> qui dépend du paramètre <span class="math inline">\(\theta\in\Theta\)</span>, <span class="math inline">\(\Theta\)</span> potentiellement multi-dimensionnel.</p>
 <p>Dans le cas d’un échantillon de <span class="math inline">\(n\)</span> observations indépendantes <span class="math inline">\(X=(x_1,\dots,x_n)\)</span> la vraisemblance s’écrit : <span class="math display">\[
 \mathcal{L}(\theta|X) = \prod_{i=1}^np(x_i|\theta).
-\]</span> Plus cette valeur est importante et plus le modèle <span class="math inline">\(\theta\)</span> est vraisemblable suivant les données <span class="math inline">\(X\)</span>. La contrainte de cette fonction est qu’elle doit sommer à 1.</p>
+\]</span> Plus cette valeur est importante et plus le modèle <span class="math inline">\(\theta\)</span> est vraisemblable suivant les données <span class="math inline">\(X\)</span>.</p>
 </section>
 <section id="maximization-de-vraisemblance-2" class="slide level2">
 <h2>Maximization de vraisemblance (2)</h2>
@@ -1072,7 +1072,7 @@ y = x + \epsilon
 </section>
 <section id="naissance-de-lalgorithme-em-1" class="slide level2">
 <h2>Naissance de l’algorithme <strong>EM</strong> (1)</h2>
-<p>Soit <span class="math inline">\(X\in\mathcal{X}\)</span> les données manquantes et <span class="math inline">\(Z\in\mathcal{Z}\)</span> les données présentes, alors la fonction de densité jointe de <span class="math inline">\((X,Z)\)</span> peut s’écrire <span class="math display">\[
+<p>Soit <span class="math inline">\(X\in\mathcal{X}\)</span> les données observées et <span class="math inline">\(Z\in\mathcal{Z}\)</span> les données manquantes, alors la fonction de densité jointe de <span class="math inline">\((X,Z)\)</span> peut s’écrire <span class="math display">\[
 p\left(X,Z|\theta\right)=p\left(X|Z,\theta\right)p\left(Z|\theta\right).
 \]</span> Ainsi, par intégration sur <span class="math inline">\(\mathcal{Z}\)</span> l’ensemble formé par les évènements possibles pour les données manquantes il vient <span class="math display">\[
 p\left(X|\theta\right) = \int_{z\in \mathcal{Z}}p\left(X,z|\theta\right)dz=\int_{z\in \mathcal{Z}} p\left(X|z,\theta\right)p\left(z|\theta\right)dz
@@ -1209,15 +1209,15 @@ Q\left(\theta|\theta_0,X\right) &amp;=&amp;  \mathbb{E}_{\theta_0}\left[\ln{p\le
 </div>
 </div>
 </section>
-<section id="un-petit-exemple-1" class="slide level2">
-<h2>Un petit exemple (1)</h2>
+<section id="capteur-de-température-saturé-1" class="slide level2">
+<h2>Capteur de température saturé (1)</h2>
 <p>On accède aux données d’un capteur de température qui sature à partir d’une température <span class="math inline">\(a\)</span>. On sait que la température suit une loi normale de moyenne <span class="math inline">\(\theta\)</span> et de variance <span class="math inline">\(1\)</span>. Parmi les <span class="math inline">\(n=n_1+n_2\)</span> données, les <span class="math inline">\(n_1\)</span> premières ne sont pas saturées (<span class="math inline">\(x_i&lt;a\)</span>) alors que les <span class="math inline">\(n_2\)</span> suivantes sont saturées (<span class="math inline">\(x_i\geq a\)</span>). On cherche tout de même à estimer <span class="math inline">\(\theta\)</span>, la vraie valeur de la température.</p>
 <p>Dans ce cas, la vraisemblance du problème s’écrit <span class="math display">\[
 \mathcal{L}(\theta|X) = \left(1-\Phi(a-\theta)\right)^{n_2}\prod_{i=1}^{n_1}\varphi(x_i-\theta),
 \]</span> où <span class="math inline">\(\varphi\)</span> et <span class="math inline">\(\Phi\)</span> sont les fonctions de densité et de répartition de la loi normale centrée réduite.</p>
 </section>
-<section id="un-petit-exemple-2" class="slide level2">
-<h2>Un petit exemple (2)</h2>
+<section id="capteur-de-température-saturé-2" class="slide level2">
+<h2>Capteur de température saturé (2)</h2>
 <p>On introduit des variables latentes <span class="math inline">\(z_i\)</span> et on écrit alors la vraisemblance complétée <span class="math display">\[
 \mathcal{L}_c(\theta|X,Z) = \prod_{i=1}^{n_1}\varphi(x_i-\theta)\prod_{i=1}^{n_2}\varphi(z_i-\theta),
 \]</span> qui est cette fois simple à régler puisque les <span class="math inline">\(z_i\)</span> sont observés.</p>
@@ -1225,8 +1225,8 @@ Q\left(\theta|\theta_0,X\right) &amp;=&amp;  \mathbb{E}_{\theta_0}\left[\ln{p\le
 </p>
 <p>C’est l’étape de maximization qui permet de trouver le paramètre <span class="math inline">\(\theta\)</span> optimal.</p>
 </section>
-<section id="un-petit-exemple-3" class="slide level2">
-<h2>Un petit exemple (3)</h2>
+<section id="capteur-de-température-saturé-3" class="slide level2">
+<h2>Capteur de température saturé (3)</h2>
 <p><br>
 </p>
 <p>On peut aisemment détailler la vraisemblance complétée <span class="math inline">\(\ell_c(\theta|X,Z)\)</span> :</p>
@@ -1240,8 +1240,8 @@ Q\left(\theta|\theta_0,X\right) &amp;=&amp;  \mathbb{E}_{\theta_0}\left[\ln{p\le
 Q(\theta|\theta_k,X) = \mathbb{E}_{\theta_k}\left[\ell_c(\theta|X,Z)\right] = -\frac{1}{2}\sum_{i=1}^{n_1} (x_i-\theta)^2 -\frac{1}{2} \sum_{i=1}^{n_2}\mathbb{E}_{\theta_k}[(Z_i-\theta)^2] + cste.
 \]</span></p>
 </section>
-<section id="un-petit-exemple-4" class="slide level2">
-<h2>Un petit exemple (4)</h2>
+<section id="capteur-de-température-saturé-4" class="slide level2">
+<h2>Capteur de température saturé (4)</h2>
 <p><br>
 </p>
 <p>La fonctionelle <span class="math inline">\(Q(\theta|\theta_k,X)\)</span> est alors maximale en <span class="math display">\[
@@ -1253,33 +1253,82 @@ Q(\theta|\theta_k,X) = \mathbb{E}_{\theta_k}\left[\ell_c(\theta|X,Z)\right] = -\
 &lt;\!\!z_i\!\!&gt;_k=\mathbb{E}_{\theta_k}[Z_i]=\dfrac{\int_{a}^{\infty}z\varphi(z-\theta_k)dz}{1-\Phi(a-\theta_k)} = \theta_k + \dfrac{\varphi(a-\theta_k)}{1-\Phi(a-\theta_k)}.
 \]</span></p>
 </section>
-<section id="un-petit-exemple-5" class="slide level2">
-<h2>Un petit exemple (5)</h2>
-<p><br>
-</p>
+<section id="capteur-de-température-saturé-5" class="slide level2">
+<h2>Capteur de température saturé (5)</h2>
 <p>L’algorithme <strong>EM</strong> recherché réalise donc les deux étapes suivantes, après initialisation de <span class="math inline">\(\theta\)</span> via <span class="math inline">\(\theta_0\)</span>, et pour toute itération <span class="math inline">\(k&gt;0\)</span> :</p>
 <ul>
 <li><strong>Espérance</strong> : Calcul de <span class="math inline">\(Q(\theta|\theta_k,X)\)</span>, celà revient ici à calculer:</li>
 </ul>
 <p><span class="math display">\[\forall i\in\{1,\dots,n_2\},\quad &lt;\!\!z_i\!\!&gt;_k = \theta_k + \dfrac{\varphi(a-\theta_k)}{1-\Phi(a-\theta_k)}=&lt;\!\!z_1\!\!&gt;_k.\]</span></p>
-<p><br>
-</p>
 <ul>
 <li><strong>Maximisation</strong> : on calcule <span class="math inline">\(\theta_{k+1} = \dfrac{\sum_{i=1}^{n_1}x_i+n_2&lt;\!\!z_1\!\!&gt;_k}{n}\)</span>.</li>
 </ul>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>L’espérance conditionelle <span class="math inline">\(\mathbb{E}_{\theta_k}[Z_i]\)</span> est indépendante de l’individu considéré on arrive à la conclusion que l’hypothèse <strong>MNAR</strong>, non discutée précédemment, est bien vérifiée.</p>
+</div>
+</div>
+</div>
 </section>
-<section id="un-petit-exemple-6" class="slide level2">
-<h2>Un petit exemple (6)</h2>
-<p>Application numérique avec <span class="math inline">\(\theta=30\)</span>, <span class="math inline">\(n_1=400\)</span>, <span class="math inline">\(n_2=250\)</span> et <span class="math inline">\(a=30.27\)</span> :</p>
+<section id="capteur-de-température-saturé-6" class="slide level2">
+<h2>Capteur de température saturé (6)</h2>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Qui de l’imputation ?</strong></p>
+</div>
+<div class="callout-content">
+<p>Dans cet exemple, l’estimateur du maximum de vraissemblance, noté <span class="math inline">\(\hat{\theta}_{ML}\)</span>, est la limite de la suite</p>
+<p><span class="math display">\[
+\hat{\theta}_{ML} = \lim_{k\ \to \ \infty}\dfrac{\sum_{i=1}^{n_1}x_i+n_2&lt;\!\!z_1\!\!&gt;_k}{n}.
+\]</span> Sous le modèle choisi, tel que <span class="math inline">\(\theta=\hat{\theta}_{ML}\)</span>, la <strong>meilleure</strong> valeur imputée pour chaque <span class="math inline">\(z_i\)</span> (comprendre <strong>la plus vraisemblable</strong>) est</p>
+<p><span class="math display">\[\forall i\in\{1,\dots,n_2\},\quad &lt;\!\!z_i\!\!&gt;_{ML} = \hat{\theta}_{ML} + \dfrac{\varphi(a-\hat{\theta}_{ML})}{1-\Phi(a-\hat{\theta}_{ML})}.\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="capteur-de-température-saturé-7" class="slide level2">
+<h2>Capteur de température saturé (7)</h2>
+<p>Application numérique avec <span class="math inline">\(\theta=30\)</span>, <span class="math inline">\(n_1=400\)</span>, <span class="math inline">\(n_2=250\)</span> et <span class="math inline">\(a=30.33\)</span> :</p>
 
 <img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-27-1.png" class="quarto-figure quarto-figure-center r-stretch" width="544"></section>
+<section id="capteur-de-température-saturé-8" class="slide level2">
+<h2>Capteur de température saturé (8)</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>On voit deux choses importantes :</p>
+<ul>
+<li>L’estimation du paramètre <span class="math inline">\(\theta\)</span> sur les données seulement observées (29.44) est plus mauvaise que l’estimation sur les données observées et sur l’information de saturation (<span class="math inline">\(\hat{\theta}_{ML}=30.05\)</span>).</li>
+<li>L’imputation par la valeur la plus vraissemblable, <span class="math inline">\(&lt;z_i&gt;_{ML}\)</span>, est <em>mauvaise</em>. Ceci est principalement dû au fait que le processus est <strong>MNAR</strong> : l’imputation ne peut pas particulariser sur l’individu considéré.</li>
+</ul>
+</div>
+</div>
+</div>
+</section>
 <section id="algorithme-em-retour-à-notre-exemple" class="slide level2">
 <h2>Algorithme <strong>EM</strong>, retour à notre exemple</h2>
 
 <img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/emResult-1.png" class="quarto-figure quarto-figure-center r-stretch" width="388"><p>Les valeurs estimées sont alors <span class="math display">\[
-\hat{\alpha}_\text{EM}\approx -0.038\pm 0.047, \
-\hat{\beta}_\text{EM}\approx 0.923\pm 0.046,\
-\hat{\sigma}^2_\text{EM}\approx 0.186
+\hat{\alpha}_\text{EM}\approx 0.032\pm 0.047, \
+\hat{\beta}_\text{EM}\approx 1.12\pm 0.045,\
+\hat{\sigma}^2_\text{EM}\approx 0.193
 \]</span></p>
 </section></section>
 <section>
@@ -1351,9 +1400,9 @@ Z_{k,t}&amp;\sim p(Z|X,\theta_k),\\
 </div>
 </div>
 </section>
-<section id="exemple-des-cellules-1-voir-dempster77" class="slide level2">
-<h2>Exemple des cellules (1), voir <span class="citation" data-cites="dempster77">Dempster, Laird, and Rubin (<a href="#/références" role="doc-biblioref" onclick="">1977</a>)</span></h2>
-<p>Soit un échantillon biologique peuplé de 4 types cellulaires différents, <span class="math inline">\(X=(x_1,x_2,x_3,x_4)\)</span>, le nombre de chaque type cellulaire dans l’échantillon biologique. On considère le modèle multinomiale suivant :</p>
+<section id="exemple-des-cellules-1" class="slide level2">
+<h2>Exemple des cellules (1)</h2>
+<p>Voir <span class="citation" data-cites="dempster77">Dempster, Laird, and Rubin (<a href="#/références" role="doc-biblioref" onclick="">1977</a>)</span>. Soit un échantillon biologique peuplé de 4 types cellulaires différents, <span class="math inline">\(X=(x_1,x_2,x_3,x_4)\)</span>, le nombre de chaque type cellulaire dans l’échantillon biologique. On considère le modèle multinomiale suivant :</p>
 <p><span class="math display">\[
 (x_1,x_2,x_3,x_4) ~\sim ~\mathcal{M}\left(n;\dfrac{2+\theta}{4},\dfrac{1-\theta}{4},\dfrac{1-\theta}{4},\dfrac{\theta}{4},\right),
 \]</span> et le paramètre inconnu est <span class="math inline">\(\theta\in[0,1]\)</span>. La vraisemblance de l’échantillon, de taille 1, s’écrit <span class="math display">\[
@@ -1384,7 +1433,7 @@ Q(\theta|\theta_k,X) = (x_2+x_3)\log(1-\theta) + (&lt;\!\!z_2\!\!&gt;_k+x_4)\log
 <section id="exemple-des-cellules-4" class="slide level2">
 <h2>Exemple des cellules (4)</h2>
 <p><span class="math display">\[
-(x_1,x_2,x_3,x_4) = (110,30,35,20)\quad \text{et} \quad \theta=0.3
+(x_1,x_2,x_3,x_4) = (120,35,35,10)\quad \text{et} \quad \theta=0.3
 \]</span></p>
 <p><br>
 </p>
@@ -1560,29 +1609,29 @@ Dans cette section nous allons discuter des méthodes d'échantillonnage qui per
 <section id="au-total-1" class="slide level2">
 <h2>Au total</h2>
 <p><span class="math display">\[
-\hat{\alpha}_\text{EM}\approx -0.038\pm 0.047, \
-\hat{\beta}_\text{EM}\approx 0.923\pm 0.046,\
-\hat{\sigma}^2_\text{EM}\approx 0.186
+\hat{\alpha}_\text{EM}\approx 0.032\pm 0.047, \
+\hat{\beta}_\text{EM}\approx 1.12\pm 0.045,\
+\hat{\sigma}^2_\text{EM}\approx 0.193
 \]</span> <span class="math display">\[
-\hat{\alpha}_\text{Boot}\approx -0.044\pm 0.054, \
-\hat{\beta}_\text{Boot}\approx 0.787\pm 0.05, \
-\hat{\sigma}^2_\text{Boot}\approx 0.227
+\hat{\alpha}_\text{Boot}\approx 0.056\pm 0.047, \
+\hat{\beta}_\text{Boot}\approx 1.021\pm 0.047, \
+\hat{\sigma}^2_\text{Boot}\approx 0.17
 \]</span> <span class="math display">\[
-\hat{\alpha}_\text{Bayes}\approx 0.001\pm 0.009, \
-\hat{\beta}_\text{Bayes}\approx 0.965\pm 0.012,\
-\hat{\sigma}^2_\text{Bayes}\approx 0.265
+\hat{\alpha}_\text{Bayes}\approx 0\pm 0.01, \
+\hat{\beta}_\text{Bayes}\approx 0.963\pm 0.013,\
+\hat{\sigma}^2_\text{Bayes}\approx 0.198
 \]</span> <span class="math display">\[
-\hat{\alpha}_\text{0}\approx 0.055\pm 0.067, \
-\hat{\beta}_\text{0}\approx 0.368\pm 0.06, \
-\hat{\sigma}^2_\text{0}\approx 0.353
+\hat{\alpha}_\text{0}\approx 0.171\pm 0.066, \
+\hat{\beta}_\text{0}\approx 0.684\pm 0.068, \
+\hat{\sigma}^2_\text{0}\approx 0.344
 \]</span> <span class="math display">\[
-\hat{\alpha}_l\approx -0.023\pm 0.047, \
-\hat{\beta}_l\approx 0.756\pm 0.042, \
-\hat{\sigma}^2_l\approx 0.171
+\hat{\alpha}_l\approx 0.064\pm 0.039, \
+\hat{\beta}_l\approx 1.022\pm 0.041, \
+\hat{\sigma}^2_l\approx 0.123
 \]</span> <span class="math display">\[
-\hat{\alpha}_\text{N}\approx -0.022\pm 0.05, \
-\hat{\beta}_\text{N}\approx 0.758\pm 0.045, \
-\hat{\sigma}^2_\text{N}\approx 0.192
+\hat{\alpha}_\text{N}\approx 0.063\pm 0.042, \
+\hat{\beta}_\text{N}\approx 1.017\pm 0.043, \
+\hat{\sigma}^2_\text{N}\approx 0.135
 \]</span></p>
 <!--## Une petite ACP ? Les individus
 
@@ -1697,7 +1746,7 @@ On trace les ellipses de confiance à 95\%
 <li><code>norm.predict</code> : imputation sans alea,</li>
 <li><code>norm.nob</code> : imputation stochastique,</li>
 <li><code>norm</code> : imputation stochastique et postérieure/bayésienne,</li>
-<li><code>norm.boot</code> : Estimtation des paramètres sut un échantillon bootstrap des données observées.</li>
+<li><code>norm.boot</code> : Estimtation des paramètres sur un échantillon bootstrap des données observées.</li>
 </ul>
 </section>
 <section id="mice-2" class="slide level2">
