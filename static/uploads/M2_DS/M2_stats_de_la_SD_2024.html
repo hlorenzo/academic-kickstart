@@ -877,9 +877,9 @@ y = x + \epsilon
 <p>On répète un nombre <span class="math inline">\(M=\)</span> 20 d’imputations du jeu de données intitiales. En voici 3 versions.</p>
 
 <img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center r-stretch" width="518"><p>La moyenne empirique des <span class="math inline">\(M=\)</span> 20 estimations pour chacun des 3 coefficients: <span class="math display">\[
-\hat{\alpha}_N\approx 0.079\pm 0.04, \
-\hat{\beta}_N\approx 0.968\pm 0.037,\
-\hat{\sigma}^2_N\approx 0.119
+\hat{\alpha}_N\approx -0.022\pm 0.05, \
+\hat{\beta}_N\approx 0.758\pm 0.045,\
+\hat{\sigma}^2_N\approx 0.192
 \]</span></p>
 </section>
 <section id="le-boxplot-toujours-aussi-utile" class="slide level2">
@@ -941,30 +941,35 @@ y = x + \epsilon
 <aside><ol class="aside-footnotes"><li id="fn4"><p>Très probablement…</p></li></ol></aside></section>
 <section id="limputation-multiple---proper-4" class="slide level2">
 <h2>L’imputation multiple - <em>proper</em> (4)</h2>
+
+<img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-25-1.png" class="quarto-figure quarto-figure-center r-stretch" width="561"><p>Biais là aussi limité</p>
+</section>
+<section id="limputation-multiple---proper-5" class="slide level2">
+<h2>L’imputation multiple - <em>proper</em> (5)</h2>
 <p>On obtient des estimations :</p>
 <ul>
 <li><p>Via bootstrap : <span class="math display">\[
-\hat{\alpha}_\text{Boot}\approx 0.092\pm 0.044, \
-\hat{\beta}_\text{Boot}\approx 0.964\pm 0.042, \
-\hat{\sigma}^2_\text{Boot}\approx 0.147
+\hat{\alpha}_\text{Boot}\approx -0.044\pm 0.054, \
+\hat{\beta}_\text{Boot}\approx 0.787\pm 0.05, \
+\hat{\sigma}^2_\text{Boot}\approx 0.227
 \]</span></p></li>
 <li><p>Via la postérieure/bayésienne : <span class="math display">\[
-\hat{\alpha}_\text{Bayes}\approx 0.08\pm 0.047, \
-\hat{\beta}_\text{Bayes}\approx 0.97\pm 0.044,\
-\hat{\sigma}^2_\text{Bayes}\approx 0.176
+\hat{\alpha}_\text{Bayes}\approx 0.001\pm 0.009, \
+\hat{\beta}_\text{Bayes}\approx 0.965\pm 0.012,\
+\hat{\sigma}^2_\text{Bayes}\approx 0.265
 \]</span></p></li>
 </ul>
 <p>Pour rappel, dans les cas impropres : <span class="math display">\[
 \begin{array}{lccc}
-\text{Moyenne}&amp;\hat{\alpha}_0\approx 0.131\pm 0.065 &amp;
-\hat{\beta}_0\approx 0.686\pm 0.061 &amp;
-\hat{\sigma}^2_0\approx 0.335\\
-\text{Régression linéaire}&amp;\hat{\alpha}_l\approx 0.079\pm 0.038 &amp;
-\hat{\beta}_l\approx 0.97\pm 0.035 &amp;
-\hat{\sigma}^2_l\approx 0.111\\
-\text{Régression stochastique}&amp;\hat{\alpha}_N\approx 0.079\pm 0.04 &amp;
-\hat{\beta}_N\approx 0.968\pm 0.037 &amp;
-\hat{\sigma}^2_N\approx 0.119
+\text{Moyenne}&amp;\hat{\alpha}_0\approx 0.055\pm 0.067 &amp;
+\hat{\beta}_0\approx 0.368\pm 0.06 &amp;
+\hat{\sigma}^2_0\approx 0.353\\
+\text{Régression linéaire}&amp;\hat{\alpha}_l\approx -0.023\pm 0.047 &amp;
+\hat{\beta}_l\approx 0.756\pm 0.042 &amp;
+\hat{\sigma}^2_l\approx 0.171\\
+\text{Régression stochastique}&amp;\hat{\alpha}_N\approx -0.022\pm 0.05 &amp;
+\hat{\beta}_N\approx 0.758\pm 0.045 &amp;
+\hat{\sigma}^2_N\approx 0.192
 \end{array}
 \]</span> </p>
 </section>
@@ -1073,7 +1078,7 @@ p\left(X,Z|\theta\right)=p\left(X|Z,\theta\right)p\left(Z|\theta\right).
 p\left(X|\theta\right) = \int_{z\in \mathcal{Z}}p\left(X,z|\theta\right)dz=\int_{z\in \mathcal{Z}} p\left(X|z,\theta\right)p\left(z|\theta\right)dz
 \]</span> L’objectif de l’algorithme est de maximiser la log vraisemblance <span class="math inline">\(\ell(\theta|X)\)</span> : <span class="math display">\[
 \ell(\theta|X)=\ln\left(p(X|\theta)\right).
-\]</span> <!-- et on note $\widehat{\theta} = \text{arg max}_{\theta\in\Theta}\  l(\theta|x^{(p)}).$--></p>
+\]</span> <!-- et on note $\widehat{\theta} = \text{arg}\underset{\theta\in\Theta}{\max}\  l(\theta|x^{(p)}).$--></p>
 </section>
 <section id="naissance-de-lalgorithme-em-2" class="slide level2">
 <h2>Naissance de l’algorithme <strong>EM</strong> (2)</h2>
@@ -1116,20 +1121,32 @@ Q(\theta|\theta_0,X)+cste(\theta_0,q),\\
 \]</span></p>
 <p>Il vient l’objectif, finalement, de maximiser <span class="math inline">\(Q(\theta|\theta_0,X)\)</span>, qui est</p>
 <p style="text-align:center;">
-<strong>l’espérance conditionelel de la vraisemblance complétée</strong>.
+<strong>l’espérance conditionelle de la vraisemblance complétée</strong>.
 </p>
 </section>
 <section id="lalgorithme-em-2" class="slide level2">
 <h2>L’algorithme <strong>EM</strong> (2)</h2>
 <p>L’algorithme EM construit une suite de paramètres <span class="math inline">\(\left(\theta_k\right)_{k\geq0}\)</span> tels que <span class="math inline">\(\forall k&gt;0\)</span> : <span class="math display">\[
-\theta_{k+1} = \text{arg max}_{\theta\in\Theta}\ Q(\theta|\theta_{k},X).
+\theta_{k+1} = \text{arg}\underset{\theta\in\Theta}{\max}\ Q(\theta|\theta_{k},X).
 \]</span></p>
 <p><br>
 </p>
 <p>Ces éléments vérifient <span class="math inline">\(\ell(\theta_{k+1}|X) \geq \ell(\theta_{k}|X) \geq\ldots\geq \ell(\theta_{0}|X)\)</span>. La suite <span class="math inline">\(\left(\ell(\theta_{k}|X)\right)_{k\geq0}\)</span> est donc croissante. Cette suite est aussi majorée par le maximum de la function maximisée. Cette suite converge donc.</p>
 <p><br>
 </p>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
 <p>Dans les faits, cette convergence est lente et se fait souvent vers un maximum local, ce qui nécessite plusieurs initialisations.</p>
+</div>
+</div>
+</div>
 </section>
 <section id="algorithme-em-et-espérance-conditionelle-2" class="slide level2">
 <h2>Algorithme <strong>EM</strong> et espérance conditionelle (2)</h2>
@@ -1141,7 +1158,19 @@ Q\left(\theta|\theta_0,X\right) &amp;=&amp;  \mathbb{E}_{\theta_0}\left[\ln{p\le
 \]</span> La log-vraisemblance complétée, <span class="math inline">\(\ln{p\left(X,z|\theta\right)}\)</span>, est souvent notée <span class="math inline">\(\ell_c(X,z|\theta)\)</span>. Complétée car les données manquantes, <span class="math inline">\(z\)</span>, sont ajoutées, ce qui permet d’avoir accès à un jeu de données complet <span class="math inline">\(\left(z,X\right)\)</span>.</p>
 <p><br>
 </p>
-<p>Noter, dans un coin de sa tête, que l’espérance conditionelle de la log-vraisemblance complétée est souvent plus simple à calculer que la vraisemblance complète. C’est tout l’intérêt de l’algorithme <strong>EM</strong>. Si ce n’est pas le cas ? Voir bien plus loin…</p>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Note</strong></p>
+</div>
+<div class="callout-content">
+<p>Noter que l’espérance conditionelle de la log-vraisemblance complétée est souvent plus simple à calculer que la vraisemblance complète. C’est tout l’intérêt de l’algorithme <strong>EM</strong>. Si ce n’est pas le cas ? Voir bien plus loin…</p>
+</div>
+</div>
+</div>
 </section>
 <section id="algorithme-em" class="slide level2">
 <h2>Algorithme <strong>EM</strong></h2>
@@ -1241,16 +1270,16 @@ Q(\theta|\theta_k,X) = \mathbb{E}_{\theta_k}\left[\ell_c(\theta|X,Z)\right] = -\
 </section>
 <section id="un-petit-exemple-6" class="slide level2">
 <h2>Un petit exemple (6)</h2>
-<p>Application numérique avec <span class="math inline">\(\theta=30\)</span>, <span class="math inline">\(n_1=400\)</span>, <span class="math inline">\(n_2=250\)</span> et <span class="math inline">\(a=30.2\)</span> :</p>
+<p>Application numérique avec <span class="math inline">\(\theta=30\)</span>, <span class="math inline">\(n_1=400\)</span>, <span class="math inline">\(n_2=250\)</span> et <span class="math inline">\(a=30.27\)</span> :</p>
 
-<img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-26-1.png" class="quarto-figure quarto-figure-center r-stretch" width="544"></section>
+<img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-27-1.png" class="quarto-figure quarto-figure-center r-stretch" width="544"></section>
 <section id="algorithme-em-retour-à-notre-exemple" class="slide level2">
 <h2>Algorithme <strong>EM</strong>, retour à notre exemple</h2>
 
 <img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/emResult-1.png" class="quarto-figure quarto-figure-center r-stretch" width="388"><p>Les valeurs estimées sont alors <span class="math display">\[
-\hat{\alpha}_\text{EM}\approx -0.034\pm 0.043, \
-\hat{\beta}_\text{EM}\approx 1.053\pm 0.049,\
-\hat{\sigma}^2_\text{EM}\approx 0.17
+\hat{\alpha}_\text{EM}\approx -0.038\pm 0.047, \
+\hat{\beta}_\text{EM}\approx 0.923\pm 0.046,\
+\hat{\sigma}^2_\text{EM}\approx 0.186
 \]</span></p>
 </section></section>
 <section>
@@ -1355,12 +1384,12 @@ Q(\theta|\theta_k,X) = (x_2+x_3)\log(1-\theta) + (&lt;\!\!z_2\!\!&gt;_k+x_4)\log
 <section id="exemple-des-cellules-4" class="slide level2">
 <h2>Exemple des cellules (4)</h2>
 <p><span class="math display">\[
-(x_1,x_2,x_3,x_4) = (120,35,35,10)\quad \text{et} \quad \theta=0.3
+(x_1,x_2,x_3,x_4) = (110,30,35,20)\quad \text{et} \quad \theta=0.3
 \]</span></p>
 <p><br>
 </p>
 
-<img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-28-1.png" class="quarto-figure quarto-figure-center r-stretch" width="777"></section>
+<img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-29-1.png" class="quarto-figure quarto-figure-center r-stretch" width="777"></section>
 <section id="remarque-ridge" class="slide level2">
 <h2><span style="color:white;">Remarque Ridge</span></h2>
 <div class="callout callout-important no-icon callout-titled callout-style-default">
@@ -1518,75 +1547,106 @@ p(Z,\theta|X) \approx q_Z(Z|X)q_\theta(\theta|X)=q(Z,\theta|X).
 <!-- ------------------------------------ -->
 <!-- ------------------------------------ -->
 <!-- ------------------------------------ -->
-</section></section>
-<section>
-<section id="méthodes-déchantillonnage" class="title-slide slide level1 center">
-<h1>Méthodes d’échantillonnage</h1>
+<!--# Méthodes d'échantillonnage
 
-</section>
-<section id="introduction-1" class="slide level2">
-<h2>Introduction</h2>
-<p>Nous avons discuteé de la méthode EM qui fournit un estimateur du maximum de vraissemblance, ensuite nous avons survolé la méthode VBEM qui permet d’estimer la distribution postérieure approchée à la fois des paramètres et des données manquantes.</p>
-<p>Dans cette section nous allons discuter des méthodes d’échantillonnage qui permettent d’estimer la distribution postérieure des paramètres et des données manquantes conditionellement aux données observées.</p>
-</section></section>
-<section>
-<section id="comparaison-des-approches" class="title-slide slide level1 center">
-<h1>Comparaison des approches</h1>
+## Introduction
 
+Nous avons discuteé de la méthode EM qui fournit un estimateur du maximum de vraissemblance, ensuite nous avons survolé la méthode VBEM qui permet d'estimer la distribution postérieure approchée à la fois des paramètres et des données manquantes.
+
+Dans cette section nous allons discuter des méthodes d'échantillonnage qui permettent d'estimer la distribution postérieure des paramètres et des données manquantes conditionellement aux données observées.
+
+# Comparaison des approches-->
 </section>
 <section id="au-total-1" class="slide level2">
 <h2>Au total</h2>
 <p><span class="math display">\[
-\hat{\alpha}_\text{EM}\approx -0.034\pm 0.043, \
-\hat{\beta}_\text{EM}\approx 1.053\pm 0.049,\
-\hat{\sigma}^2_\text{EM}\approx 0.17
+\hat{\alpha}_\text{EM}\approx -0.038\pm 0.047, \
+\hat{\beta}_\text{EM}\approx 0.923\pm 0.046,\
+\hat{\sigma}^2_\text{EM}\approx 0.186
 \]</span> <span class="math display">\[
-\hat{\alpha}_\text{Boot}\approx 0.092\pm 0.044, \
-\hat{\beta}_\text{Boot}\approx 0.964\pm 0.042, \
-\hat{\sigma}^2_\text{Boot}\approx 0.147
+\hat{\alpha}_\text{Boot}\approx -0.044\pm 0.054, \
+\hat{\beta}_\text{Boot}\approx 0.787\pm 0.05, \
+\hat{\sigma}^2_\text{Boot}\approx 0.227
 \]</span> <span class="math display">\[
-\hat{\alpha}_\text{Bayes}\approx 0.08\pm 0.047, \
-\hat{\beta}_\text{Bayes}\approx 0.97\pm 0.044,\
-\hat{\sigma}^2_\text{Bayes}\approx 0.176
+\hat{\alpha}_\text{Bayes}\approx 0.001\pm 0.009, \
+\hat{\beta}_\text{Bayes}\approx 0.965\pm 0.012,\
+\hat{\sigma}^2_\text{Bayes}\approx 0.265
 \]</span> <span class="math display">\[
-\hat{\alpha}_\text{0}\approx 0.131\pm 0.065, \
-\hat{\beta}_\text{0}\approx 0.686\pm 0.061, \
-\hat{\sigma}^2_\text{0}\approx 0.335
+\hat{\alpha}_\text{0}\approx 0.055\pm 0.067, \
+\hat{\beta}_\text{0}\approx 0.368\pm 0.06, \
+\hat{\sigma}^2_\text{0}\approx 0.353
 \]</span> <span class="math display">\[
-\hat{\alpha}_l\approx 0.079\pm 0.038, \
-\hat{\beta}_l\approx 0.97\pm 0.035, \
-\hat{\sigma}^2_l\approx 0.111
+\hat{\alpha}_l\approx -0.023\pm 0.047, \
+\hat{\beta}_l\approx 0.756\pm 0.042, \
+\hat{\sigma}^2_l\approx 0.171
 \]</span> <span class="math display">\[
-\hat{\alpha}_\text{N}\approx 0.079\pm 0.04, \
-\hat{\beta}_\text{N}\approx 0.968\pm 0.037, \
-\hat{\sigma}^2_\text{N}\approx 0.119
+\hat{\alpha}_\text{N}\approx -0.022\pm 0.05, \
+\hat{\beta}_\text{N}\approx 0.758\pm 0.045, \
+\hat{\sigma}^2_\text{N}\approx 0.192
 \]</span></p>
+<!--## Une petite ACP ? Les individus
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![](M2_stats_de_la_SD_2024_files/figure-revealjs/acp-1.png){fig-align='center' width=544.32}
+:::
+:::
+
+-->
+<!--## Une petite ACP ? Les variables
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![](M2_stats_de_la_SD_2024_files/figure-revealjs/acp2-1.png){fig-align='center' width=388.8}
+:::
+:::
+
+
+## ... en relançant plusieurs fois... (1)
+On trace les ellipses de confiance à 95\%
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![](M2_stats_de_la_SD_2024_files/figure-revealjs/acpMulti-1.png){fig-align='center' width=622.08}
+:::
+:::
+
+
+## ... en relançant plusieurs fois... (2)
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![](M2_stats_de_la_SD_2024_files/figure-revealjs/acpMulti2-1.png){fig-align='center' width=622.08}
+:::
+:::
+
+
+
+
+## Dans l'espace de base (1)
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![](M2_stats_de_la_SD_2024_files/figure-revealjs/base1-1.png){fig-align='center' width=622.08}
+:::
+:::
+
+
+## Dans l'espace de base (2)
+
+
+::: {.cell layout-align="center"}
+::: {.cell-output-display}
+![](M2_stats_de_la_SD_2024_files/figure-revealjs/base2-1.png){fig-align='center' width=622.08}
+:::
+:::
+
+-->
 </section>
-<section id="une-petite-acp-les-individus" class="slide level2">
-<h2>Une petite ACP ? Les individus</h2>
-
-<img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/acp-1.png" class="quarto-figure quarto-figure-center r-stretch" width="544"></section>
-<section id="une-petite-acp-les-variables" class="slide level2">
-<h2>Une petite ACP ? Les variables</h2>
-
-<img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/acp2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="388"></section>
-<section id="en-relançant-plusieurs-fois-1" class="slide level2">
-<h2>… en relançant plusieurs fois… (1)</h2>
-<p>On trace les ellipses de confiance à 95%</p>
-
-<img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/acpMulti-1.png" class="quarto-figure quarto-figure-center r-stretch" width="622"></section>
-<section id="en-relançant-plusieurs-fois-2" class="slide level2">
-<h2>… en relançant plusieurs fois… (2)</h2>
-
-<img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/acpMulti2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="622"></section>
-<section id="dans-lespace-de-base-1" class="slide level2">
-<h2>Dans l’espace de base (1)</h2>
-
-<img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/base1-1.png" class="quarto-figure quarto-figure-center r-stretch" width="622"></section>
-<section id="dans-lespace-de-base-2" class="slide level2">
-<h2>Dans l’espace de base (2)</h2>
-
-<img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/base2-1.png" class="quarto-figure quarto-figure-center r-stretch" width="622"></section>
 <section id="conclusion-1" class="slide level2">
 <h2>Conclusion</h2>
 <ul>
