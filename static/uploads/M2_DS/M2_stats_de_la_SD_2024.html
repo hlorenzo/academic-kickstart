@@ -10,7 +10,7 @@
 <link href="M2_stats_de_la_SD_2024_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
   <meta name="generator" content="quarto-1.4.553">
 
-  <meta name="author" content="Hadrien Lorenzo, Aix Marseille Université">
+  <meta name="author" content="Hadrien Lorenzo">
   <title>Données Manquantes</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
@@ -419,11 +419,26 @@
 <div class="quarto-title-authors">
 <div class="quarto-title-author">
 <div class="quarto-title-author-name">
-Hadrien Lorenzo, Aix Marseille Université 
+Hadrien Lorenzo 
 </div>
-</div>
+        <p class="quarto-title-affiliation">
+            Aix Marseille Université
+          </p>
+    </div>
 </div>
 
+</section><section id="TOC">
+<nav role="doc-toc"> 
+<h2 id="toc-title">Au menu</h2>
+<ul>
+<li><a href="#/introduction" id="/toc-introduction">Introduction</a></li>
+<li><a href="#/mécanismes" id="/toc-mécanismes">Mécanismes</a></li>
+<li><a href="#/imputation-ou-prédiction" id="/toc-imputation-ou-prédiction">Imputation ou prédiction ?</a></li>
+<li><a href="#/algorithme-em-et-méthodes-stochastiques" id="/toc-algorithme-em-et-méthodes-stochastiques">Algorithme EM et méthodes stochastiques</a></li>
+<li><a href="#/paquetages-et-implémentations" id="/toc-paquetages-et-implémentations">Paquetages et implémentations</a></li>
+<li><a href="#/conclusion-2" id="/toc-conclusion-2">Conclusion</a></li>
+</ul>
+</nav>
 </section>
 <section>
 <section id="introduction" class="title-slide slide level1 center">
@@ -511,7 +526,7 @@ div.callout{font-size:1.6rem !important}.reveal strong{color:#1F63DE}.reveal h1{
 <h2>Solutions restantes (1)</h2>
 <p>Il reste de remplir les cases, c’est l’<strong>imputation</strong>.</p>
 <ul>
-<li>Estimer les NA avec des valeurs fixées (<strong>Imputation simple</strong>) :
+<li>Estimer les <strong>NA</strong> avec des valeurs fixées (<strong>Imputation simple</strong>) :
 <ul>
 <li>Conditionnellement à la seule variable considérée :
 <ul>
@@ -656,8 +671,11 @@ m_{i,j} = \left\{
 <h2>Exemple, l’âge de la population française selon l’Insee (1)</h2>
 <p>On peut télécharger ces données sur le site de l’<a href="https://www.insee.fr/fr/statistiques/2381474#figure1_radio1">Insee</a><sup>1</sup>.</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href=""></a>insee <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"files/insee.csv"</span>, <span class="at">sep=</span><span class="st">";"</span>)[<span class="sc">-</span><span class="dv">15</span>,<span class="dv">1</span><span class="sc">:</span><span class="dv">4</span>]</span>
 <span id="cb1-2"><a href=""></a>prop <span class="ot">&lt;-</span> insee<span class="sc">$</span>Ensemble<span class="sc">/</span><span class="fu">sum</span>(insee<span class="sc">$</span>Ensemble)<span class="sc">*</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 <div class="cell" data-layout-align="center">
 <div class="cell-output-display">
@@ -689,9 +707,12 @@ m_{i,j} = \left\{
 <h2>Sc<span class="math inline">\(_1\)</span> : “10<span class="math inline">\(\%\)</span> des gens refusent de donner leur âge.”</h2>
 <p>10<span class="math inline">\(\%\)</span> des observations sont à retirer du jeu de données</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb2"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href=""></a>prop_no_NA <span class="ot">&lt;-</span> <span class="fl">0.9</span></span>
 <span id="cb2-2"><a href=""></a>sampSC1 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(prop),<span class="at">size =</span> prop_no_NA<span class="sc">*</span>n_pop,<span class="at">prob =</span> prop,<span class="at">replace =</span> T)</span>
 <span id="cb2-3"><a href=""></a>propSC1 <span class="ot">&lt;-</span> <span class="fu">table</span>(sampSC1)<span class="sc">/</span>(prop_no_NA<span class="sc">*</span>n_pop)<span class="sc">*</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 
 <img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-9-1.png" class="quarto-figure quarto-figure-center r-stretch" width="777"></section>
@@ -699,9 +720,12 @@ m_{i,j} = \left\{
 <h2>Sc<span class="math inline">\(_2\)</span> : “Suppression des âges des moins de 15 ans.”</h2>
 <p>Les individus de classe <strong>1</strong> sont à retirer du jeu de données (hyp 1)</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb3"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href=""></a>propSC2 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(prop),<span class="at">size =</span> n_pop,<span class="at">prob =</span> prop,<span class="at">replace =</span> T)</span>
 <span id="cb3-2"><a href=""></a>class1 <span class="ot">&lt;-</span> <span class="fu">which</span>(propSC2<span class="sc">==</span><span class="dv">1</span>) ; class1_no15 <span class="ot">&lt;-</span> class1[<span class="dv">1</span><span class="sc">:</span>(<span class="fu">length</span>(class1))] ; propSC2[class1_no15] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
 <span id="cb3-3"><a href=""></a>propSC2 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="fu">table</span>(propSC2)<span class="sc">/</span>n_pop<span class="sc">*</span><span class="dv">100</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 
 <img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-11-1.png" class="quarto-figure quarto-figure-center r-stretch" width="777"></section>
@@ -709,9 +733,12 @@ m_{i,j} = \left\{
 <h2>Sc<span class="math inline">\(_3\)</span> : “C’est vendredi, les étudiants ne sont pas là!”</h2>
 <p>La moitié des individus de classe <strong>3</strong> est à retirer du jeu de données (hyp 2)</p>
 <div class="cell">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb4"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href=""></a>propSC3 <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="at">x =</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(prop),<span class="at">size =</span> n_pop,<span class="at">prob =</span> prop,<span class="at">replace =</span> T)</span>
 <span id="cb4-2"><a href=""></a>class1 <span class="ot">&lt;-</span> <span class="fu">which</span>(propSC3<span class="sc">==</span><span class="dv">3</span>);class1_stu <span class="ot">&lt;-</span> class1[<span class="dv">1</span><span class="sc">:</span>(<span class="fu">length</span>(class1)<span class="sc">/</span><span class="dv">2</span>)];propSC3[class1_stu] <span class="ot">&lt;-</span> <span class="cn">NA</span></span>
 <span id="cb4-3"><a href=""></a>propSC3 <span class="ot">&lt;-</span> <span class="fu">table</span>(propSC3)<span class="sc">/</span>n_pop<span class="sc">*</span><span class="dv">100</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 </div>
 
 <img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-13-1.png" class="quarto-figure quarto-figure-center r-stretch" width="777"></section>
@@ -772,9 +799,12 @@ y = x + \epsilon
 <p>En combinant <span class="math inline">\(S\)</span> et <span class="math inline">\(\tilde{S}\)</span>, on a accès à un jeu de données de dimensions <span class="math inline">\((n+\tilde{n})\times(2)\)</span> avec <span class="math inline">\(\tilde{n}\)</span> données manquantes : les valeurs <span class="math inline">\((y_i)_{i=n+1,\dots,n+\tilde{n}}\)</span>.</p>
 <p>On peut observer la structure des données manquantes grâce aux commandes suivantes</p>
 <div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Code</summary>
 <div class="sourceCode cell-code" id="cb5"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href=""></a>x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n,<span class="dv">0</span>,<span class="dv">1</span>)  ;  y <span class="ot">&lt;-</span> x <span class="sc">+</span> <span class="fu">rnorm</span>(n,<span class="dv">0</span>,sigma)</span>
 <span id="cb5-2"><a href=""></a>x_t <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n_tilde,<span class="dv">0</span>,<span class="dv">1</span>)  ;  y_t <span class="ot">&lt;-</span> <span class="fu">rep</span>(<span class="cn">NA</span>,n_tilde)</span>
 <span id="cb5-3"><a href=""></a>pattern_miss <span class="ot">&lt;-</span> <span class="fu">md.pattern</span>(<span class="fu">rbind</span>( <span class="fu">cbind</span>(x,y) , <span class="fu">cbind</span>(x_t,y_t) ))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
 
 </div>
 <img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-14-1.png" class="quarto-figure quarto-figure-center r-stretch" width="216"></section>
@@ -826,10 +856,9 @@ y = x + \epsilon
 </div>
 </div>
 </div>
-</section></section>
-<section>
-<section id="la-régularisation-1" class="title-slide slide level1 center">
-<h1>La régularisation (1)</h1>
+</section>
+<section id="la-régularisation" class="slide level2">
+<h2>La régularisation</h2>
 <ul>
 <li><span style="color:gold;">Régression linéaire pénalisée Ridge</span> pour l’imputation.</li>
 <li><span style="color:violet;">Régression linéaire</span> pour l’estimation des paramètres.</li>
@@ -877,9 +906,9 @@ y = x + \epsilon
 <p>On répète un nombre <span class="math inline">\(M=\)</span> 20 d’imputations du jeu de données intitiales. En voici 3 versions.</p>
 
 <img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center r-stretch" width="518"><p>La moyenne empirique des <span class="math inline">\(M=\)</span> 20 estimations pour chacun des 3 coefficients: <span class="math display">\[
-\hat{\alpha}_N\approx 0.063\pm 0.042, \
-\hat{\beta}_N\approx 1.017\pm 0.043,\
-\hat{\sigma}^2_N\approx 0.135
+\hat{\alpha}_N\approx 0.07\pm 0.047, \
+\hat{\beta}_N\approx 1.085\pm 0.049,\
+\hat{\sigma}^2_N\approx 0.171
 \]</span></p>
 </section>
 <section id="le-boxplot-toujours-aussi-utile" class="slide level2">
@@ -949,27 +978,27 @@ y = x + \epsilon
 <p>On obtient des estimations :</p>
 <ul>
 <li><p>Via bootstrap : <span class="math display">\[
-\hat{\alpha}_\text{Boot}\approx 0.056\pm 0.047, \
-\hat{\beta}_\text{Boot}\approx 1.021\pm 0.047, \
-\hat{\sigma}^2_\text{Boot}\approx 0.17
+\hat{\alpha}_\text{Boot}\approx 0.049\pm 0.051, \
+\hat{\beta}_\text{Boot}\approx 1.069\pm 0.054, \
+\hat{\sigma}^2_\text{Boot}\approx 0.205
 \]</span></p></li>
 <li><p>Via la postérieure/bayésienne : <span class="math display">\[
-\hat{\alpha}_\text{Bayes}\approx 0\pm 0.01, \
-\hat{\beta}_\text{Bayes}\approx 0.963\pm 0.013,\
-\hat{\sigma}^2_\text{Bayes}\approx 0.198
+\hat{\alpha}_\text{Bayes}\approx -0.001\pm 0.01, \
+\hat{\beta}_\text{Bayes}\approx 0.974\pm 0.011,\
+\hat{\sigma}^2_\text{Bayes}\approx 0.26
 \]</span></p></li>
 </ul>
 <p>Pour rappel, dans les cas impropres : <span class="math display">\[
 \begin{array}{lccc}
-\text{Moyenne}&amp;\hat{\alpha}_0\approx 0.171\pm 0.066 &amp;
-\hat{\beta}_0\approx 0.684\pm 0.068 &amp;
-\hat{\sigma}^2_0\approx 0.344\\
-\text{Régression linéaire}&amp;\hat{\alpha}_l\approx 0.064\pm 0.039 &amp;
-\hat{\beta}_l\approx 1.022\pm 0.041 &amp;
-\hat{\sigma}^2_l\approx 0.123\\
-\text{Régression stochastique}&amp;\hat{\alpha}_N\approx 0.063\pm 0.042 &amp;
-\hat{\beta}_N\approx 1.017\pm 0.043 &amp;
-\hat{\sigma}^2_N\approx 0.135
+\text{Moyenne}&amp;\hat{\alpha}_0\approx 0.104\pm 0.073 &amp;
+\hat{\beta}_0\approx 0.68\pm 0.075 &amp;
+\hat{\sigma}^2_0\approx 0.42\\
+\text{Régression linéaire}&amp;\hat{\alpha}_l\approx 0.061\pm 0.044 &amp;
+\hat{\beta}_l\approx 1.091\pm 0.045 &amp;
+\hat{\sigma}^2_l\approx 0.153\\
+\text{Régression stochastique}&amp;\hat{\alpha}_N\approx 0.07\pm 0.047 &amp;
+\hat{\beta}_N\approx 1.085\pm 0.049 &amp;
+\hat{\sigma}^2_N\approx 0.171
 \end{array}
 \]</span> </p>
 </section>
@@ -993,8 +1022,8 @@ y = x + \epsilon
 \]</span> </p>
 </section></section>
 <section>
-<section id="justifications-théoriques" class="title-slide slide level1 center">
-<h1>Justifications théoriques</h1>
+<section id="algorithme-em-et-méthodes-stochastiques" class="title-slide slide level1 center">
+<h1>Algorithme EM et méthodes stochastiques</h1>
 
 </section>
 <section id="structure-du-cours" class="slide level2">
@@ -1009,27 +1038,22 @@ y = x + \epsilon
 <li>des paramètres <span class="math inline">\(\theta\)</span></li>
 </ul>
 <p>en présence de données manquantes</p>
-</section></section>
-<section>
-<section id="estimation-de-paramètre-algorithme-em" class="title-slide slide level1 center">
-<h1>Estimation de paramètre – algorithme EM</h1>
-
 </section>
-<section id="maximization-de-vraisemblance" class="slide level2">
-<h2>Maximization de vraisemblance</h2>
+<section id="maximization-de-vraisemblance-algorithme-em" class="slide level2">
+<h2>Maximization de vraisemblance – Algorithme EM</h2>
 <p>Soit une fonction de densité paramétrique <span class="math inline">\(p(x|\theta)\)</span> qui dépend du paramètre <span class="math inline">\(\theta\in\Theta\)</span>, <span class="math inline">\(\Theta\)</span> potentiellement multi-dimensionnel.</p>
-<p>Dans le cas d’un échantillon de <span class="math inline">\(n\)</span> observations indépendantes <span class="math inline">\(X=(x_1,\dots,x_n)\)</span> la vraisemblance s’écrit : <span class="math display">\[
-\mathcal{L}(\theta|X) = \prod_{i=1}^np(x_i|\theta).
-\]</span> Plus cette valeur est importante et plus le modèle <span class="math inline">\(\theta\)</span> est vraisemblable suivant les données <span class="math inline">\(X\)</span>.</p>
+<p>Dans le cas d’un échantillon de <span class="math inline">\(n\)</span> observations indépendantes <span class="math inline">\(X_{1:n}=(x_1,\dots,x_n)\)</span> la vraisemblance s’écrit : <span class="math display">\[
+\mathcal{L}(\theta|X_{1:n}) = \prod_{i=1}^np(x_i|\theta).
+\]</span> Plus cette valeur est importante et plus le modèle <span class="math inline">\(\theta\)</span> est vraisemblable pour les données <span class="math inline">\(X_{1:n}\)</span> observées.</p>
 </section>
 <section id="maximization-de-vraisemblance-2" class="slide level2">
 <h2>Maximization de vraisemblance (2)</h2>
-<p>Le meilleur paramètre pour nos données <span class="math inline">\(X\)</span> sera donc celui qui maximise cette vraisemblance.</p>
+<p>Le meilleur paramètre pour nos données <span class="math inline">\(X_{1:n}\)</span> sera donc celui qui maximise cette vraisemblance.</p>
 <p><span class="math display">\[
-\max_{\theta\in\Theta}\ \mathcal{L}(\theta|X).
+\max_{\theta\in\Theta}\ \mathcal{L}(\theta|X_{1:n}).
 \]</span></p>
 <p>Dans le cas d’absence de données manquantes, la solution est l’estimateur <strong>du maximum de vraisemblance</strong>.</p>
-<p>Le problème se pose lorsque des données manquent dans <span class="math inline">\(X\)</span>…</p>
+<p>Le problème se pose lorsque des données manquent dans <span class="math inline">\(X_{1:n}\)</span>…</p>
 </section>
 <section id="remarque" class="slide level2">
 <h2><span style="color:white;">Remarque</span></h2>
@@ -1072,22 +1096,22 @@ y = x + \epsilon
 </section>
 <section id="naissance-de-lalgorithme-em-1" class="slide level2">
 <h2>Naissance de l’algorithme <strong>EM</strong> (1)</h2>
-<p>Soit <span class="math inline">\(X\in\mathcal{X}\)</span> les données observées et <span class="math inline">\(Z\in\mathcal{Z}\)</span> les données manquantes, alors la fonction de densité jointe de <span class="math inline">\((X,Z)\)</span> peut s’écrire <span class="math display">\[
-p\left(X,Z|\theta\right)=p\left(X|Z,\theta\right)p\left(Z|\theta\right).
+<p>Soit <span class="math inline">\(X_{1:n}\in\mathcal{X}\)</span> les données observées et <span class="math inline">\(Z_{1:n}\in\mathcal{Z}\)</span> les données manquantes, alors la fonction de densité jointe de <span class="math inline">\((X_{1:n},Z_{1:n})\)</span> peut s’écrire <span class="math display">\[
+p\left(X_{1:n},Z_{1:n}|\theta\right)=p\left(X_{1:n}|Z_{1:n},\theta\right)p\left(Z_{1:n}|\theta\right).
 \]</span> Ainsi, par intégration sur <span class="math inline">\(\mathcal{Z}\)</span> l’ensemble formé par les évènements possibles pour les données manquantes il vient <span class="math display">\[
-p\left(X|\theta\right) = \int_{z\in \mathcal{Z}}p\left(X,z|\theta\right)dz=\int_{z\in \mathcal{Z}} p\left(X|z,\theta\right)p\left(z|\theta\right)dz
-\]</span> L’objectif de l’algorithme est de maximiser la log vraisemblance <span class="math inline">\(\ell(\theta|X)\)</span> : <span class="math display">\[
-\ell(\theta|X)=\ln\left(p(X|\theta)\right).
+p\left(X_{1:n}|\theta\right) = \int_{z\in \mathcal{Z}}p\left(X_{1:n},z|\theta\right)dz=\int_{z\in \mathcal{Z}} p\left(X_{1:n}|z,\theta\right)p\left(z|\theta\right)dz
+\]</span> L’objectif de l’algorithme est de maximiser la log vraisemblance <span class="math inline">\(\ell(\theta|X_{1:n})\)</span> : <span class="math display">\[
+\ell(\theta|X_{1:n})=\ln\left(p(X_{1:n}|\theta)\right).
 \]</span> <!-- et on note $\widehat{\theta} = \text{arg}\underset{\theta\in\Theta}{\max}\  l(\theta|x^{(p)}).$--></p>
 </section>
 <section id="naissance-de-lalgorithme-em-2" class="slide level2">
 <h2>Naissance de l’algorithme <strong>EM</strong> (2)</h2>
 <p>Si l’on choisit <span class="math inline">\(z\mapsto q(z)\)</span> est une densité de probabilité sur <span class="math inline">\(\mathcal{Z}\)</span> qui est nulle seulement là où <span class="math inline">\(z\mapsto p\left(X,z|\theta\right)\)</span> est aussi nulle, alors :</p>
 <p><span class="math display">\[ \begin{align*}
-\ell(\theta|X) &amp; = \int_{\mathcal{Z}} q(z) \ell(\theta|X) dz = \int_{\mathcal{Z}} q(z) \ln \left( \frac{p(X|\theta) p(z | X,\theta)}{p(z | X,\theta)} \right) dz, \\
-&amp; = \int_{\mathcal{Z}} q(z) \ln \left( \frac{p(X, z| \theta)}{p(z | X,\theta)} \right) dz  = \int_{\mathcal{Z}} q(z) \ln \left( \frac{p(X, z| \theta) q(z)}{p(z | X,\theta) q(z)} \right) dz, \\
-&amp; = \int_{\mathcal{Z}} q(z) \ln \left( \frac{p(X, z| \theta)}{q(z)} \right) dz + \int_{\mathcal{Z}} q(z) \ln \left( \frac{q(z)}{p(z | X,\theta)} \right) dz, \\
-&amp; = F(q, \theta) + KL\left\{q || p(\cdot|X,\theta)\right\}.
+\ell(\theta|X_{1:n}) &amp; = \int_{\mathcal{Z}} q(z) \ell(\theta|X_{1:n}) dz = \int_{\mathcal{Z}} q(z) \ln \left( \frac{p(X_{1:n}|\theta) p(z | X_{1:n},\theta)}{p(z | X_{1:n},\theta)} \right) dz, \\
+&amp; = \int_{\mathcal{Z}} q(z) \ln \left( \frac{p(X_{1:n}, z| \theta)}{p(z | X_{1:n},\theta)} \right) dz  = \int_{\mathcal{Z}} q(z) \ln \left( \frac{p(X_{1:n}, z| \theta) q(z)}{p(z | X_{1:n},\theta) q(z)} \right) dz, \\
+&amp; = \int_{\mathcal{Z}} q(z) \ln \left( \frac{p(X_{1:n}, z| \theta)}{q(z)} \right) dz + \int_{\mathcal{Z}} q(z) \ln \left( \frac{q(z)}{p(z | X_{1:n},\theta)} \right) dz, \\
+&amp; = F(q, \theta) + KL\left\{q || p(\cdot|X_{1:n},\theta)\right\}.
 \end{align*}
 \]</span></p>
 <p>On apelle divergence de Kullblack-Leibler : <span class="math inline">\((p,q)\mapsto D_{KL}\left\{p||q\right\}=\int_{\mathcal{Z}} p\log\left({p}/{q}\right)\)</span> et on peut montrer que cette divergence est positive ou nulle. Nulle si et seulement si <span class="math inline">\(p=q\)</span>.</p>
@@ -1098,7 +1122,7 @@ p\left(X|\theta\right) = \int_{z\in \mathcal{Z}}p\left(X,z|\theta\right)dz=\int_
 </p>
 <p>Il vient que la fonctionelle <span class="math inline">\((q,\theta)\mapsto F(q,\theta)\)</span> agit comme un minorant de la log-vraisemblance, on l’apelle souvant <strong>Evidence Lower Bound (ELBO)</strong> et ainsi :</p>
 <p><span class="math display">\[
-\ell(\theta|X)\geq F(q,\theta).
+\ell(\theta|X_{1:n})\geq F(q,\theta).
 \]</span></p>
 <p><br>
 </p>
@@ -1107,19 +1131,19 @@ p\left(X|\theta\right) = \int_{z\in \mathcal{Z}}p\left(X,z|\theta\right)dz=\int_
 </section>
 <section id="lalgorithme-em-1" class="slide level2">
 <h2>L’algorithme <strong>EM</strong> (1)</h2>
-<p>Si l’on connaît la forme de la loi conditionelle de <span class="math inline">\(z\)</span> sachant un paramètre <span class="math inline">\(\theta_0\in\Theta\)</span> et nos données <span class="math inline">\(X\)</span>, on peut écrire <span class="math inline">\(q(z)=p(z|X,\theta_0)\)</span> et il vient :</p>
+<p>Si l’on connaît la forme de la loi conditionelle de <span class="math inline">\(z\)</span> sachant un paramètre <span class="math inline">\(\theta_0\in\Theta\)</span> et nos données <span class="math inline">\(X_{1:n}\)</span>, on peut écrire <span class="math inline">\(q(z)=p(z|X_{1:n},\theta_0)\)</span> et il vient :</p>
 <p><span class="math display">\[
 \begin{array}{c c l}
-F(q, \theta) &amp; = &amp; \int_{\mathcal{Z}} q(z) \ln \left( \frac{p(X, z| \theta)}{q(z)} \right) dz,\\
-&amp;=&amp; \int_{\mathcal{Z}} p(z|X,\theta_0) \ln \left( \frac{p(X, z| \theta)}{p(z|X,\theta_0)} \right) dz,\\
-&amp;=&amp; \int_{\mathcal{Z}} p(z|X,\theta_0) \ln \left( p(X, z| \theta) \right) dz-\int_{\mathcal{Z}} p(z|X,\theta_0) \ln \left( p(z|X,\theta_0) \right) dz,\\
+F(q, \theta) &amp; = &amp; \int_{\mathcal{Z}} q(z) \ln \left( \frac{p(X_{1:n}, z| \theta)}{q(z)} \right) dz,\\
+&amp;=&amp; \int_{\mathcal{Z}} p(z|X_{1:n},\theta_0) \ln \left( \frac{p(X_{1:n}, z| \theta)}{p(z|X_{1:n},\theta_0)} \right) dz,\\
+&amp;=&amp; \int_{\mathcal{Z}} p(z|X_{1:n},\theta_0) \ln \left( p(X_{1:n}, z| \theta) \right) dz-\int_{\mathcal{Z}} p(z|X_{1:n},\theta_0) \ln \left( p(z|X_{1:n},\theta_0) \right) dz,\\
 &amp;=&amp;
-Q(\theta|\theta_0,X)+cste(\theta_0,q),\\
-&amp;=&amp; \mathbb{E}_{\theta_0}\left[\ln{p\left(X,Z|\theta\right)
+Q(\theta|\theta_0,X_{1:n})+cste(\theta_0,q),\\
+&amp;=&amp; \mathbb{E}_{\theta_0}\left[\ln{p\left(X_{1:n},Z|\theta\right)
 }\right]+cste(\theta_0,q).
 \end{array}
 \]</span></p>
-<p>Il vient l’objectif, finalement, de maximiser <span class="math inline">\(Q(\theta|\theta_0,X)\)</span>, qui est</p>
+<p>Il vient l’objectif, finalement, de maximiser <span class="math inline">\(Q(\theta|\theta_0,X_{1:n})\)</span>, qui est</p>
 <p style="text-align:center;">
 <strong>l’espérance conditionelle de la vraisemblance complétée</strong>.
 </p>
@@ -1127,11 +1151,11 @@ Q(\theta|\theta_0,X)+cste(\theta_0,q),\\
 <section id="lalgorithme-em-2" class="slide level2">
 <h2>L’algorithme <strong>EM</strong> (2)</h2>
 <p>L’algorithme EM construit une suite de paramètres <span class="math inline">\(\left(\theta_k\right)_{k\geq0}\)</span> tels que <span class="math inline">\(\forall k&gt;0\)</span> : <span class="math display">\[
-\theta_{k+1} = \text{arg}\underset{\theta\in\Theta}{\max}\ Q(\theta|\theta_{k},X).
+\theta_{k+1} = \text{arg}\underset{\theta\in\Theta}{\max}\ Q(\theta|\theta_{k},X_{1:n}).
 \]</span></p>
 <p><br>
 </p>
-<p>Ces éléments vérifient <span class="math inline">\(\ell(\theta_{k+1}|X) \geq \ell(\theta_{k}|X) \geq\ldots\geq \ell(\theta_{0}|X)\)</span>. La suite <span class="math inline">\(\left(\ell(\theta_{k}|X)\right)_{k\geq0}\)</span> est donc croissante. Cette suite est aussi majorée par le maximum de la function maximisée. Cette suite converge donc.</p>
+<p>Ces éléments vérifient <span class="math inline">\(\ell(\theta_{k+1}|X_{1:n}) \geq \ell(\theta_{k}|X_{1:n}) \geq\ldots\geq \ell(\theta_{0}|X_{1:n})\)</span>. La suite <span class="math inline">\(\left(\ell(\theta_{k}|X_{1:n})\right)_{k\geq0}\)</span> est donc croissante. Cette suite est aussi majorée par le maximum de la function maximisée. Cette suite converge donc.</p>
 <p><br>
 </p>
 <div class="callout callout-important callout-titled callout-style-default">
@@ -1152,10 +1176,10 @@ Q(\theta|\theta_0,X)+cste(\theta_0,q),\\
 <h2>Algorithme <strong>EM</strong> et espérance conditionelle (2)</h2>
 <p><span class="math display">\[
 \begin{array}{c c l}
-Q\left(\theta|\theta_0,X\right) &amp;=&amp;  \mathbb{E}_{\theta_0}\left[\ln{p\left(X,Z|\theta\right)
+Q\left(\theta|\theta_0,X_{1:n}\right) &amp;=&amp;  \mathbb{E}_{\theta_0}\left[\ln{p\left(X_{1:n},Z|\theta\right)
 }\right].
 \end{array}
-\]</span> La log-vraisemblance complétée, <span class="math inline">\(\ln{p\left(X,z|\theta\right)}\)</span>, est souvent notée <span class="math inline">\(\ell_c(X,z|\theta)\)</span>. Complétée car les données manquantes, <span class="math inline">\(z\)</span>, sont ajoutées, ce qui permet d’avoir accès à un jeu de données complet <span class="math inline">\(\left(z,X\right)\)</span>.</p>
+\]</span> La log-vraisemblance complétée, <span class="math inline">\(\ln{p\left(X_{1:n},z|\theta\right)}\)</span>, est souvent notée <span class="math inline">\(\ell_c(X_{1:n},z|\theta)\)</span>. Complétée car les données manquantes, <span class="math inline">\(z\)</span>, sont ajoutées, ce qui permet d’avoir accès à un jeu de données complet <span class="math inline">\(\left(z,X_{1:n}\right)\)</span>.</p>
 <p><br>
 </p>
 <div class="callout callout-note callout-titled callout-style-default">
@@ -1180,12 +1204,12 @@ Q\left(\theta|\theta_0,X\right) &amp;=&amp;  \mathbb{E}_{\theta_0}\left[\ln{p\le
 <p><br>
 </p>
 <ul>
-<li>Etape <strong>E</strong> : <em>Espérance conditionelle</em> : Evaluation de <span class="math inline">\(Q\left(\theta|\theta_{k},X\right)\)</span>.</li>
+<li>Etape <strong>E</strong> : <em>Espérance conditionelle</em> : Evaluation de <span class="math inline">\(Q\left(\theta|\theta_{k},X_{1:n}\right)\)</span>.</li>
 </ul>
 <p><br>
 </p>
 <ul>
-<li>Etape <strong>M</strong> : <em>Maximisation</em> : de <span class="math inline">\(Q\left(\theta|\theta_{k},X\right)\)</span> pour obtenir <span class="math inline">\(\theta_{k+1}\)</span>.</li>
+<li>Etape <strong>M</strong> : <em>Maximisation</em> : de <span class="math inline">\(Q\left(\theta|\theta_{k},X_{1:n}\right)\)</span> pour obtenir <span class="math inline">\(\theta_{k+1}\)</span>.</li>
 </ul>
 </section>
 <section id="remarque-importante" class="slide level2">
@@ -1204,7 +1228,7 @@ Q\left(\theta|\theta_0,X\right) &amp;=&amp;  \mathbb{E}_{\theta_0}\left[\ln{p\le
 <p><strong>Important</strong></p>
 </div>
 <div class="callout-content">
-<p>On voit souvent la notation <span class="math display">\[\mathbb{E}_{\theta_{k}}[Z_i] = &lt;\!\!z_i\!\!&gt;_k.\]</span></p>
+<p>On voit souvent la notation, pour une variable <span class="math inline">\(Z\)</span> et un paramètre <span class="math inline">\(\theta_k\)</span> donnés : <span class="math display">\[\mathbb{E}_{\theta_{k}}[Z] = &lt;\!\!z\!\!&gt;_k.\]</span></p>
 </div>
 </div>
 </div>
@@ -1213,13 +1237,13 @@ Q\left(\theta|\theta_0,X\right) &amp;=&amp;  \mathbb{E}_{\theta_0}\left[\ln{p\le
 <h2>Capteur de température saturé (1)</h2>
 <p>On accède aux données d’un capteur de température qui sature à partir d’une température <span class="math inline">\(a\)</span>. On sait que la température suit une loi normale de moyenne <span class="math inline">\(\theta\)</span> et de variance <span class="math inline">\(1\)</span>. Parmi les <span class="math inline">\(n=n_1+n_2\)</span> données, les <span class="math inline">\(n_1\)</span> premières ne sont pas saturées (<span class="math inline">\(x_i&lt;a\)</span>) alors que les <span class="math inline">\(n_2\)</span> suivantes sont saturées (<span class="math inline">\(x_i\geq a\)</span>). On cherche tout de même à estimer <span class="math inline">\(\theta\)</span>, la vraie valeur de la température.</p>
 <p>Dans ce cas, la vraisemblance du problème s’écrit <span class="math display">\[
-\mathcal{L}(\theta|X) = \left(1-\Phi(a-\theta)\right)^{n_2}\prod_{i=1}^{n_1}\varphi(x_i-\theta),
+\mathcal{L}(\theta|x_{1:n}) = \left(1-\Phi(a-\theta)\right)^{n_2}\prod_{i=1}^{n_1}\varphi(x_i-\theta),
 \]</span> où <span class="math inline">\(\varphi\)</span> et <span class="math inline">\(\Phi\)</span> sont les fonctions de densité et de répartition de la loi normale centrée réduite.</p>
 </section>
 <section id="capteur-de-température-saturé-2" class="slide level2">
 <h2>Capteur de température saturé (2)</h2>
 <p>On introduit des variables latentes <span class="math inline">\(z_i\)</span> et on écrit alors la vraisemblance complétée <span class="math display">\[
-\mathcal{L}_c(\theta|X,Z) = \prod_{i=1}^{n_1}\varphi(x_i-\theta)\prod_{i=1}^{n_2}\varphi(z_i-\theta),
+\mathcal{L}_c(\theta|x_{1:n_1},z_{1:n_2}) = \prod_{i=1}^{n_1}\varphi(x_i-\theta)\prod_{i=1}^{n_2}\varphi(z_i-\theta),
 \]</span> qui est cette fois simple à régler puisque les <span class="math inline">\(z_i\)</span> sont observés.</p>
 <p><br>
 </p>
@@ -1231,13 +1255,13 @@ Q\left(\theta|\theta_0,X\right) &amp;=&amp;  \mathbb{E}_{\theta_0}\left[\ln{p\le
 </p>
 <p>On peut aisemment détailler la vraisemblance complétée <span class="math inline">\(\ell_c(\theta|X,Z)\)</span> :</p>
 <p><span class="math display">\[
-\ell_c(\theta|X,Z) = -\frac{1}{2}\sum_{i=1}^{n_1} (x_i-\theta)^2 -\frac{1}{2} \sum_{i=1}^{n_2}(z_i-\theta)^2 + cste.
+\ell_c(\theta|x_{1:n_1},z_{1:n_2}) = -\frac{1}{2}\sum_{i=1}^{n_1} (x_i-\theta)^2 -\frac{1}{2} \sum_{i=1}^{n_2}(z_i-\theta)^2 + cste.
 \]</span></p>
 <p><br>
 </p>
 <p>L’<strong>espérance conditionelle de la log-vraisemblance complétée</strong> est alors</p>
 <p><span class="math display">\[
-Q(\theta|\theta_k,X) = \mathbb{E}_{\theta_k}\left[\ell_c(\theta|X,Z)\right] = -\frac{1}{2}\sum_{i=1}^{n_1} (x_i-\theta)^2 -\frac{1}{2} \sum_{i=1}^{n_2}\mathbb{E}_{\theta_k}[(Z_i-\theta)^2] + cste.
+Q(\theta|\theta_k,x_{1:n_1}) = \mathbb{E}_{\theta_k}\left[\ell_c(\theta|x_{1:n_1},Z_{1:n_2})\right] = -\frac{1}{2}\sum_{i=1}^{n_1} (x_i-\theta)^2 -\frac{1}{2} \sum_{i=1}^{n_2}\mathbb{E}_{\theta_k}[(Z_i-\theta)^2] + cste.
 \]</span></p>
 </section>
 <section id="capteur-de-température-saturé-4" class="slide level2">
@@ -1299,7 +1323,7 @@ Q(\theta|\theta_k,X) = \mathbb{E}_{\theta_k}\left[\ell_c(\theta|X,Z)\right] = -\
 </section>
 <section id="capteur-de-température-saturé-7" class="slide level2">
 <h2>Capteur de température saturé (7)</h2>
-<p>Application numérique avec <span class="math inline">\(\theta=30\)</span>, <span class="math inline">\(n_1=400\)</span>, <span class="math inline">\(n_2=250\)</span> et <span class="math inline">\(a=30.33\)</span> :</p>
+<p>Application numérique avec <span class="math inline">\(\theta=30\)</span>, <span class="math inline">\(n_1=400\)</span>, <span class="math inline">\(n_2=250\)</span> et <span class="math inline">\(a=30.25\)</span> :</p>
 
 <img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-27-1.png" class="quarto-figure quarto-figure-center r-stretch" width="544"></section>
 <section id="capteur-de-température-saturé-8" class="slide level2">
@@ -1315,7 +1339,7 @@ Q(\theta|\theta_k,X) = \mathbb{E}_{\theta_k}\left[\ell_c(\theta|X,Z)\right] = -\
 <div class="callout-content">
 <p>On voit deux choses importantes :</p>
 <ul>
-<li>L’estimation du paramètre <span class="math inline">\(\theta\)</span> sur les données seulement observées (29.44) est plus mauvaise que l’estimation sur les données observées et sur l’information de saturation (<span class="math inline">\(\hat{\theta}_{ML}=30.05\)</span>).</li>
+<li>L’estimation du paramètre <span class="math inline">\(\theta\)</span> sur les données seulement observées (29.36) est plus mauvaise que l’estimation sur les données observées et sur l’information de saturation, <span class="math inline">\(\hat{\theta}_{ML}=29.97\)</span>.</li>
 <li>L’imputation par la valeur la plus vraissemblable, <span class="math inline">\(&lt;z_i&gt;_{ML}\)</span>, est <em>mauvaise</em>. Ceci est principalement dû au fait que le processus est <strong>MNAR</strong> : l’imputation ne peut pas particulariser sur l’individu considéré.</li>
 </ul>
 </div>
@@ -1326,19 +1350,14 @@ Q(\theta|\theta_k,X) = \mathbb{E}_{\theta_k}\left[\ell_c(\theta|X,Z)\right] = -\
 <h2>Algorithme <strong>EM</strong>, retour à notre exemple</h2>
 
 <img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/emResult-1.png" class="quarto-figure quarto-figure-center r-stretch" width="388"><p>Les valeurs estimées sont alors <span class="math display">\[
-\hat{\alpha}_\text{EM}\approx 0.032\pm 0.047, \
-\hat{\beta}_\text{EM}\approx 1.12\pm 0.045,\
-\hat{\sigma}^2_\text{EM}\approx 0.193
+\hat{\alpha}_\text{EM}\approx 0.026\pm 0.044, \
+\hat{\beta}_\text{EM}\approx 0.999\pm 0.043,\
+\hat{\sigma}^2_\text{EM}\approx 0.147
 \]</span></p>
-</section></section>
-<section>
-<section id="monte-carlo-em" class="title-slide slide level1 center">
-<h1>Monte-Carlo EM</h1>
-
 </section>
-<section id="raison-dêtre" class="slide level2">
-<h2>Raison d’être</h2>
-<p>On utilise l’algorithm EM car la fonctionelle <span class="math inline">\(Q(\cdot|\theta_0,X)\)</span> est, nous l’espérons, simple à écrire.</p>
+<section id="monte-carlo-em" class="slide level2">
+<h2>Monte-Carlo EM</h2>
+<p>On utilise l’algorithm EM car la fonctionelle <span class="math inline">\(Q(\cdot|\theta_0,X_{1:n})\)</span> est, nous l’espérons, simple à écrire.</p>
 <div class="r-stack">
 <p><strong>Que faire si ce n’est pas le cas ?</strong></p>
 </div>
@@ -1348,11 +1367,11 @@ Q(\theta|\theta_k,X) = \mathbb{E}_{\theta_k}\left[\ell_c(\theta|X,Z)\right] = -\
 <p><strong>Monte-Carlo EM (MCEM, <span class="citation" data-cites="weiTanner90">Wei and Tanner (<a href="#/références" role="doc-biblioref" onclick="">1990</a>)</span>)</strong></p>
 </div>
 <div class="callout-content">
-<p>On remplace <span class="math inline">\(Q(\cdot|\theta_k,X)\)</span> par une approximation Monte-Carlo. L’étape <strong>E</strong> devient :</p>
+<p>On remplace <span class="math inline">\(Q(\cdot|\theta_k,X_{1:n})\)</span> par une approximation Monte-Carlo. L’étape <strong>E</strong> devient :</p>
 <p><span class="math display">\[\begin{align}
-Z_{k,t}&amp;\sim p(Z|X,\theta_k),\\
-\widehat{Q}_T(\theta|\theta_k,X) &amp;= \frac{1}{T}\sum_{t=1}^T \ell_c(X,Z_{k,t}|\theta),
-\end{align}\]</span> et alors <span class="math inline">\(\widehat{Q}_T(\cdot|\theta_k,X)\ \underset{T\to\infty}{\longrightarrow}\ Q(\cdot|\theta_k,X)\)</span> par application de la loi des grands nombres.</p>
+Z_{{1:n},k,t}&amp;\sim p(Z_{1:n}|X_{1:n},\theta_k),\\
+\widehat{Q}_T(\theta|\theta_k,X_{1:n}) &amp;= \frac{1}{T}\sum_{t=1}^T \ell_c(X_{1:n},Z_{{1:n},k,t}|\theta),
+\end{align}\]</span> et alors <span class="math inline">\(\widehat{Q}_T(\cdot|\theta_k,X_{1:n})\ \underset{T\to\infty}{\longrightarrow}\ Q(\cdot|\theta_k,X_{1:n})\)</span> par application de la loi des grands nombres.</p>
 </div>
 </div>
 </div>
@@ -1367,12 +1386,12 @@ Z_{k,t}&amp;\sim p(Z|X,\theta_k),\\
 <p><br>
 </p>
 <ul>
-<li>Etape <strong>E</strong> : Calcul de <span class="math inline">\(\widehat{Q}_T(\cdot|\theta_k,X)\)</span></li>
+<li>Etape <strong>E</strong> : Calcul de <span class="math inline">\(\widehat{Q}_T(\cdot|\theta_k,X_{1:n})\)</span></li>
 </ul>
 <p><br>
 </p>
 <ul>
-<li>Etape <strong>M</strong> : On met à jour le paramètre <span class="math inline">\(\theta\)</span> qui maximise <span class="math inline">\(\widehat{Q}_T(\cdot|\theta_k,X)\)</span></li>
+<li>Etape <strong>M</strong> : On met à jour le paramètre <span class="math inline">\(\theta\)</span> qui maximise <span class="math inline">\(\widehat{Q}_T(\cdot|\theta_k,X_{1:n})\)</span></li>
 </ul>
 <p><br>
 </p>
@@ -1402,30 +1421,30 @@ Z_{k,t}&amp;\sim p(Z|X,\theta_k),\\
 </section>
 <section id="exemple-des-cellules-1" class="slide level2">
 <h2>Exemple des cellules (1)</h2>
-<p>Voir <span class="citation" data-cites="dempster77">Dempster, Laird, and Rubin (<a href="#/références" role="doc-biblioref" onclick="">1977</a>)</span>. Soit un échantillon biologique peuplé de 4 types cellulaires différents, <span class="math inline">\(X=(x_1,x_2,x_3,x_4)\)</span>, le nombre de chaque type cellulaire dans l’échantillon biologique. On considère le modèle multinomiale suivant :</p>
+<p>Voir <span class="citation" data-cites="dempster77">Dempster, Laird, and Rubin (<a href="#/références" role="doc-biblioref" onclick="">1977</a>)</span>. Soit un échantillon biologique peuplé de 4 types cellulaires différents, <span class="math inline">\(x=(x_1,x_2,x_3,x_4)\)</span>, le nombre de chaque type cellulaire dans l’échantillon biologique. On considère le modèle multinomiale suivant :</p>
 <p><span class="math display">\[
-(x_1,x_2,x_3,x_4) ~\sim ~\mathcal{M}\left(n;\dfrac{2+\theta}{4},\dfrac{1-\theta}{4},\dfrac{1-\theta}{4},\dfrac{\theta}{4},\right),
+X=(X_1,X_2,X_3,X_4) ~\sim ~\mathcal{M}\left(n;\dfrac{2+\theta}{4},\dfrac{1-\theta}{4},\dfrac{1-\theta}{4},\dfrac{\theta}{4},\right),
 \]</span> et le paramètre inconnu est <span class="math inline">\(\theta\in[0,1]\)</span>. La vraisemblance de l’échantillon, de taille 1, s’écrit <span class="math display">\[
-\mathcal{L}(\theta|X) = (2+\theta)^{x_1}(1-\theta)^{x_2+x_3}\theta^{x_4},
+\mathcal{L}(\theta|x) = (2+\theta)^{x_1}(1-\theta)^{x_2+x_3}\theta^{x_4},
 \]</span> qui n’est pas forcemment simple à maximiser.</p>
 </section>
 <section id="exemple-des-cellules-2" class="slide level2">
 <h2>Exemple des cellules (2)</h2>
 <p>On introduit deux variables latentes <span class="math inline">\(z_1\)</span> et <span class="math inline">\(z_2\)</span> telles que <span class="math inline">\(x_1=z_1+z_2\)</span>. <span class="math inline">\(z_2\)</span> suit une loi binomiale de paramètre <span class="math inline">\(\left(x_1,\dfrac{\theta}{\theta+2}\right)\)</span>. La log-vraisemblance complétée s’écrit alors</p>
 <p><span class="math display">\[
-\ell_c(\theta|X,z_2) = (x_2+x_3)\log(1-\theta) + (z_2+x_4)\log(\theta),
+\ell_c(\theta|x,z_2) = (x_2+x_3)\log(1-\theta) + (z_2+x_4)\log(\theta),
 \]</span></p>
 <p>et là on sait gérer <strong>:)</strong> car l’espérance conditionelle sur <span class="math inline">\(\theta_k\)</span> s’écrit : <span class="math display">\[
-Q(\theta|\theta_k,X) = (x_2+x_3)\log(1-\theta) + (&lt;\!\!z_2\!\!&gt;_k+x_4)\log(\theta),
+Q(\theta|\theta_k,x) = (x_2+x_3)\log(1-\theta) + (&lt;\!\!z_2\!\!&gt;_k+x_4)\log(\theta),
 \]</span> avec <span class="math inline">\(&lt;\!\!z_2\!\!&gt;_k= \dfrac{\theta_k}{2+\theta_k}x_1\)</span>, ça c’est l’EM classique avec : <span class="math display">\[
 \widehat{\theta}_{k+1} = \dfrac{&lt;\!\!z_2\!\!&gt;_k+x_4}{&lt;\!\!z_2\!\!&gt;_k+x_4 + x_2+x_3}
 \]</span></p>
 </section>
 <section id="exemple-des-cellules-3" class="slide level2">
 <h2>Exemple des cellules (3)</h2>
-<p>En MCEM, on simule <span class="math inline">\(T\)</span> valeurs pour <span class="math inline">\(z_2~\sim\mathcal{B}\text{inom}(x_1,\dfrac{\theta_k}{2+\theta_k})\)</span>, notées <span class="math inline">\(\left(z_{2,k,t}\right)_t\)</span> et on construit la statistique d’intérêt :</p>
+<p>En MCEM, on simule <span class="math inline">\(T\)</span> valeurs pour <span class="math inline">\(Z_2~\sim\mathcal{B}\text{inom}(x_1,\dfrac{\theta_k}{2+\theta_k})\)</span>, notées <span class="math inline">\(\left(z_{2,k,t}\right)_t\)</span> et on construit la statistique d’intérêt :</p>
 <p><span class="math display">\[
-\widehat{Q}_T(\theta|\theta_k,X) = \dfrac{1}{T}\sum_{t=1}^T \ell_c(\theta|X,z_{2,k,t}) = (x_2+x_3)\log(1-\theta)+ \left(\dfrac{1}{T}\sum_{t=1}^Tz_{2,t}+x_4\right)\log(\theta).
+\widehat{Q}_T(\theta|\theta_k,x) = \dfrac{1}{T}\sum_{t=1}^T \ell_c(\theta|x,z_{2,k,t}) = (x_2+x_3)\log(1-\theta)+ \left(\dfrac{1}{T}\sum_{t=1}^Tz_{2,t}+x_4\right)\log(\theta).
 \]</span> Ainsi, en notant <span class="math inline">\(\widehat{&lt;\!\!z_2\!\!&gt;_k} = \dfrac{1}{T}\sum_{t=1}^Tz_{2,k,t}\)</span>, la valeur mise à jour de <span class="math inline">\(\theta\)</span> devient <span class="math display">\[
 \check{\theta}_{k+1} = \dfrac{\widehat{&lt;\!\!z_2\!\!&gt;_k}+x_4}{\widehat{&lt;\!\!z_2\!\!&gt;_k}+x_4 + x_2+x_3}
 \]</span></p>
@@ -1433,7 +1452,7 @@ Q(\theta|\theta_k,X) = (x_2+x_3)\log(1-\theta) + (&lt;\!\!z_2\!\!&gt;_k+x_4)\log
 <section id="exemple-des-cellules-4" class="slide level2">
 <h2>Exemple des cellules (4)</h2>
 <p><span class="math display">\[
-(x_1,x_2,x_3,x_4) = (120,35,35,10)\quad \text{et} \quad \theta=0.3
+(x_1,x_2,x_3,x_4) = (110,40,40,10)\quad \text{et} \quad \theta=0.3
 \]</span></p>
 <p><br>
 </p>
@@ -1568,7 +1587,7 @@ Q(\theta|\theta_0,X,Y) &amp;=&amp; -n\log \sigma - \frac{1}{2\sigma^2}\sum_{i}\m
 <h2>VBEM : plus loin avec l’EM (1)</h2>
 <p>La méthode <strong>Variational Bayes EM</strong> (VBEM) est une extension de l’EM qui permet de contourner les problèmes de calculs de vraisemblances conditionelles complexes en supposant que la distribution postérieure des données est formée par le produit d’une densité en <span class="math inline">\(Z\)</span>, les données manquantes, et d’une densité en <span class="math inline">\(\theta\)</span>, le paramètre :</p>
 <p><span class="math display">\[
-p(Z,\theta|X) \approx q_Z(Z|X)q_\theta(\theta|X)=q(Z,\theta|X).
+p(Z,\theta|X) \approx q_Z(Z|X)q_\theta(\theta|X_{1:n})=q(Z,\theta|X).
 \]</span></p>
 <p>on associe <span class="citation" data-cites="attias1999variational">Attias (<a href="#/références" role="doc-biblioref" onclick="">1999</a>)</span> à la découverte de cette méthode, mais d’autres travaux (beaucoup) existent. Voir les travaux de Hinton, récemment primés par un prix Nobel de physique.</p>
 </section>
@@ -1581,7 +1600,7 @@ p(Z,\theta|X) \approx q_Z(Z|X)q_\theta(\theta|X)=q(Z,\theta|X).
 \log p(X|m) &amp;=&amp; \log \int_{\Theta\times \mathcal{Z}} p(X,Z,\theta|m)d\theta dZ,\\
 &amp;=&amp; \log \int_{\Theta\times \mathcal{Z}} q(Z,\theta|X) \dfrac{p(X,Z,\theta|m)}{q(Z,\theta|X) }d\theta dZ,\\
 &amp;\geq&amp;  \int_{\Theta\times \mathcal{Z}} q(Z,\theta|X) \log\left(\dfrac{p(X,Z,\theta|m)}{q(Z,\theta|X) }\right)d\theta dZ,\\
-&amp;\geq&amp; \int_{\Theta\times \mathcal{Z}} q_Z(Z|X)q_\theta(\theta|X) \log\left(\dfrac{p(X,Z,\theta|m)}{q_Z(Z|X)q_\theta(\theta|X) }\right)d\theta dZ\  =:\ F_{m}(q_Z,q_\theta,X),\\
+&amp;\geq&amp; \int_{\Theta\times \mathcal{Z}} q_Z(Z|X)q_\theta(\theta|X_{1:n}) \log\left(\dfrac{p(X,Z,\theta|m)}{q_Z(Z|X)q_\theta(\theta|X_{1:n}) }\right)d\theta dZ\  =:\ F_{m}(q_Z,q_\theta,X),\\
 \end{array}
 \]</span> d’après l’inégalité de Jensen appliquée à la fonction <span class="math inline">\(\log\)</span> car <span class="math inline">\(q(Z,\theta|X)\)</span> somme à 1. <span class="math inline">\(F_{m}(q_Z,q_\theta,X)\)</span> est donc un minorant de la log-<strong>vraisemblance marginale</strong>.</p>
 </section>
@@ -1609,29 +1628,29 @@ Dans cette section nous allons discuter des méthodes d'échantillonnage qui per
 <section id="au-total-1" class="slide level2">
 <h2>Au total</h2>
 <p><span class="math display">\[
-\hat{\alpha}_\text{EM}\approx 0.032\pm 0.047, \
-\hat{\beta}_\text{EM}\approx 1.12\pm 0.045,\
-\hat{\sigma}^2_\text{EM}\approx 0.193
+\hat{\alpha}_\text{EM}\approx 0.026\pm 0.044, \
+\hat{\beta}_\text{EM}\approx 0.999\pm 0.043,\
+\hat{\sigma}^2_\text{EM}\approx 0.147
 \]</span> <span class="math display">\[
-\hat{\alpha}_\text{Boot}\approx 0.056\pm 0.047, \
-\hat{\beta}_\text{Boot}\approx 1.021\pm 0.047, \
-\hat{\sigma}^2_\text{Boot}\approx 0.17
+\hat{\alpha}_\text{Boot}\approx 0.049\pm 0.051, \
+\hat{\beta}_\text{Boot}\approx 1.069\pm 0.054, \
+\hat{\sigma}^2_\text{Boot}\approx 0.205
 \]</span> <span class="math display">\[
-\hat{\alpha}_\text{Bayes}\approx 0\pm 0.01, \
-\hat{\beta}_\text{Bayes}\approx 0.963\pm 0.013,\
-\hat{\sigma}^2_\text{Bayes}\approx 0.198
+\hat{\alpha}_\text{Bayes}\approx -0.001\pm 0.01, \
+\hat{\beta}_\text{Bayes}\approx 0.974\pm 0.011,\
+\hat{\sigma}^2_\text{Bayes}\approx 0.26
 \]</span> <span class="math display">\[
-\hat{\alpha}_\text{0}\approx 0.171\pm 0.066, \
-\hat{\beta}_\text{0}\approx 0.684\pm 0.068, \
-\hat{\sigma}^2_\text{0}\approx 0.344
+\hat{\alpha}_\text{0}\approx 0.104\pm 0.073, \
+\hat{\beta}_\text{0}\approx 0.68\pm 0.075, \
+\hat{\sigma}^2_\text{0}\approx 0.42
 \]</span> <span class="math display">\[
-\hat{\alpha}_l\approx 0.064\pm 0.039, \
-\hat{\beta}_l\approx 1.022\pm 0.041, \
-\hat{\sigma}^2_l\approx 0.123
+\hat{\alpha}_l\approx 0.061\pm 0.044, \
+\hat{\beta}_l\approx 1.091\pm 0.045, \
+\hat{\sigma}^2_l\approx 0.153
 \]</span> <span class="math display">\[
-\hat{\alpha}_\text{N}\approx 0.063\pm 0.042, \
-\hat{\beta}_\text{N}\approx 1.017\pm 0.043, \
-\hat{\sigma}^2_\text{N}\approx 0.135
+\hat{\alpha}_\text{N}\approx 0.07\pm 0.047, \
+\hat{\beta}_\text{N}\approx 1.085\pm 0.049, \
+\hat{\sigma}^2_\text{N}\approx 0.171
 \]</span></p>
 <!--## Une petite ACP ? Les individus
 
@@ -1708,8 +1727,8 @@ On trace les ellipses de confiance à 95\%
 </ul>
 </section></section>
 <section>
-<section id="en-pratique" class="title-slide slide level1 center">
-<h1>En pratique</h1>
+<section id="paquetages-et-implémentations" class="title-slide slide level1 center">
+<h1>Paquetages et implémentations</h1>
 
 </section>
 <section id="un-passage-à-léchelle-nécessaire" class="slide level2">
