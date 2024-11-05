@@ -435,6 +435,7 @@ Hadrien Lorenzo
 <li><a href="#/mécanismes" id="/toc-mécanismes">Mécanismes</a></li>
 <li><a href="#/imputation-ou-prédiction" id="/toc-imputation-ou-prédiction">Imputation ou prédiction ?</a></li>
 <li><a href="#/algorithme-em-et-méthodes-stochastiques" id="/toc-algorithme-em-et-méthodes-stochastiques">Algorithme EM et méthodes stochastiques</a></li>
+<li><a href="#/acceptation-rejet-ar" id="/toc-acceptation-rejet-ar">Acceptation-Rejet (AR)</a></li>
 <li><a href="#/paquetages-et-implémentations" id="/toc-paquetages-et-implémentations">Paquetages et implémentations</a></li>
 <li><a href="#/conclusion-2" id="/toc-conclusion-2">Conclusion</a></li>
 </ul>
@@ -898,9 +899,9 @@ y = x + \epsilon
 <p>On répète un nombre <span class="math inline">\(M=\)</span> 20 d’imputations du jeu de données intitiales. En voici 3 versions.</p>
 
 <img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center r-stretch" width="518"><p>La moyenne empirique des <span class="math inline">\(M=\)</span> 20 estimations pour chacun des 3 coefficients: <span class="math display">\[
-\hat{\alpha}_N\approx 0.003\pm 0.041, \
-\hat{\beta}_N\approx 1.042\pm 0.04,\
-\hat{\sigma}^2_N\approx 0.131
+\hat{\alpha}_N\approx 0.002\pm 0.048, \
+\hat{\beta}_N\approx 1.03\pm 0.044,\
+\hat{\sigma}^2_N\approx 0.177
 \]</span></p>
 </section>
 <section id="le-boxplot-toujours-aussi-utile" class="slide level2">
@@ -970,27 +971,27 @@ y = x + \epsilon
 <p>On obtient des estimations :</p>
 <ul>
 <li><p>Via bootstrap : <span class="math display">\[
-\hat{\alpha}_\text{Boot}\approx 0\pm 0.045, \
-\hat{\beta}_\text{Boot}\approx 1.038\pm 0.044, \
-\hat{\sigma}^2_\text{Boot}\approx 0.158
+\hat{\alpha}_\text{Boot}\approx 0.007\pm 0.051, \
+\hat{\beta}_\text{Boot}\approx 1.041\pm 0.05, \
+\hat{\sigma}^2_\text{Boot}\approx 0.207
 \]</span></p></li>
 <li><p>Via la postérieure/bayésienne : <span class="math display">\[
-\hat{\alpha}_\text{Bayes}\approx -0.003\pm 0.01, \
-\hat{\beta}_\text{Bayes}\approx 0.956\pm 0.011,\
-\hat{\sigma}^2_\text{Bayes}\approx 0.186
+\hat{\alpha}_\text{Bayes}\approx 0.001\pm 0.01, \
+\hat{\beta}_\text{Bayes}\approx 0.964\pm 0.013,\
+\hat{\sigma}^2_\text{Bayes}\approx 0.252
 \]</span></p></li>
 </ul>
 <p>Pour rappel, dans les cas impropres : <span class="math display">\[
 \begin{array}{lccc}
-\text{Moyenne}&amp;\hat{\alpha}_0\approx -0.091\pm 0.067 &amp;
-\hat{\beta}_0\approx 0.729\pm 0.066 &amp;
-\hat{\sigma}^2_0\approx 0.359\\
-\text{Régression linéaire}&amp;\hat{\alpha}_l\approx 0.004\pm 0.039 &amp;
-\hat{\beta}_l\approx 1.041\pm 0.038 &amp;
-\hat{\sigma}^2_l\approx 0.12\\
-\text{Régression stochastique}&amp;\hat{\alpha}_N\approx 0.003\pm 0.041 &amp;
-\hat{\beta}_N\approx 1.042\pm 0.04 &amp;
-\hat{\sigma}^2_N\approx 0.131
+\text{Moyenne}&amp;\hat{\alpha}_0\approx 0.079\pm 0.077 &amp;
+\hat{\beta}_0\approx 0.58\pm 0.071 &amp;
+\hat{\sigma}^2_0\approx 0.469\\
+\text{Régression linéaire}&amp;\hat{\alpha}_l\approx 0.001\pm 0.044 &amp;
+\hat{\beta}_l\approx 1.032\pm 0.041 &amp;
+\hat{\sigma}^2_l\approx 0.157\\
+\text{Régression stochastique}&amp;\hat{\alpha}_N\approx 0.002\pm 0.048 &amp;
+\hat{\beta}_N\approx 1.03\pm 0.044 &amp;
+\hat{\sigma}^2_N\approx 0.177
 \end{array}
 \]</span> </p>
 </section>
@@ -1322,7 +1323,7 @@ Q(\theta|\theta_k,\boldsymbol{x}_{1:n_1}) = \mathbb{E}_{\theta_k}\left[\ell_c(\t
 </section>
 <section id="capteur-de-température-saturé-7" class="slide level2">
 <h2>Capteur de température saturé (7)</h2>
-<p>Application numérique avec <span class="math inline">\(\theta=30\)</span>, <span class="math inline">\(n_1=400\)</span>, <span class="math inline">\(n_2=250\)</span> et <span class="math inline">\(a=30.33\)</span> :</p>
+<p>Application numérique avec <span class="math inline">\(\theta=30\)</span>, <span class="math inline">\(n_1=400\)</span>, <span class="math inline">\(n_2=250\)</span> et <span class="math inline">\(a=30.26\)</span> :</p>
 
 <img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-27-1.png" class="quarto-figure quarto-figure-center r-stretch" width="544"></section>
 <section id="capteur-de-température-saturé-8" class="slide level2">
@@ -1338,7 +1339,7 @@ Q(\theta|\theta_k,\boldsymbol{x}_{1:n_1}) = \mathbb{E}_{\theta_k}\left[\ell_c(\t
 <div class="callout-content">
 <p>On voit deux choses importantes :</p>
 <ul>
-<li>L’estimation du paramètre <span class="math inline">\(\theta\)</span> sur les données seulement observées (29.36) est plus mauvaise que l’estimation sur les données observées et sur l’information de saturation, <span class="math inline">\(\hat{\theta}_{ML}=30\)</span>.</li>
+<li>L’estimation du paramètre <span class="math inline">\(\theta\)</span> sur les données seulement observées (29.35) est plus mauvaise que l’estimation sur les données observées et sur l’information de saturation, <span class="math inline">\(\hat{\theta}_{ML}=29.97\)</span>.</li>
 <li>L’imputation par la valeur la plus vraissemblable, <span class="math inline">\(&lt;z_i&gt;_{ML}\)</span>, est <em>mauvaise</em>. Ceci est principalement dû au fait que le processus est <strong>MNAR</strong> : l’imputation ne peut pas particulariser sur l’individu considéré.</li>
 </ul>
 </div>
@@ -1349,9 +1350,9 @@ Q(\theta|\theta_k,\boldsymbol{x}_{1:n_1}) = \mathbb{E}_{\theta_k}\left[\ell_c(\t
 <h2>Algorithme <strong>EM</strong>, retour à notre exemple</h2>
 
 <img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/emResult-1.png" class="quarto-figure quarto-figure-center r-stretch" width="388"><p>Les valeurs estimées sont alors <span class="math display">\[
-\hat{\alpha}_\text{EM}\approx -0.042\pm 0.046, \
-\hat{\beta}_\text{EM}\approx 0.926\pm 0.048,\
-\hat{\sigma}^2_\text{EM}\approx 0.168
+\hat{\alpha}_\text{EM}\approx -0.018\pm 0.048, \
+\hat{\beta}_\text{EM}\approx 1.012\pm 0.048,\
+\hat{\sigma}^2_\text{EM}\approx 0.188
 \]</span></p>
 </section>
 <section id="monte-carlo-em" class="slide level2">
@@ -1451,7 +1452,7 @@ Q(\theta|\theta_k,x) = (x_2+x_3)\log(1-\theta) + (&lt;\!\!z_2\!\!&gt;_k+x_4)\log
 <section id="exemple-des-cellules-4" class="slide level2">
 <h2>Exemple des cellules (4)</h2>
 <p><span class="math display">\[
-(x_1,x_2,x_3,x_4) = (110,35,30,10)\quad \text{et} \quad \theta=0.3
+(x_1,x_2,x_3,x_4) = (110,30,35,15)\quad \text{et} \quad \theta=0.3
 \]</span></p>
 <p><br>
 </p>
@@ -1521,7 +1522,7 @@ Q(\theta|\theta_0,X,Y) &amp;=&amp; -n\log \sigma - \frac{1}{2\sigma^2}\sum_{i}\m
 <section id="modèle-logit-à-effet-aléatoire-3" class="slide level2">
 <h2>Modèle logit à effet aléatoire (3)</h2>
 <p>D’après la forme de la vraisemblance complétée, on peut déduire la forme de la loi conditionelle des <span class="math inline">\(Z_i\)</span> : <span class="math display">\[
-[Z_i|(x_{i,j},y_{i,j})_j,\beta,\sigma^2] \propto
+p(Z_i|(x_{i,j},y_{i,j})_j,\beta,\sigma^2) \propto
 \frac{\text{e}^{-\frac{1}{2\sigma^2}\left(Z_i-\sigma^2\sum_{j} y_{i,j}\right)^2}}{\prod_{j} \left(1+\exp\left(\beta x_{i,j}+Z_i\right)\right)}.
 \]</span></p>
 <p>En <em>oubliant</em> le dénominateur on pourrait croire que <span class="math display">\[
@@ -1537,7 +1538,7 @@ Q(\theta|\theta_0,X,Y) &amp;=&amp; -n\log \sigma - \frac{1}{2\sigma^2}\sum_{i}\m
 <p><strong>Simulation des <span class="math inline">\(Z_i\)</span> : algorithme d’acceptation rejet</strong></p>
 </div>
 <div class="callout-content">
-<p>On va utiliser un algorithm d’acceptation-rejet pour simuler chacun des <span class="math inline">\(Z_i\)</span>, indépendemment. A l’instant <span class="math inline">\(t\)</span>, on utilise la loi instrumentale <span class="math inline">\(\mathcal{N}(z_{i,t-1},\sigma^2)\)</span> pour simuler un candidat <span class="math inline">\(\check{z}_{i}\)</span>. On calcule le taux d’acceptation <span class="math display">\[
+<p>On va utiliser un algorithme d’acceptation-rejet pour simuler chacun des <span class="math inline">\(Z_i\)</span>, indépendemment. A l’instant <span class="math inline">\(t\)</span>, on utilise la loi conditionelle <span class="math inline">\(\mathcal{N}(z_{i,t-1},\sigma^2)\)</span> pour simuler un candidat <span class="math inline">\(\check{z}_{i}\)</span>. On calcule le taux d’acceptation <span class="math display">\[
 \alpha_i=
   \dfrac
 {p(\check{z}_{i}|(x_{i,j},y_{i,j})_j,\beta,\sigma^2)}
@@ -1594,22 +1595,22 @@ p(\boldsymbol{z},\theta|\boldsymbol{x}) \approx q_{\boldsymbol{z}}(\boldsymbol{z
 <section id="vbem-plus-loin-avec-lem-2" class="slide level2">
 <h2>VBEM : plus loin avec l’EM (2)</h2>
 <p>L’idée est d’estimer les lois en <span class="math inline">\(\boldsymbol{z}\)</span> et en <span class="math inline">\(\theta\)</span> alternativement.</p>
-<p>Ecrire les équations nécessite d’introduire un nouvel objet : <strong>la vraisemblance marginale</strong>. Cette distribution marginalise sur les paramètres <span class="math inline">\(\theta\)</span> en supposant un modèle paramétrique <span class="math inline">\(m\)</span>, en substance :</p>
+<p>Ecrire les équations nécessite d’introduire un nouvel objet : <strong>la vraisemblance marginale</strong>. Cette distribution marginalise sur les paramètres <span class="math inline">\(\theta\)</span> en supposant un modèle paramétrique <span class="math inline">\(\mathcal{M}\)</span>, en substance :</p>
 <p><span class="math display">\[
 \begin{array}{c c l}
-\log p(\boldsymbol{x}|m) &amp;=&amp; \log \int_{\Theta\times \mathcal{\boldsymbol{z}}} p(\boldsymbol{x},\boldsymbol{z},\theta|m)d\theta d\boldsymbol{z},\\
-&amp;=&amp; \log \int_{\Theta\times \mathcal{\boldsymbol{z}}} q(\boldsymbol{z},\theta|\boldsymbol{x}) \dfrac{p(\boldsymbol{x},\boldsymbol{z},\theta|m)}{q(\boldsymbol{z},\theta|\boldsymbol{x}) }d\theta d\boldsymbol{z},\\
-&amp;\geq&amp;  \int_{\Theta\times \mathcal{\boldsymbol{z}}} q(\boldsymbol{z},\theta|\boldsymbol{x}) \log\left(\dfrac{p(\boldsymbol{x},\boldsymbol{z},\theta|m)}{q(\boldsymbol{z},\theta|\boldsymbol{x}) }\right)d\theta d\boldsymbol{z},\\
-&amp;\geq&amp; \int_{\Theta\times \mathcal{\boldsymbol{z}}} q_\boldsymbol{z}(\boldsymbol{z}|\boldsymbol{x})q_\theta(\theta|\boldsymbol{x}) \log\left(\dfrac{p(\boldsymbol{x},\boldsymbol{z},\theta|m)}{q_\boldsymbol{z}(\boldsymbol{z}|\boldsymbol{x})q_\theta(\theta|\boldsymbol{x}) }\right)d\theta d\boldsymbol{z}\  =:\ F_{m}(q_\boldsymbol{z},q_\theta,\boldsymbol{x}),\\
+\log p(\boldsymbol{x}|\mathcal{M}) &amp;=&amp; \log \int_{\Theta\times \mathcal{\boldsymbol{z}}} p(\boldsymbol{x},\boldsymbol{z},\theta|\mathcal{M})d\theta d\boldsymbol{z},\\
+&amp;=&amp; \log \int_{\Theta\times \mathcal{\boldsymbol{z}}} q(\boldsymbol{z},\theta|\boldsymbol{x}) \dfrac{p(\boldsymbol{x},\boldsymbol{z},\theta|\mathcal{M})}{q(\boldsymbol{z},\theta|\boldsymbol{x}) }d\theta d\boldsymbol{z},\\
+&amp;\geq&amp;  \int_{\Theta\times \mathcal{\boldsymbol{z}}} q(\boldsymbol{z},\theta|\boldsymbol{x}) \log\left(\dfrac{p(\boldsymbol{x},\boldsymbol{z},\theta|\mathcal{M})}{q(\boldsymbol{z},\theta|\boldsymbol{x}) }\right)d\theta d\boldsymbol{z},\\
+&amp;\geq&amp; \int_{\Theta\times \mathcal{\boldsymbol{z}}} q_\boldsymbol{z}(\boldsymbol{z}|\boldsymbol{x})q_\theta(\theta|\boldsymbol{x}) \log\left(\dfrac{p(\boldsymbol{x},\boldsymbol{z},\theta|\mathcal{M})}{q_\boldsymbol{z}(\boldsymbol{z}|\boldsymbol{x})q_\theta(\theta|\boldsymbol{x}) }\right)d\theta d\boldsymbol{z}\  =:\ F_{m}(q_\boldsymbol{z},q_\theta,\boldsymbol{x}),\\
 \end{array}
-\]</span> d’après l’inégalité de Jensen appliquée à la fonction <span class="math inline">\(\log\)</span> car <span class="math inline">\(q(Z,\theta|\boldsymbol{x})\)</span> somme à 1. <span class="math inline">\(F_{m}(q_Z,q_\theta,\boldsymbol{x})\)</span> est donc un minorant de la log-<strong>vraisemblance marginale</strong>.</p>
+\]</span> d’après l’inégalité de Jensen appliquée à la fonction <span class="math inline">\(\log\)</span> car <span class="math inline">\(q(\boldsymbol{z},\theta|\boldsymbol{x})\)</span> somme à 1. <span class="math inline">\(F_{\mathcal{M}}(q_Z,q_\theta,\boldsymbol{x})\)</span> est donc un minorant de la log-<strong>vraisemblance marginale</strong>.</p>
 </section>
 <section id="vbem-plus-loin-avec-lem-3" class="slide level2">
 <h2>VBEM : plus loin avec l’EM (3)</h2>
-<p>La fonctionelle <span class="math inline">\(F_{m}(q_Z,q_\theta,\boldsymbol{x})\)</span> est maximisée par rapport à <span class="math inline">\(q_Z\)</span> et <span class="math inline">\(q_\theta\)</span> <span class="citation" data-cites="neal1998view">(voir <a href="#/références" role="doc-biblioref" onclick="">Neal and Hinton 1998</a>)</span> pour donner l’algorithme <strong>VBEM</strong> :</p>
+<p>La fonctionelle <span class="math inline">\(F_{\mathcal{M}}(q_Z,q_\theta,\boldsymbol{x})\)</span> est maximisée par rapport à <span class="math inline">\(q_Z\)</span> et <span class="math inline">\(q_\theta\)</span> <span class="citation" data-cites="neal1998view">(voir <a href="#/références" role="doc-biblioref" onclick="">Neal and Hinton 1998</a>)</span> pour donner l’algorithme <strong>VBEM</strong> :</p>
 <ul>
-<li>Etape <strong>E</strong> : Choisir <span class="math inline">\(q_Z^{(t)}\)</span> qui maximise <span class="math inline">\(q_Z\mapsto F_{m}(q_Z,q_\theta^{(t-1)},\boldsymbol{x})\)</span>,</li>
-<li>Etape <strong>M</strong> : Choisir <span class="math inline">\(q_\theta^{(t)}\)</span> qui maximise <span class="math inline">\(q_\theta\mapsto F_{m}(q_Z^{(t)},q_\theta,\boldsymbol{x})\)</span>.</li>
+<li>Etape <strong>E</strong> : Choisir <span class="math inline">\(q_Z^{(t)}\)</span> qui maximise <span class="math inline">\(q_Z\mapsto F_{\mathcal{M}}(q_Z,q_\theta^{(t-1)},\boldsymbol{x})\)</span>,</li>
+<li>Etape <strong>M</strong> : Choisir <span class="math inline">\(q_\theta^{(t)}\)</span> qui maximise <span class="math inline">\(q_\theta\mapsto F_{\mathcal{M}}(q_Z^{(t)},q_\theta,\boldsymbol{x})\)</span>.</li>
 </ul>
 <p>Pour aller plus loin, il faudra lire les dits papiers</p>
 <!-- ------------------------------------ -->
@@ -1624,96 +1625,230 @@ Nous avons discuteé de la méthode EM qui fournit un estimateur du maximum de v
 Dans cette section nous allons discuter des méthodes d'échantillonnage qui permettent d'estimer la distribution postérieure des paramètres et des données manquantes conditionellement aux données observées.
 
 # Comparaison des approches-->
+</section></section>
+<section>
+<section id="acceptation-rejet-ar" class="title-slide slide level1 center">
+<h1>Acceptation-Rejet (AR)</h1>
+
 </section>
-<section id="au-total-1" class="slide level2">
-<h2>Au total</h2>
+<section id="section" class="slide level2">
+<h2></h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Algorithme de Métropolis-Hastings</strong></p>
+</div>
+<div class="callout-content">
+<p>On souhaite simuler <span class="math inline">\(x\)</span> qui suit une loi <span class="math inline">\(p(x)\)</span>, connue à une constante près grâce à <span class="math inline">\(f(x)\)</span>.</p>
+<p>On fixe une loi conditionelle <span class="math inline">\(x\mapsto g(x|y)\)</span> qui est connue à une constante près indépendante de <span class="math inline">\(y\)</span>.</p>
+<p>A l’instant <span class="math inline">\(t\)</span>, on utilise <span class="math inline">\(g\)</span> pour simuler un candidat <span class="math inline">\(\check{x}_{i}\sim g(x|x_{i,t-1})\)</span></p>
+<p>On calcule le taux d’acceptation <span class="math display">\[
+\alpha_i=
+  \dfrac
+{f(\check{x}_{i})g(x_{i,t-1}|\check{x}_{i})}
+{f(x_{i,t-1})g(\check{x}_{i}|x_{i,t-1})}.
+\]</span> On tire alors un <span class="math inline">\(U\)</span> uniformemment sur <span class="math inline">\([0,1]\)</span> : <span class="math inline">\(x_{i,t}\gets \check{x}_{i}\)</span> si <span class="math inline">\(U\leq\alpha_i\)</span> et <span class="math inline">\(x_{i,t}\gets x_{i,t-1}\)</span> sinon.</p>
+</div>
+</div>
+</div>
+<p>On lance plusieurs fois cet algorithme (on parle de <strong>chaînes</strong>) que l’on laisse tourner un certain temps (les <strong>itérations</strong>)</p>
+</section>
+<section id="algorithme-de-métropolis-hastings-par-marche-aléatoire" class="slide level2">
+<h2>Algorithme de Métropolis-Hastings par marche aléatoire</h2>
+<p>Reprendre l’algorithme précédent et choisir pour loi conditionelle une loi de la forme <span class="math display">\[\begin{align*}
+g(x|y) &amp;= g_s(x-y),
+\end{align*}\]</span> et donc <span class="math inline">\(g(\cdot|y)\)</span> vérifie <span class="math inline">\(g(x|y)=g(y|x)\)</span>. Ce qui implique que le taux d’acceptation est simplifié en <span class="math display">\[
+\alpha_i=
+  \dfrac
+{f(\check{x}_{i})}
+{f(x_{i,t-1})}.
+\]</span> C’est le cas de la loi normale…</p>
+</section>
+<section id="metropolis-hastings-mh-par-marche-aléatoire-rwm" class="slide level2">
+<h2>Metropolis-Hastings (MH) par marche aléatoire (RWM)</h2>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href=""></a>AR_function <span class="ot">&lt;-</span> <span class="cf">function</span>(x,likes,<span class="at">p=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)<span class="sc">/</span><span class="dv">4</span>,<span class="at">sigma2=</span><span class="fl">0.1</span>,<span class="at">iter=</span><span class="dv">300</span>,<span class="at">Ncols=</span><span class="dv">7</span>,<span class="at">plotChemin=</span><span class="cn">FALSE</span>){</span>
+<span id="cb6-2"><a href=""></a>ar_fct <span class="ot">&lt;-</span> <span class="cf">function</span>(x,p,<span class="at">sigma2=</span><span class="fl">0.1</span>,iter){</span>
+<span id="cb6-3"><a href=""></a>accept <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb6-4"><a href=""></a>    x_0 <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="fu">runif</span>(<span class="dv">1</span>,<span class="at">min =</span> <span class="sc">-</span><span class="dv">1</span>,<span class="at">max =</span> <span class="dv">2</span>),<span class="fu">runif</span>(<span class="dv">1</span>,<span class="at">min =</span> <span class="dv">0</span>,<span class="at">max =</span> <span class="fl">1.2</span>))</span>
+<span id="cb6-5"><a href=""></a>    like_0 <span class="ot">&lt;-</span> <span class="fu">loglike</span>(x_0,p)</span>
+<span id="cb6-6"><a href=""></a>    x_out <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>,iter,<span class="dv">2</span>)</span>
+<span id="cb6-7"><a href=""></a>    x_out[<span class="dv">1</span>,] <span class="ot">&lt;-</span> x_0</span>
+<span id="cb6-8"><a href=""></a>    <span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">2</span><span class="sc">:</span>iter){</span>
+<span id="cb6-9"><a href=""></a>        x_prime <span class="ot">&lt;-</span> x_0 <span class="sc">+</span> <span class="fu">rnorm</span>(<span class="dv">2</span>,<span class="dv">0</span>,sigma2)</span>
+<span id="cb6-10"><a href=""></a>        like_prime <span class="ot">&lt;-</span> <span class="fu">loglike</span>(x_prime,p)</span>
+<span id="cb6-11"><a href=""></a>        alpha <span class="ot">&lt;-</span> <span class="fu">exp</span>(like_prime<span class="sc">-</span>like_0)</span>
+<span id="cb6-12"><a href=""></a>        <span class="cf">if</span>(<span class="fu">runif</span>(<span class="dv">1</span>)<span class="sc">&lt;</span>alpha){</span>
+<span id="cb6-13"><a href=""></a>accept <span class="ot">&lt;-</span> accept <span class="sc">+</span> <span class="dv">1</span></span>
+<span id="cb6-14"><a href=""></a>            x_0 <span class="ot">&lt;-</span> x_prime</span>
+<span id="cb6-15"><a href=""></a>            like_0 <span class="ot">&lt;-</span> <span class="fu">loglike</span>(x_0,p)</span>
+<span id="cb6-16"><a href=""></a>        }</span>
+<span id="cb6-17"><a href=""></a>        x_out[i,] <span class="ot">&lt;-</span> x_0</span>
+<span id="cb6-18"><a href=""></a>    }</span>
+<span id="cb6-19"><a href=""></a>    <span class="fu">list</span>(<span class="at">val=</span>x_0,<span class="at">sample=</span>x_out,<span class="at">rate_accept=</span>accept<span class="sc">/</span>iter)</span>
+<span id="cb6-20"><a href=""></a>}</span>
+<span id="cb6-21"><a href=""></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb6-22"><a href=""></a><span class="fu">contour</span>(mu1s,mu2s,<span class="fu">exp</span>(likes),<span class="at">nlevels =</span> nlevels,<span class="at">lwd=</span><span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>,</span>
+<span id="cb6-23"><a href=""></a>        <span class="at">xlab=</span><span class="fu">expression</span>(mu[<span class="dv">0</span>]),<span class="at">ylab=</span><span class="fu">expression</span>(mu[<span class="dv">1</span>]),<span class="at">bty=</span><span class="st">"n"</span>)</span>
+<span id="cb6-24"><a href=""></a><span class="cf">if</span>(plotChemin){</span>
+<span id="cb6-25"><a href=""></a>cols <span class="ot">&lt;-</span> RColorBrewer<span class="sc">::</span><span class="fu">brewer.pal</span>(<span class="at">name =</span> <span class="st">"Dark2"</span>,Ncols)</span>
+<span id="cb6-26"><a href=""></a>rates <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb6-27"><a href=""></a><span class="cf">for</span>(k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>Ncols){</span>
+<span id="cb6-28"><a href=""></a>    sol <span class="ot">&lt;-</span> <span class="fu">ar_fct</span>(x,p,<span class="at">sigma2=</span>sigma2,<span class="at">iter=</span>iter)</span>
+<span id="cb6-29"><a href=""></a>    x_sol <span class="ot">&lt;-</span> sol<span class="sc">$</span>sample</span>
+<span id="cb6-30"><a href=""></a>    rates <span class="ot">&lt;-</span> rates <span class="sc">+</span> sol<span class="sc">$</span>rate_accept<span class="sc">/</span>Ncols</span>
+<span id="cb6-31"><a href=""></a>    <span class="fu">points</span>(x_sol[,<span class="dv">1</span>],x_sol[,<span class="dv">2</span>],<span class="at">col=</span>cols[k],<span class="at">lty=</span><span class="dv">1</span>,<span class="at">type=</span><span class="st">"l"</span>)</span>
+<span id="cb6-32"><a href=""></a>}</span>
+<span id="cb6-33"><a href=""></a>}<span class="cf">else</span>{</span>
+<span id="cb6-34"><a href=""></a>rates <span class="ot">&lt;-</span> <span class="dv">0</span></span>
+<span id="cb6-35"><a href=""></a><span class="cf">for</span>(k <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>Ncols){</span>
+<span id="cb6-36"><a href=""></a>    sol <span class="ot">&lt;-</span> <span class="fu">ar_fct</span>(x,p,<span class="at">sigma2=</span>sigma2,<span class="at">iter=</span>iter)</span>
+<span id="cb6-37"><a href=""></a>    x_sol <span class="ot">&lt;-</span> sol<span class="sc">$</span>val</span>
+<span id="cb6-38"><a href=""></a>    rates <span class="ot">&lt;-</span> rates <span class="sc">+</span> sol<span class="sc">$</span>rate_accept<span class="sc">/</span>Ncols</span>
+<span id="cb6-39"><a href=""></a>    <span class="fu">points</span>(x_sol[<span class="dv">1</span>],x_sol[<span class="dv">2</span>],<span class="at">col=</span><span class="dv">1</span>,<span class="at">pch=</span><span class="dv">16</span>)</span>
+<span id="cb6-40"><a href=""></a>}</span>
+<span id="cb6-41"><a href=""></a>}</span>
+<span id="cb6-42"><a href=""></a><span class="fu">text</span>(<span class="at">x =</span> <span class="fl">1.5</span>,<span class="at">y=</span><span class="fl">1.4</span>, <span class="at">labels=</span><span class="fu">paste</span>(<span class="st">"Nombre d'itérations : "</span>,iter))</span>
+<span id="cb6-43"><a href=""></a><span class="fu">text</span>(<span class="at">x =</span> <span class="fl">1.5</span>,<span class="at">y=</span><span class="fl">1.3</span>, <span class="at">labels=</span><span class="fu">paste</span>(<span class="st">"Nombre de chaînes : "</span>,Ncols))</span>
+<span id="cb6-44"><a href=""></a><span class="fu">text</span>(<span class="at">x =</span> <span class="fl">1.5</span>,<span class="at">y=</span><span class="fl">1.2</span>, <span class="at">labels=</span><span class="fu">paste</span>(<span class="st">"Taux d'acceptation : "</span>,<span class="fu">round</span>(rates,<span class="dv">2</span>)))</span>
+<span id="cb6-45"><a href=""></a>}</span>
+<span id="cb6-46"><a href=""></a><span class="do">## Génératio du jeu de données</span></span>
+<span id="cb6-47"><a href=""></a>nlevels <span class="ot">&lt;-</span> <span class="dv">70</span></span>
+<span id="cb6-48"><a href=""></a>N_init <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb6-49"><a href=""></a>p<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>,<span class="dv">3</span><span class="sc">/</span><span class="dv">4</span>)</span>
+<span id="cb6-50"><a href=""></a><span class="fu">set.seed</span>(<span class="dv">2</span>)</span>
+<span id="cb6-51"><a href=""></a>Z <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>),<span class="at">size =</span> n,<span class="at">replace =</span> T,<span class="at">prob =</span> p)</span>
+<span id="cb6-52"><a href=""></a>centers <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">0</span>,<span class="dv">1</span>)</span>
+<span id="cb6-53"><a href=""></a>X <span class="ot">&lt;-</span> <span class="fu">unlist</span>(<span class="fu">lapply</span>(Z,<span class="cf">function</span>(z) {</span>
+<span id="cb6-54"><a href=""></a>  <span class="cf">if</span>(z<span class="sc">==</span><span class="dv">0</span>){</span>
+<span id="cb6-55"><a href=""></a>    out <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>,<span class="at">mean =</span> centers[<span class="dv">1</span>],<span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb6-56"><a href=""></a>  }<span class="cf">else</span> <span class="cf">if</span>(z<span class="sc">==</span><span class="dv">1</span>){</span>
+<span id="cb6-57"><a href=""></a>    out <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(<span class="dv">1</span>,<span class="at">mean =</span> centers[<span class="dv">2</span>],<span class="at">sd =</span> <span class="dv">1</span>)</span>
+<span id="cb6-58"><a href=""></a>  }</span>
+<span id="cb6-59"><a href=""></a>  out</span>
+<span id="cb6-60"><a href=""></a>}))</span>
+<span id="cb6-61"><a href=""></a><span class="do">## Calcul de la log-vraissemblance</span></span>
+<span id="cb6-62"><a href=""></a>loglike<span class="ot">=</span><span class="cf">function</span>(mu,p) <span class="fu">sum</span>(<span class="fu">log</span>((p[<span class="dv">1</span>]<span class="sc">*</span><span class="fu">dnorm</span>(X<span class="sc">-</span>mu[<span class="dv">1</span>])<span class="sc">+</span>p[<span class="dv">2</span>]<span class="sc">*</span><span class="fu">dnorm</span>(X<span class="sc">-</span>mu[<span class="dv">2</span>]))))</span>
+<span id="cb6-63"><a href=""></a>mu1s <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="sc">-</span><span class="dv">1</span>,<span class="fl">2.2</span>,<span class="at">length=</span><span class="fl">1e2</span>)</span>
+<span id="cb6-64"><a href=""></a>mu2s <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>,<span class="fl">1.5</span>,<span class="at">length=</span><span class="fl">1e2</span>)</span>
+<span id="cb6-65"><a href=""></a>likes <span class="ot">&lt;-</span> <span class="fu">matrix</span>(<span class="cn">NA</span>,<span class="fu">length</span>(mu1s),<span class="fu">length</span>(mu2s))</span>
+<span id="cb6-66"><a href=""></a><span class="cf">for</span>(i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(mu1s)){</span>
+<span id="cb6-67"><a href=""></a>  <span class="cf">for</span>(j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="fu">length</span>(mu2s)){</span>
+<span id="cb6-68"><a href=""></a>    likes[i,j] <span class="ot">&lt;-</span> <span class="fu">loglike</span>(<span class="fu">c</span>(mu1s[i],mu2s[j]),p)</span>
+<span id="cb6-69"><a href=""></a>  }</span>
+<span id="cb6-70"><a href=""></a>}</span>
+<span id="cb6-71"><a href=""></a>Ncols <span class="ot">&lt;-</span> <span class="dv">3</span></span>
+<span id="cb6-72"><a href=""></a>iter <span class="ot">&lt;-</span> <span class="dv">100</span></span>
+<span id="cb6-73"><a href=""></a><span class="fu">AR_function</span>(x,likes,<span class="at">p=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)<span class="sc">/</span><span class="dv">4</span>,<span class="at">sigma2=</span><span class="fl">0.05</span>,<span class="at">iter=</span>iter,<span class="at">Ncols=</span>Ncols,<span class="at">plotChemin=</span><span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-31-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"></section>
+<section id="choix-de-la-loi-instrumentale-g" class="slide level2">
+<h2>Choix de la loi instrumentale <span class="math inline">\(g\)</span></h2>
+<p>Soit la fonction <span class="math inline">\(f(\mu_0,\mu_1) = \sum_{i=1}^n\log\left(\varphi(x_i-\mu_0)+3\varphi(x_i-\mu_1)\right)\)</span> où <span class="math inline">\(x_i\sim 1/4\mathcal{N}(0,1)+3/4\mathcal{N}(1,1)\)</span>.</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
+<span id="cb7-2"><a href=""></a><span class="fu">contour</span>(mu1s,mu2s,<span class="fu">exp</span>(likes),<span class="at">nlevels =</span> nlevels,<span class="at">lwd=</span><span class="dv">3</span><span class="sc">/</span><span class="dv">4</span>,</span>
+<span id="cb7-3"><a href=""></a>        <span class="at">xlab=</span><span class="fu">expression</span>(mu[<span class="dv">0</span>]),<span class="at">ylab=</span><span class="fu">expression</span>(mu[<span class="dv">1</span>]),<span class="at">bty=</span><span class="st">"n"</span>)</span>
+<span id="cb7-4"><a href=""></a><span class="fu">text</span>(<span class="at">x=</span><span class="fl">1.3</span>,<span class="at">y=</span><span class="fl">1.3</span>,<span class="at">labels=</span><span class="fu">expression</span>(e<span class="sc">^</span><span class="fu">f</span>(mu[<span class="dv">0</span>],mu[<span class="dv">1</span>])),<span class="at">cex=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-32-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"><p>On met en place un algorithme d’AR afin de générer un échantillon de densité <span class="math inline">\(\propto e^{f(\mu_0,\mu_1)}\)</span></p>
+</section>
+<section id="choix-de-la-loi-instrumentale-2" class="slide level2">
+<h2>Choix de la loi instrumentale (2)</h2>
+<p>Si l’on fait des trop petits pas… <span class="math inline">\(g(x|x_0)\propto\mathcal{N}(x_0,10^{-2}\mathbb{I}_2)\)</span>…</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>Ncols <span class="ot">&lt;-</span> <span class="dv">300</span></span>
+<span id="cb8-2"><a href=""></a>iter <span class="ot">&lt;-</span> <span class="dv">300</span></span>
+<span id="cb8-3"><a href=""></a><span class="fu">AR_function</span>(x,likes,<span class="at">p=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)<span class="sc">/</span><span class="dv">4</span>,<span class="at">sigma2=</span><span class="fl">0.01</span>,<span class="at">iter=</span>iter,<span class="at">Ncols=</span>Ncols)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-33-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"><p>…le taux d’acceptation est excellent mais <strong>on ne couvre pas correctement l’espace</strong></p>
+</section>
+<section id="choix-de-la-loi-instrumentale-3" class="slide level2">
+<h2>Choix de la loi instrumentale (3)</h2>
+<p>Si l’on fait des trop grands pas… <span class="math inline">\(g(x|x_0)\propto\mathcal{N}(x_0,10\mathbb{I}_2)\)</span>…</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">AR_function</span>(x,likes,<span class="at">p=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)<span class="sc">/</span><span class="dv">4</span>,<span class="at">sigma2=</span><span class="dv">10</span>,<span class="at">iter=</span>iter,<span class="at">Ncols=</span>Ncols)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-34-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"><p>…le taux d’acceptation est <strong>mauvais</strong></p>
+</section>
+<section id="choix-de-la-loi-instrumentale-4" class="slide level2">
+<h2>Choix de la loi instrumentale (4)</h2>
+<p>Si l’on fait des pas raisonnables… <span class="math inline">\(g(x|x_0)\propto\mathcal{N}(x_0,1/2\mathbb{I}_2)\)</span>…</p>
+<div class="cell" data-layout-align="center">
+<details class="code-fold">
+<summary>Code</summary>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="fu">AR_function</span>(x,likes,<span class="at">p=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)<span class="sc">/</span><span class="dv">4</span>,<span class="at">sigma2=</span><span class="fl">0.4</span>,<span class="at">iter=</span>iter,<span class="at">Ncols=</span>Ncols)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</details>
+
+</div>
+<img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-35-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"><p>…le taux d’acceptation est acceptable et on couvre correctement l’espace</p>
+</section>
+<section id="conclusion-sur-rwm" class="slide level2">
+<h2>Conclusion sur RWM</h2>
+<p><br>
+</p>
+<ul>
+<li>Méthode simple à mettre en place</li>
+</ul>
+<p><br>
+</p>
+<ul>
+<li>Sensibilité du choix de la loi conditionelle <span class="math inline">\(g\)</span></li>
+</ul>
+<p><br>
+</p>
+<ul>
+<li>Un fort taux d’acceptation peut signifier peu de déplacements</li>
+</ul>
+<p><br>
+</p>
+<ul>
+<li>D’après <span class="citation" data-cites="roberts1997">Roberts, Gelman, and Gilks (<a href="#/références" role="doc-biblioref" onclick="">1997</a>)</span>, il faut viser un taux d’acceptation de 1/4 à 1/2</li>
+</ul>
+</section>
+<section id="retour-à-lexemple-de-base" class="slide level2">
+<h2>Retour à l’exemple de base</h2>
 <p><span class="math display">\[
-\hat{\alpha}_\text{EM}\approx -0.042\pm 0.046, \
-\hat{\beta}_\text{EM}\approx 0.926\pm 0.048,\
-\hat{\sigma}^2_\text{EM}\approx 0.168
+\hat{\alpha}_\text{EM}\approx -0.018\pm 0.048, \
+\hat{\beta}_\text{EM}\approx 1.012\pm 0.048,\
+\hat{\sigma}^2_\text{EM}\approx 0.188
 \]</span> <span class="math display">\[
-\hat{\alpha}_\text{Boot}\approx 0\pm 0.045, \
-\hat{\beta}_\text{Boot}\approx 1.038\pm 0.044, \
-\hat{\sigma}^2_\text{Boot}\approx 0.158
+\hat{\alpha}_\text{Boot}\approx 0.007\pm 0.051, \
+\hat{\beta}_\text{Boot}\approx 1.041\pm 0.05, \
+\hat{\sigma}^2_\text{Boot}\approx 0.207
 \]</span> <span class="math display">\[
-\hat{\alpha}_\text{Bayes}\approx -0.003\pm 0.01, \
-\hat{\beta}_\text{Bayes}\approx 0.956\pm 0.011,\
-\hat{\sigma}^2_\text{Bayes}\approx 0.186
+\hat{\alpha}_\text{Bayes}\approx 0.001\pm 0.01, \
+\hat{\beta}_\text{Bayes}\approx 0.964\pm 0.013,\
+\hat{\sigma}^2_\text{Bayes}\approx 0.252
 \]</span> <span class="math display">\[
-\hat{\alpha}_\text{0}\approx -0.091\pm 0.067, \
-\hat{\beta}_\text{0}\approx 0.729\pm 0.066, \
-\hat{\sigma}^2_\text{0}\approx 0.359
+\hat{\alpha}_\text{0}\approx 0.079\pm 0.077, \
+\hat{\beta}_\text{0}\approx 0.58\pm 0.071, \
+\hat{\sigma}^2_\text{0}\approx 0.469
 \]</span> <span class="math display">\[
-\hat{\alpha}_l\approx 0.004\pm 0.039, \
-\hat{\beta}_l\approx 1.041\pm 0.038, \
-\hat{\sigma}^2_l\approx 0.12
+\hat{\alpha}_l\approx 0.001\pm 0.044, \
+\hat{\beta}_l\approx 1.032\pm 0.041, \
+\hat{\sigma}^2_l\approx 0.157
 \]</span> <span class="math display">\[
-\hat{\alpha}_\text{N}\approx 0.003\pm 0.041, \
-\hat{\beta}_\text{N}\approx 1.042\pm 0.04, \
-\hat{\sigma}^2_\text{N}\approx 0.131
+\hat{\alpha}_\text{N}\approx 0.002\pm 0.048, \
+\hat{\beta}_\text{N}\approx 1.03\pm 0.044, \
+\hat{\sigma}^2_\text{N}\approx 0.177
 \]</span></p>
-<!--## Une petite ACP ? Les individus
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![](M2_stats_de_la_SD_2024_files/figure-revealjs/acp-1.png){fig-align='center' width=544.32}
-:::
-:::
-
--->
-<!--## Une petite ACP ? Les variables
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![](M2_stats_de_la_SD_2024_files/figure-revealjs/acp2-1.png){fig-align='center' width=388.8}
-:::
-:::
-
-
-## ... en relançant plusieurs fois... (1)
-On trace les ellipses de confiance à 95\%
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![](M2_stats_de_la_SD_2024_files/figure-revealjs/acpMulti-1.png){fig-align='center' width=622.08}
-:::
-:::
-
-
-## ... en relançant plusieurs fois... (2)
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![](M2_stats_de_la_SD_2024_files/figure-revealjs/acpMulti2-1.png){fig-align='center' width=622.08}
-:::
-:::
-
-
-
-
-## Dans l'espace de base (1)
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![](M2_stats_de_la_SD_2024_files/figure-revealjs/base1-1.png){fig-align='center' width=622.08}
-:::
-:::
-
-
-## Dans l'espace de base (2)
-
-
-::: {.cell layout-align="center"}
-::: {.cell-output-display}
-![](M2_stats_de_la_SD_2024_files/figure-revealjs/base2-1.png){fig-align='center' width=622.08}
-:::
-:::
-
--->
 </section>
 <section id="conclusion-1" class="slide level2">
 <h2>Conclusion</h2>
@@ -1850,6 +1985,9 @@ Neal, Radford M, and Geoffrey E Hinton. 1998. <span>“A View of the EM Algorith
 </div>
 <div id="ref-rechtien2017systems" class="csl-entry" role="listitem">
 Rechtien, Anne, Laura Richert, Hadrien Lorenzo, Gloria Martrus, Boris Hejblum, Christine Dahlke, Rahel Kasonta, et al. 2017. <span>“Systems Vaccinology Identifies an Early Innate Immune Signature as a Correlate of Antibody Responses to the Ebola Vaccine rVSV-ZEBOV.”</span> <em>Cell Reports</em> 20 (9): 2251–61.
+</div>
+<div id="ref-roberts1997" class="csl-entry" role="listitem">
+Roberts, G. O., A. Gelman, and W. R. Gilks. 1997. <span>“Weak Convergence and Optimal Scaling of Random Walk Metropolis Algorithms.”</span> <em>The Annals of Applied Probability</em> 7 (1): 110–20. <a href="http://www.jstor.org/stable/2245134">http://www.jstor.org/stable/2245134</a>.
 </div>
 <div id="ref-mimi" class="csl-entry" role="listitem">
 Stekhoven, Daniel J., and Peter Buehlmann. 2012. <span>“MissForest - Non-Parametric Missing Value Imputation for Mixed-Type Data.”</span> <em>Bioinformatics</em> 28 (1): 112–18.
