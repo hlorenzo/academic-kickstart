@@ -435,7 +435,7 @@ Hadrien Lorenzo
 <li><a href="#/mécanismes" id="/toc-mécanismes">Mécanismes</a></li>
 <li><a href="#/imputation-ou-prédiction" id="/toc-imputation-ou-prédiction">Imputation ou prédiction ?</a></li>
 <li><a href="#/algorithme-em-et-méthodes-stochastiques" id="/toc-algorithme-em-et-méthodes-stochastiques">Algorithme EM et méthodes stochastiques</a></li>
-<li><a href="#/acceptation-rejet-ar" id="/toc-acceptation-rejet-ar">Acceptation-Rejet (AR)</a></li>
+<li><a href="#/monte-carlo-par-chaînes-de-markov-mcmc" id="/toc-monte-carlo-par-chaînes-de-markov-mcmc">Monte Carlo par chaînes de Markov (MCMC)</a></li>
 <li><a href="#/paquetages-et-implémentations" id="/toc-paquetages-et-implémentations">Paquetages et implémentations</a></li>
 <li><a href="#/conclusion-2" id="/toc-conclusion-2">Conclusion</a></li>
 </ul>
@@ -899,9 +899,9 @@ y = x + \epsilon
 <p>On répète un nombre <span class="math inline">\(M=\)</span> 20 d’imputations du jeu de données intitiales. En voici 3 versions.</p>
 
 <img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-20-1.png" class="quarto-figure quarto-figure-center r-stretch" width="518"><p>La moyenne empirique des <span class="math inline">\(M=\)</span> 20 estimations pour chacun des 3 coefficients: <span class="math display">\[
-\hat{\alpha}_N\approx 0.002\pm 0.048, \
-\hat{\beta}_N\approx 1.03\pm 0.044,\
-\hat{\sigma}^2_N\approx 0.177
+\hat{\alpha}_N\approx 0.054\pm 0.044, \
+\hat{\beta}_N\approx 0.867\pm 0.05,\
+\hat{\sigma}^2_N\approx 0.144
 \]</span></p>
 </section>
 <section id="le-boxplot-toujours-aussi-utile" class="slide level2">
@@ -971,27 +971,27 @@ y = x + \epsilon
 <p>On obtient des estimations :</p>
 <ul>
 <li><p>Via bootstrap : <span class="math display">\[
-\hat{\alpha}_\text{Boot}\approx 0.007\pm 0.051, \
-\hat{\beta}_\text{Boot}\approx 1.041\pm 0.05, \
-\hat{\sigma}^2_\text{Boot}\approx 0.207
+\hat{\alpha}_\text{Boot}\approx 0.039\pm 0.047, \
+\hat{\beta}_\text{Boot}\approx 0.858\pm 0.052, \
+\hat{\sigma}^2_\text{Boot}\approx 0.166
 \]</span></p></li>
 <li><p>Via la postérieure/bayésienne : <span class="math display">\[
-\hat{\alpha}_\text{Bayes}\approx 0.001\pm 0.01, \
-\hat{\beta}_\text{Bayes}\approx 0.964\pm 0.013,\
-\hat{\sigma}^2_\text{Bayes}\approx 0.252
+\hat{\alpha}_\text{Bayes}\approx 0\pm 0.01, \
+\hat{\beta}_\text{Bayes}\approx 0.971\pm 0.011,\
+\hat{\sigma}^2_\text{Bayes}\approx 0.204
 \]</span></p></li>
 </ul>
 <p>Pour rappel, dans les cas impropres : <span class="math display">\[
 \begin{array}{lccc}
-\text{Moyenne}&amp;\hat{\alpha}_0\approx 0.079\pm 0.077 &amp;
-\hat{\beta}_0\approx 0.58\pm 0.071 &amp;
-\hat{\sigma}^2_0\approx 0.469\\
-\text{Régression linéaire}&amp;\hat{\alpha}_l\approx 0.001\pm 0.044 &amp;
-\hat{\beta}_l\approx 1.032\pm 0.041 &amp;
-\hat{\sigma}^2_l\approx 0.157\\
-\text{Régression stochastique}&amp;\hat{\alpha}_N\approx 0.002\pm 0.048 &amp;
-\hat{\beta}_N\approx 1.03\pm 0.044 &amp;
-\hat{\sigma}^2_N\approx 0.177
+\text{Moyenne}&amp;\hat{\alpha}_0\approx -0.038\pm 0.057 &amp;
+\hat{\beta}_0\approx 0.603\pm 0.065 &amp;
+\hat{\sigma}^2_0\approx 0.25\\
+\text{Régression linéaire}&amp;\hat{\alpha}_l\approx 0.051\pm 0.041 &amp;
+\hat{\beta}_l\approx 0.865\pm 0.047 &amp;
+\hat{\sigma}^2_l\approx 0.131\\
+\text{Régression stochastique}&amp;\hat{\alpha}_N\approx 0.054\pm 0.044 &amp;
+\hat{\beta}_N\approx 0.867\pm 0.05 &amp;
+\hat{\sigma}^2_N\approx 0.144
 \end{array}
 \]</span> </p>
 </section>
@@ -1131,7 +1131,7 @@ p\left(\boldsymbol{x}|\theta\right) = \int_{\boldsymbol{z}\in \mathcal{Z}}p\left
 </section>
 <section id="lalgorithme-em-1" class="slide level2">
 <h2>L’algorithme <strong>EM</strong> (1)</h2>
-<p>Si l’on connaît la forme de la loi conditionelle de <span class="math inline">\(Z\)</span> sachant un paramètre <span class="math inline">\(\theta_0\in\Theta\)</span> et nos données <span class="math inline">\(\boldsymbol{x}\)</span>, on peut écrire <span class="math inline">\(q(\boldsymbol{z})=p(\boldsymbol{z}|\boldsymbol{x},\theta_0)\)</span> et il vient :</p>
+<p>Si l’on connaît la forme de la loi instrumentale de <span class="math inline">\(Z\)</span> sachant un paramètre <span class="math inline">\(\theta_0\in\Theta\)</span> et nos données <span class="math inline">\(\boldsymbol{x}\)</span>, on peut écrire <span class="math inline">\(q(\boldsymbol{z})=p(\boldsymbol{z}|\boldsymbol{x},\theta_0)\)</span> et il vient :</p>
 <p><span class="math display">\[
 \begin{array}{c c l}
 F(q, \theta) &amp; = &amp; \int_{\mathcal{Z}} q(\boldsymbol{z}) \ln \left( \frac{p(\boldsymbol{x}, \boldsymbol{z}| \theta)}{q(\boldsymbol{z})} \right) d\boldsymbol{z},\\
@@ -1323,7 +1323,7 @@ Q(\theta|\theta_k,\boldsymbol{x}_{1:n_1}) = \mathbb{E}_{\theta_k}\left[\ell_c(\t
 </section>
 <section id="capteur-de-température-saturé-7" class="slide level2">
 <h2>Capteur de température saturé (7)</h2>
-<p>Application numérique avec <span class="math inline">\(\theta=30\)</span>, <span class="math inline">\(n_1=400\)</span>, <span class="math inline">\(n_2=250\)</span> et <span class="math inline">\(a=30.26\)</span> :</p>
+<p>Application numérique avec <span class="math inline">\(\theta=30\)</span>, <span class="math inline">\(n_1=400\)</span>, <span class="math inline">\(n_2=250\)</span> et <span class="math inline">\(a=30.18\)</span> :</p>
 
 <img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-27-1.png" class="quarto-figure quarto-figure-center r-stretch" width="544"></section>
 <section id="capteur-de-température-saturé-8" class="slide level2">
@@ -1339,7 +1339,7 @@ Q(\theta|\theta_k,\boldsymbol{x}_{1:n_1}) = \mathbb{E}_{\theta_k}\left[\ell_c(\t
 <div class="callout-content">
 <p>On voit deux choses importantes :</p>
 <ul>
-<li>L’estimation du paramètre <span class="math inline">\(\theta\)</span> sur les données seulement observées (29.35) est plus mauvaise que l’estimation sur les données observées et sur l’information de saturation, <span class="math inline">\(\hat{\theta}_{ML}=29.97\)</span>.</li>
+<li>L’estimation du paramètre <span class="math inline">\(\theta\)</span> sur les données seulement observées (29.32) est plus mauvaise que l’estimation sur les données observées et sur l’information de saturation, <span class="math inline">\(\hat{\theta}_{ML}=29.92\)</span>.</li>
 <li>L’imputation par la valeur la plus vraissemblable, <span class="math inline">\(&lt;z_i&gt;_{ML}\)</span>, est <em>mauvaise</em>. Ceci est principalement dû au fait que le processus est <strong>MNAR</strong> : l’imputation ne peut pas particulariser sur l’individu considéré.</li>
 </ul>
 </div>
@@ -1350,9 +1350,9 @@ Q(\theta|\theta_k,\boldsymbol{x}_{1:n_1}) = \mathbb{E}_{\theta_k}\left[\ell_c(\t
 <h2>Algorithme <strong>EM</strong>, retour à notre exemple</h2>
 
 <img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/emResult-1.png" class="quarto-figure quarto-figure-center r-stretch" width="388"><p>Les valeurs estimées sont alors <span class="math display">\[
-\hat{\alpha}_\text{EM}\approx -0.018\pm 0.048, \
-\hat{\beta}_\text{EM}\approx 1.012\pm 0.048,\
-\hat{\sigma}^2_\text{EM}\approx 0.188
+\hat{\alpha}_\text{EM}\approx 0.039\pm 0.046, \
+\hat{\beta}_\text{EM}\approx 1.131\pm 0.042,\
+\hat{\sigma}^2_\text{EM}\approx 0.172
 \]</span></p>
 </section>
 <section id="monte-carlo-em" class="slide level2">
@@ -1452,7 +1452,7 @@ Q(\theta|\theta_k,x) = (x_2+x_3)\log(1-\theta) + (&lt;\!\!z_2\!\!&gt;_k+x_4)\log
 <section id="exemple-des-cellules-4" class="slide level2">
 <h2>Exemple des cellules (4)</h2>
 <p><span class="math display">\[
-(x_1,x_2,x_3,x_4) = (110,30,35,15)\quad \text{et} \quad \theta=0.3
+(x_1,x_2,x_3,x_4) = (115,40,40,20)\quad \text{et} \quad \theta=0.3
 \]</span></p>
 <p><br>
 </p>
@@ -1521,7 +1521,7 @@ Q(\theta|\theta_0,X,Y) &amp;=&amp; -n\log \sigma - \frac{1}{2\sigma^2}\sum_{i}\m
 </section>
 <section id="modèle-logit-à-effet-aléatoire-3" class="slide level2">
 <h2>Modèle logit à effet aléatoire (3)</h2>
-<p>D’après la forme de la vraisemblance complétée, on peut déduire la forme de la loi conditionelle des <span class="math inline">\(Z_i\)</span> : <span class="math display">\[
+<p>D’après la forme de la vraisemblance complétée, on peut déduire la forme de la loi instrumentale des <span class="math inline">\(Z_i\)</span> : <span class="math display">\[
 p(Z_i|(x_{i,j},y_{i,j})_j,\beta,\sigma^2) \propto
 \frac{\text{e}^{-\frac{1}{2\sigma^2}\left(Z_i-\sigma^2\sum_{j} y_{i,j}\right)^2}}{\prod_{j} \left(1+\exp\left(\beta x_{i,j}+Z_i\right)\right)}.
 \]</span></p>
@@ -1535,14 +1535,14 @@ p(Z_i|(x_{i,j},y_{i,j})_j,\beta,\sigma^2) \propto
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>Simulation des <span class="math inline">\(Z_i\)</span> : algorithme d’acceptation rejet</strong></p>
+<p><strong>Simulation des <span class="math inline">\(Z_i\)</span> : algorithme MCMC</strong></p>
 </div>
 <div class="callout-content">
-<p>On va utiliser un algorithme d’acceptation-rejet pour simuler chacun des <span class="math inline">\(Z_i\)</span>, indépendemment. A l’instant <span class="math inline">\(t\)</span>, on utilise la loi conditionelle <span class="math inline">\(\mathcal{N}(z_{i,t-1},\sigma^2)\)</span> pour simuler un candidat <span class="math inline">\(\check{z}_{i}\)</span>. On calcule le taux d’acceptation <span class="math display">\[
+<p>On va utiliser un algorithme MCMC pour simuler chacun des <span class="math inline">\(Z_i\)</span>, indépendemment. A l’instant <span class="math inline">\(t\)</span>, on utilise la loi instrumentale <span class="math inline">\(\mathcal{N}(z_{i,t-1},\sigma^2)\)</span> pour simuler un candidat <span class="math inline">\(\check{z}_{i}\)</span>. On calcule la probabilité d’acceptation <span class="math display">\[
 \alpha_i=
-  \dfrac
+  \min\left[1,\dfrac
 {p(\check{z}_{i}|(x_{i,j},y_{i,j})_j,\beta,\sigma^2)}
-{p(z_{i,t-1}|(x_{i,j},y_{i,j})_j,\beta,\sigma^2)}.
+{p(z_{i,t-1}|(x_{i,j},y_{i,j})_j,\beta,\sigma^2)}\right].
 \]</span> On tire alors un <span class="math inline">\(U\)</span> uniformemment sur <span class="math inline">\([0,1]\)</span> : <span class="math inline">\(z_{i,t}\gets \check{z}_{i}\)</span> si <span class="math inline">\(U\leq\alpha_i\)</span> et <span class="math inline">\(z_{i,t}\gets z_{i,t-1}\)</span> sinon.</p>
 </div>
 </div>
@@ -1627,45 +1627,245 @@ Dans cette section nous allons discuter des méthodes d'échantillonnage qui per
 # Comparaison des approches-->
 </section></section>
 <section>
-<section id="acceptation-rejet-ar" class="title-slide slide level1 center">
-<h1>Acceptation-Rejet (AR)</h1>
-
+<section id="monte-carlo-par-chaînes-de-markov-mcmc" class="title-slide slide level1 center">
+<h1>Monte Carlo par chaînes de Markov (MCMC)</h1>
+<p>Les méthodes MCMC permettent d’échantillonner selon une loi de probabilité complexe. Elles sont basées sur la construction d’une chaîne de Markov dont la distribution stationnaire est la distribution cible.</p>
+<p>Nous allons étudier deux approches MCMC :</p>
+<ul>
+<li><p>Algorithme de <strong>Metropolis-Hastings</strong></p></li>
+<li><p>Algorithme de <strong>Gibbs</strong></p></li>
+</ul>
+</section>
+<section id="algorithme-de-métropolis-hastings" class="slide level2">
+<h2>Algorithme de Métropolis-Hastings</h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Définition</strong></p>
+</div>
+<div class="callout-content">
+<p>On souhaite simuler <span class="math inline">\(x\)</span> qui suit une loi <span class="math inline">\(p(x)\)</span>, connue à une constante près grâce à <span class="math inline">\(f(x)\)</span>.</p>
+<p>On fixe une loi instrumentale <span class="math inline">\(g(\cdot|y)\)</span> qui est connue à une constante (indépendante de <span class="math inline">\(y\)</span>) près.</p>
+<p>A l’instant <span class="math inline">\(t\)</span>, on utilise <span class="math inline">\(g\)</span> pour simuler un candidat <span class="math inline">\(y\sim g(x|x_{t-1})\)</span></p>
+<p>On calcule la probabilité d’acceptation <span class="math display">\[
+\alpha(x_{t-1},y)=
+  \min\left[1,\dfrac
+{f(y)g(x_{t-1}|y)}
+{f(x_{t-1})g(y|x_{t-1})}\right].
+\]</span> On tire alors un <span class="math inline">\(U\)</span> uniformemment sur <span class="math inline">\([0,1]\)</span> : <span class="math inline">\(x_{t}\gets y\)</span> si <span class="math inline">\(U\leq\alpha(x_{t-1},y)\)</span> et <span class="math inline">\(x_{t}\gets x_{t-1}\)</span> sinon.</p>
+</div>
+</div>
+</div>
+<p>On lance plusieurs fois cet algorithme (on parle de <strong>chaînes</strong>) que l’on laisse tourner un certain temps (les <strong>itérations</strong>)</p>
+</section>
+<section id="algorithme-de-métropolis-hastings-2" class="slide level2">
+<h2>Algorithme de Métropolis-Hastings (2)</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Remarques</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><p>la probabilité d’acceptation fait intervenir le rapport <span class="math inline">\(f/f\)</span> qui est égale au rapport <span class="math inline">\(p/p\)</span> : il est donc inutlie de connaître la constante de normalisation</p></li>
+<li><p>La valeur de <span class="math inline">\(x_{t}\)</span> dépend uniquement de la valeur de <span class="math inline">\(x_{t-1}\)</span> via la loi <span class="math inline">\(g(\cdot|x_{t-1})\)</span>. La suite des <span class="math inline">\((x_t)_{t&gt;0}\)</span> forme donc une chaîne de Markov</p></li>
+</ul>
+</div>
+</div>
+</div>
 </section>
 <section id="section" class="slide level2">
 <h2></h2>
 <div class="callout callout-note no-icon callout-titled callout-style-default">
 <div class="callout-body">
 <div class="callout-title">
-<p><strong>Algorithme de Métropolis-Hastings</strong></p>
+<p><strong>Noyau de transition</strong></p>
 </div>
 <div class="callout-content">
-<p>On souhaite simuler <span class="math inline">\(x\)</span> qui suit une loi <span class="math inline">\(p(x)\)</span>, connue à une constante près grâce à <span class="math inline">\(f(x)\)</span>.</p>
-<p>On fixe une loi conditionelle <span class="math inline">\(x\mapsto g(x|y)\)</span> qui est connue à une constante près indépendante de <span class="math inline">\(y\)</span>.</p>
-<p>A l’instant <span class="math inline">\(t\)</span>, on utilise <span class="math inline">\(g\)</span> pour simuler un candidat <span class="math inline">\(\check{x}_{i}\sim g(x|x_{i,t-1})\)</span></p>
-<p>On calcule le taux d’acceptation <span class="math display">\[
-\alpha_i=
-  \dfrac
-{f(\check{x}_{i})g(x_{i,t-1}|\check{x}_{i})}
-{f(x_{i,t-1})g(\check{x}_{i}|x_{i,t-1})}.
-\]</span> On tire alors un <span class="math inline">\(U\)</span> uniformemment sur <span class="math inline">\([0,1]\)</span> : <span class="math inline">\(x_{i,t}\gets \check{x}_{i}\)</span> si <span class="math inline">\(U\leq\alpha_i\)</span> et <span class="math inline">\(x_{i,t}\gets x_{i,t-1}\)</span> sinon.</p>
+<p>On apelle <strong>noyau de transition</strong> une distribution conditionelle <span class="math inline">\(P(\cdot,\cdot):(x,A)\mapsto P(x,A)\)</span> qui fixe la probabilité de passer de <span class="math inline">\(x\in \mathbb{R}^p\)</span> à tout élément de l’ensemble <span class="math inline">\(A\in\mathcal{B}(\mathbb{R}^p)\)</span>. <!-- $\mathcal{B}(\mathbb{R}^p)$ est le plus petit des ensembles des parties de $\mathbb{R}^p$ contenant tous les ensembles ouverts.  --> Il vient <span class="math inline">\(P(x,\mathbb{R}^p)=1\)</span>. On considère que la transition de <span class="math inline">\(x\)</span> à <span class="math inline">\(x\)</span> est possible, donc <span class="math inline">\(P(x,\{x\})&gt;0\)</span>. Ce noyau va guider la transition de la chaîne de Markov.</p>
 </div>
 </div>
 </div>
-<p>On lance plusieurs fois cet algorithme (on parle de <strong>chaînes</strong>) que l’on laisse tourner un certain temps (les <strong>itérations</strong>)</p>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Densité invariante</strong></p>
+</div>
+<div class="callout-content">
+<p>On dit qu’une chaîne, de noyau <span class="math inline">\(P(\cdot,\cdot)\)</span> converge vers la densité <strong>invariante</strong> <span class="math inline">\(p(\cdot)\)</span> si : <span class="math display">\[\begin{align*}
+p^\star(dy) &amp;= \int_{\mathbb{R}^p}P(x,dy)p(x)dx,\quad \text{où} \quad p^\star(dx)=p(x)dx,
+\end{align*}\]</span> où <span class="math inline">\(p^{\star}(\cdot)\)</span> est la distribution associée à <span class="math inline">\(p(\cdot)\)</span> : <span class="math inline">\(\forall A\in\mathcal{B}(\mathbb{R}^p)\)</span>, <span class="math inline">\(p^{\star}(A)=\int_A p(x)dx\)</span>.</p>
+</div>
+</div>
+</div>
+<p>Dans le cas des méthodes MCMC, la densité <span class="math inline">\(p(\cdot)\)</span> est connue à une constante près, via <span class="math inline">\(f(\cdot)\)</span>, mais le noyau de transition <span class="math inline">\(P(\cdot,\cdot)\)</span> est inconnu. On cherche à le construire.</p>
 </section>
-<section id="algorithme-de-métropolis-hastings-par-marche-aléatoire" class="slide level2">
-<h2>Algorithme de Métropolis-Hastings par marche aléatoire</h2>
-<p>Reprendre l’algorithme précédent et choisir pour loi conditionelle une loi de la forme <span class="math display">\[\begin{align*}
+<section id="section-1" class="slide level2">
+<h2></h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Probabilité de non déplacement <span class="math inline">\(r(x)\)</span></strong></p>
+</div>
+<div class="callout-content">
+<p>On suppose une fonction <span class="math inline">\(h(x,y)\)</span> telle que <span class="math inline">\(h(x,x)=0\)</span>, avec un noyau de cette forme <span class="math display">\[\begin{align*}
+  P(x,dy) &amp;= h(x,y)dy + \delta_x(dy)r(x),
+\end{align*}\]</span> où <span class="math inline">\(\delta_x(dy)=1\)</span> is <span class="math inline">\(x\in dy\)</span> et <span class="math inline">\(0\)</span> sinon. Par intégration il vient, car <span class="math inline">\(P(\cdot,dy)\)</span> est une probabilité : <span class="math display">\[\begin{align*}
+  \int_{\mathbb{R}^p}P(x,dy) = 1= \int_{\mathbb{R}^p}h(x,y)dy + r(x)\int_{\mathbb{R}^p}\delta_x(dy)= \int_{\mathbb{R}^p}h(x,y)dy + r(x)\cdot 1,
+\end{align*}\]</span> et donc <span class="math inline">\(r(x)=1-\int_{\mathbb{R}^p}h(x,y)dy\)</span>, qui est la <strong>probabilité de rester en <span class="math inline">\(x\)</span></strong>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Remarque</strong></p>
+</div>
+<div class="callout-content">
+<p>En général <span class="math inline">\(r(x)\neq 0\)</span> et donc <span class="math inline">\(y\mapsto h(x,y)\)</span> n’est pas une probabilité : ne somme pas à 1.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-2" class="slide level2">
+<h2></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Hypothèse de réversibilité de la chaîne</strong></p>
+</div>
+<div class="callout-content">
+<p>On suppose que <span class="math inline">\(h(x,y)\)</span> vérifie la <strong>contrainte de réversibilité</strong> : <span class="math inline">\(p(x)h(x,y) = p(y)h(y,x)\)</span>.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Interprétation de l’hypothèse de réversibilité</strong></p>
+</div>
+<div class="callout-content">
+<p>Intuitivement, <span class="math inline">\(p(x)h(x,y)\)</span> donne la probabilité de passer de <span class="math inline">\(x\)</span> à <span class="math inline">\(y\)</span> et <span class="math inline">\(p(y)h(y,x)\)</span> donne la probabilité de passer de <span class="math inline">\(y\)</span> à <span class="math inline">\(x\)</span>.</p>
+<p>L’hypothèse de réversibilité assure que ces deux probabilités sont égales : il y a autant de chance de passer de <span class="math inline">\(x\)</span> à <span class="math inline">\(y\)</span> que de <span class="math inline">\(y\)</span> à <span class="math inline">\(x\)</span>.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-3" class="slide level2">
+<h2></h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Implication de l’hypothèse de réversibilité</strong></p>
+</div>
+<div class="callout-content">
+<p><span class="math display">\[\begin{align}
+  \int P(x,A) p(x)dx &amp;= \int\left[\int_A p(x)h(x,y)dy\right]dx + \int r(x)\left[\int_A\delta_x(y)dy\right]p(x)dx,\\
+  &amp;= \int_A\left[\int p(x)h(x,y)dx\right]dy + \int r(x)\delta_x(A)p(x)dx,&amp;(\circ)\\
+  &amp;= \int_A\left[\int p(y)h(y,x)dx\right]dy + \int_A r(x)p(x)dx,&amp;(\bullet)\\
+  &amp;= \int_A p(y)\left[\int h(y,x)dx\right]dy + \int_A r(x)p(x)dx,\\
+  &amp;= \int_A p(y)\left[1-r(y)\right]dy + \int_A r(x)p(x)dx,\\
+  &amp;= \int_A p(x)dx = p^\star\left(A\right),
+\end{align}\]</span> et donc <span class="math inline">\(p(\cdot)\)</span> est la densité invariante par <span class="math inline">\(P(\cdot,\cdot)\)</span>. Où <span class="math inline">\((\circ)\to(\bullet)\)</span> découle de la réversibilité.</p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-4" class="slide level2">
+<h2></h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Une densité candidate qui ne vérifie pas la contrainte de réversibilité</strong></p>
+</div>
+<div class="callout-content">
+<p>Mettons que nous ayons à disposition une densité candidate <span class="math inline">\(g(\cdot|\cdot)\)</span>. Cette densité peut vérifier la condition de réversibilité, mais pas forcemment. Supposons <span class="math inline">\((x,y)\)</span> tel que la contrainte de réversibilité ne soit pas satisfaite dans un sens : <span class="math display">\[\begin{align*}
+  p(x)g(y|x) &amp;&gt; p(y)g(x|y).
+\end{align*}\]</span> Donc l’algorithme passera plus facilement de <span class="math inline">\(x\)</span> à <span class="math inline">\(y\)</span> que de <span class="math inline">\(y\)</span> à <span class="math inline">\(x\)</span>. Il faut donc réduire la probabilité de passer de <span class="math inline">\(x\)</span> à <span class="math inline">\(y\)</span> en utilisant une probabilité <span class="math inline">\(\alpha(\cdot,\cdot)\)</span> telle que, dans notre cas, <span class="math inline">\(\alpha(x,y)&lt;1\)</span> et <span class="math inline">\(\alpha(y,x)=1\)</span>. La condition de réversibilité s’écrit alors : <span class="math display">\[\begin{align*}
+  p(x)g(y|x)\alpha(x,y) &amp;= p(y)g(x|y)\alpha(y,x) = p(y)g(x|y),
+\end{align*}\]</span> et alors <span class="math inline">\(\alpha(\cdot,\cdot)\)</span> prend la forme : <span class="math display">\[\begin{align*}
+  \alpha(x,y) &amp;=
+  \left\{
+  \begin{array}{cl}
+  \dfrac{p(y)g(x|y)}{p(x)g(y|x)} &amp;\text{si } p(x)g(y|x) &gt; p(y)g(x|y),\\
+  1 &amp;\text{sinon.}
+  \end{array}
+  \right.
+\end{align*}\]</span></p>
+</div>
+</div>
+</div>
+</section>
+<section id="section-5" class="slide level2">
+<h2></h2>
+<div class="callout callout-note no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Forme générale du noyau de l’algorithme MH</strong></p>
+</div>
+<div class="callout-content">
+<p>Il vient la forme générale</p>
+<p><span class="math display">\[\begin{align*}
+  P_{\text{MH}}(x,dy) &amp;= g(y|x)\alpha(x,y)dy + \delta_x(dy)\left(1-\int_{\mathbb{R}^p}h(x,y)dy\right),\\
+  \text{où}\quad \alpha(x,y) &amp;= \min\left[1,\dfrac{p(y)g(x|y)}{p(x)g(y|x)}\right].
+\end{align*}\]</span></p>
+<p>dont <span class="math inline">\(p(\cdot)\)</span> est la densité invariante.</p>
+</div>
+</div>
+</div>
+<div class="callout callout-tip callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Bien comprendre ce noyau de transition : c’est bien l’algorithme MH</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><p>On part d’un <span class="math inline">\(x\)</span> courant,</p></li>
+<li><p>on simule un <span class="math inline">\(y\)</span> grâce à <span class="math inline">\(g(\cdot|x)\)</span>,</p></li>
+<li><p>on accepte <span class="math inline">\(y\)</span> avec une probabilité <span class="math inline">\(\alpha(x,y)\)</span>.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="algorithme-de-métropolis-hastings-par-marche-aléatoire-rwmh" class="slide level2">
+<h2>Algorithme de Métropolis-Hastings par marche aléatoire (RWMH)</h2>
+<p>Reprendre l’algorithme précédent et choisir une loi instrumentale de la forme : <span class="math display">\[\begin{align*}
 g(x|y) &amp;= g_s(x-y),
-\end{align*}\]</span> et donc <span class="math inline">\(g(\cdot|y)\)</span> vérifie <span class="math inline">\(g(x|y)=g(y|x)\)</span>. Ce qui implique que le taux d’acceptation est simplifié en <span class="math display">\[
-\alpha_i=
+\end{align*}\]</span> c’est le cas de la loi normale. Donc <span class="math inline">\(g(\cdot|y)\)</span> vérifie <span class="math inline">\(g(x|y)=g(y|x)\)</span>. Ce qui implique que la probabilité d’acceptation est simplifié en <span class="math display">\[
+\alpha=
   \dfrac
-{f(\check{x}_{i})}
-{f(x_{i,t-1})}.
-\]</span> C’est le cas de la loi normale…</p>
+{f(y)}
+{f(x_{t-1})}.
+\]</span></p>
 </section>
-<section id="metropolis-hastings-mh-par-marche-aléatoire-rwm" class="slide level2">
-<h2>Metropolis-Hastings (MH) par marche aléatoire (RWM)</h2>
+<section id="rwmh-2" class="slide level2">
+<h2>RWMH (2)</h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Remarques</strong></p>
+</div>
+<div class="callout-content">
+<ul>
+<li><p>Cet algorithme (<span class="citation" data-cites="metropolis1953equation">Metropolis et al. (<a href="#/références" role="doc-biblioref" onclick="">1953</a>)</span>) n’est pas récent mais est toujours énormemment utilisé</p></li>
+<li><p>Si <span class="math inline">\(y\)</span> augmente la densité de <span class="math inline">\(f\)</span> vis à vis de <span class="math inline">\(x_{t-1}\)</span> alors <span class="math inline">\(\alpha= \dfrac{f(y)}{f(x_{t-1})}&gt;1\)</span> et <span class="math inline">\(y\)</span> est systématiquement accepté.</p></li>
+</ul>
+</div>
+</div>
+</div>
+</section>
+<section id="rwmh-3" class="slide level2">
+<h2>RWMH (3)</h2>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Code</summary>
@@ -1749,27 +1949,16 @@ g(x|y) &amp;= g_s(x-y),
 <section id="choix-de-la-loi-instrumentale-g" class="slide level2">
 <h2>Choix de la loi instrumentale <span class="math inline">\(g\)</span></h2>
 <p>Soit la fonction <span class="math inline">\(f(\mu_0,\mu_1) = \sum_{i=1}^n\log\left(\varphi(x_i-\mu_0)+3\varphi(x_i-\mu_1)\right)\)</span> où <span class="math inline">\(x_i\sim 1/4\mathcal{N}(0,1)+3/4\mathcal{N}(1,1)\)</span>.</p>
-<div class="cell" data-layout-align="center">
-<details class="code-fold">
-<summary>Code</summary>
-<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">par</span>(<span class="at">mar=</span><span class="fu">c</span>(<span class="dv">4</span>,<span class="dv">4</span>,<span class="dv">0</span>,<span class="dv">0</span>))</span>
-<span id="cb7-2"><a href=""></a><span class="fu">contour</span>(mu1s,mu2s,<span class="fu">exp</span>(likes),<span class="at">nlevels =</span> nlevels,<span class="at">lwd=</span><span class="dv">3</span><span class="sc">/</span><span class="dv">4</span>,</span>
-<span id="cb7-3"><a href=""></a>        <span class="at">xlab=</span><span class="fu">expression</span>(mu[<span class="dv">0</span>]),<span class="at">ylab=</span><span class="fu">expression</span>(mu[<span class="dv">1</span>]),<span class="at">bty=</span><span class="st">"n"</span>)</span>
-<span id="cb7-4"><a href=""></a><span class="fu">text</span>(<span class="at">x=</span><span class="fl">1.3</span>,<span class="at">y=</span><span class="fl">1.3</span>,<span class="at">labels=</span><span class="fu">expression</span>(e<span class="sc">^</span><span class="fu">f</span>(mu[<span class="dv">0</span>],mu[<span class="dv">1</span>])),<span class="at">cex=</span><span class="dv">2</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
-</details>
 
-</div>
-<img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-32-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"><p>On met en place un algorithme d’AR afin de générer un échantillon de densité <span class="math inline">\(\propto e^{f(\mu_0,\mu_1)}\)</span></p>
+<img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-32-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"><p>On veut générer un échantillon de densité <span class="math inline">\(\propto e^{f(\mu_0,\mu_1)}\)</span>. On conserve le dernier élément de chaque chaîne. Ici <span class="math inline">\(g(x|x_0)=\mathcal{N}(x_0,\sigma^2\mathbb{I}_2)\)</span>, mais quid de <span class="math inline">\(\sigma^2\)</span> ?</p>
 </section>
 <section id="choix-de-la-loi-instrumentale-2" class="slide level2">
 <h2>Choix de la loi instrumentale (2)</h2>
-<p>Si l’on fait des trop petits pas… <span class="math inline">\(g(x|x_0)\propto\mathcal{N}(x_0,10^{-2}\mathbb{I}_2)\)</span>…</p>
+<p>Si l’on fait des trop petits pas… <span class="math inline">\(\sigma^2=10^{-2}\)</span>…</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a>Ncols <span class="ot">&lt;-</span> <span class="dv">300</span></span>
-<span id="cb8-2"><a href=""></a>iter <span class="ot">&lt;-</span> <span class="dv">300</span></span>
-<span id="cb8-3"><a href=""></a><span class="fu">AR_function</span>(x,likes,<span class="at">p=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)<span class="sc">/</span><span class="dv">4</span>,<span class="at">sigma2=</span><span class="fl">0.01</span>,<span class="at">iter=</span>iter,<span class="at">Ncols=</span>Ncols)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href=""></a><span class="fu">AR_function</span>(x,likes,<span class="at">p=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)<span class="sc">/</span><span class="dv">4</span>,<span class="at">sigma2=</span><span class="fl">0.01</span>,<span class="at">iter=</span>iter,<span class="at">Ncols=</span>Ncols)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
@@ -1777,11 +1966,11 @@ g(x|y) &amp;= g_s(x-y),
 </section>
 <section id="choix-de-la-loi-instrumentale-3" class="slide level2">
 <h2>Choix de la loi instrumentale (3)</h2>
-<p>Si l’on fait des trop grands pas… <span class="math inline">\(g(x|x_0)\propto\mathcal{N}(x_0,10\mathbb{I}_2)\)</span>…</p>
+<p>Si l’on fait des trop grands pas… <span class="math inline">\(\sigma^2=10\)</span>…</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">AR_function</span>(x,likes,<span class="at">p=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)<span class="sc">/</span><span class="dv">4</span>,<span class="at">sigma2=</span><span class="dv">10</span>,<span class="at">iter=</span>iter,<span class="at">Ncols=</span>Ncols)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href=""></a><span class="fu">AR_function</span>(x,likes,<span class="at">p=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)<span class="sc">/</span><span class="dv">4</span>,<span class="at">sigma2=</span><span class="dv">10</span>,<span class="at">iter=</span>iter,<span class="at">Ncols=</span>Ncols)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
@@ -1789,65 +1978,110 @@ g(x|y) &amp;= g_s(x-y),
 </section>
 <section id="choix-de-la-loi-instrumentale-4" class="slide level2">
 <h2>Choix de la loi instrumentale (4)</h2>
-<p>Si l’on fait des pas raisonnables… <span class="math inline">\(g(x|x_0)\propto\mathcal{N}(x_0,1/2\mathbb{I}_2)\)</span>…</p>
+<p>Si l’on fait des pas raisonnables… <span class="math inline">\(\sigma^2=1/2\)</span>…</p>
 <div class="cell" data-layout-align="center">
 <details class="code-fold">
 <summary>Code</summary>
-<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href=""></a><span class="fu">AR_function</span>(x,likes,<span class="at">p=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)<span class="sc">/</span><span class="dv">4</span>,<span class="at">sigma2=</span><span class="fl">0.4</span>,<span class="at">iter=</span>iter,<span class="at">Ncols=</span>Ncols)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode numberSource r number-lines code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href=""></a><span class="fu">AR_function</span>(x,likes,<span class="at">p=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">3</span>)<span class="sc">/</span><span class="dv">4</span>,<span class="at">sigma2=</span><span class="fl">0.4</span>,<span class="at">iter=</span>iter,<span class="at">Ncols=</span>Ncols)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </details>
 
 </div>
 <img data-src="M2_stats_de_la_SD_2024_files/figure-revealjs/unnamed-chunk-35-1.png" class="quarto-figure quarto-figure-center r-stretch" width="768"><p>…le taux d’acceptation est acceptable et on couvre correctement l’espace</p>
 </section>
-<section id="conclusion-sur-rwm" class="slide level2">
-<h2>Conclusion sur RWM</h2>
-<p><br>
-</p>
+<section id="section-6" class="slide level2">
+<h2></h2>
+<div class="callout callout-important no-icon callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<p><strong>Conclusion sur RWHM</strong></p>
+</div>
+<div class="callout-content">
 <ul>
-<li>Méthode simple à mettre en place</li>
+<li><p>Méthode simple à mettre en place</p></li>
+<li><p>Si la variance de <span class="math inline">\(g\)</span> est trop faible, on converge lentement</p></li>
+<li><p>Sensibilité du choix de la loi instrumentale <span class="math inline">\(g\)</span></p></li>
+<li><p>Un fort taux d’acceptation peut signifier peu de déplacements</p></li>
+<li><p>D’après <span class="citation" data-cites="roberts1997">Roberts, Gelman, and Gilks (<a href="#/références" role="doc-biblioref" onclick="">1997</a>)</span> : viser un taux d’acceptation dans <span class="math inline">\([0.25,0.5]\)</span></p></li>
+<li><p>En pratique on lance peu de chaînes et on conserve un petit nombre d’itérations, en bout de chaîne. La partie jetée <em>à la poubelle</em> est appelé le <strong>burning</strong></p></li>
 </ul>
-<p><br>
-</p>
+</div>
+</div>
+</div>
+</section>
+<section id="echantilloneur-de-gibbs" class="slide level2">
+<h2>Echantilloneur de Gibbs</h2>
+<p>L’objectif est ici de simuler une loi sur un paramètre multivarié <span class="math inline">\(\boldsymbol{\theta}=(\theta^{(1)},\dots,\theta^{(p)})\)</span>. Souvent on est dans le cas de lois postérieures : <span class="math inline">\([\boldsymbol{\theta}|\boldsymbol{x}]\)</span>. Voici l’algorithme :</p>
 <ul>
-<li>Sensibilité du choix de la loi conditionelle <span class="math inline">\(g\)</span></li>
-</ul>
-<p><br>
-</p>
+<li><p>Partir d’un point <span class="math inline">\(\boldsymbol{\theta}_0=(\theta^{(1)}_0,\dots,\theta^{(p)}_0)\)</span></p></li>
+<li><p>Pour chaque itération <span class="math inline">\(k&gt;0\)</span> faire :</p>
 <ul>
-<li>Un fort taux d’acceptation peut signifier peu de déplacements</li>
+<li><p><span class="math inline">\(\theta^{(1)}_{t+1}\sim p(\theta^{(1)}|\theta^{(2)}_t,\theta^{(3)}_t,\dots,\theta^{(p)}_t,\boldsymbol{x})\)</span></p></li>
+<li><p><span class="math inline">\(\theta^{(2)}_{t+1}\sim p(\theta^{(2)}|\theta^{(1)}_{t+1},\theta^{(3)}_t,\dots,\theta^{(p)}_t,\boldsymbol{x})\)</span></p></li>
+<li><p><span class="math inline">\(\dots\)</span></p></li>
+<li><p><span class="math inline">\(\theta^{(p)}_{t+1}\sim p(\theta^{(p)}|\theta^{(1)}_{t+1},\theta^{(2)}_{t+1},\dots,\theta^{(p-1)}_{t+1},\boldsymbol{x})\)</span></p></li>
+</ul></li>
 </ul>
-<p><br>
-</p>
+<p>Sous certaines conditions, qui dépassent le cadre de ce cours, pour <span class="math inline">\(t\)</span> grand, <span class="math inline">\(\boldsymbol{\theta}_t\)</span> converge vers une réalisation de la loi cible de la loi <span class="math inline">\([\boldsymbol{\theta}|\boldsymbol{x}]\)</span>.</p>
+</section>
+<section id="echantilloneur-de-gibbs-2" class="slide level2">
+<h2>Echantilloneur de Gibbs (2)</h2>
+<div class="callout callout-important callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Important</strong></p>
+</div>
+<div class="callout-content">
+<p>Les lois conditionelles peuvent être définies et simulables mais pas la loi jointe… 😟</p>
+</div>
+</div>
+</div>
+<div class="callout callout-note callout-titled callout-style-default">
+<div class="callout-body">
+<div class="callout-title">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<p><strong>Remarques</strong></p>
+</div>
+<div class="callout-content">
 <ul>
-<li>D’après <span class="citation" data-cites="roberts1997">Roberts, Gelman, and Gilks (<a href="#/références" role="doc-biblioref" onclick="">1997</a>)</span>, il faut viser un taux d’acceptation de 1/4 à 1/2</li>
+<li><p>On trouve souvent la notation <span class="math inline">\(\boldsymbol{\theta}^{(-k)}_{t+1}\)</span> qui désigne tout <span class="math inline">\(\boldsymbol{\theta}\)</span> sauf sa <span class="math inline">\(k^{\text{ième}}\)</span> coordonnée.</p></li>
+<li><p>Les coordonnées <span class="math inline">\(\theta^{(k)}\)</span> sont unidimensionelles mais cet algorithme peut être utilisé en regroupant par blocs de coordonnées de <span class="math inline">\(\boldsymbol{\theta}\)</span>.</p></li>
+<li><p>L’algorithme de Gibbs est en fait un algorithme de Metropolis-Hastings où la loi instrumentale est la loi conditionnelle, qui change donc pour chaque coordonnée et où l’on accepte tout nouveau candidat.</p></li>
 </ul>
+</div>
+</div>
+</div>
 </section>
 <section id="retour-à-lexemple-de-base" class="slide level2">
 <h2>Retour à l’exemple de base</h2>
 <p><span class="math display">\[
-\hat{\alpha}_\text{EM}\approx -0.018\pm 0.048, \
-\hat{\beta}_\text{EM}\approx 1.012\pm 0.048,\
-\hat{\sigma}^2_\text{EM}\approx 0.188
+\hat{\alpha}_\text{EM}\approx 0.039\pm 0.046, \
+\hat{\beta}_\text{EM}\approx 1.131\pm 0.042,\
+\hat{\sigma}^2_\text{EM}\approx 0.172
 \]</span> <span class="math display">\[
-\hat{\alpha}_\text{Boot}\approx 0.007\pm 0.051, \
-\hat{\beta}_\text{Boot}\approx 1.041\pm 0.05, \
-\hat{\sigma}^2_\text{Boot}\approx 0.207
+\hat{\alpha}_\text{Boot}\approx 0.039\pm 0.047, \
+\hat{\beta}_\text{Boot}\approx 0.858\pm 0.052, \
+\hat{\sigma}^2_\text{Boot}\approx 0.166
 \]</span> <span class="math display">\[
-\hat{\alpha}_\text{Bayes}\approx 0.001\pm 0.01, \
-\hat{\beta}_\text{Bayes}\approx 0.964\pm 0.013,\
-\hat{\sigma}^2_\text{Bayes}\approx 0.252
+\hat{\alpha}_\text{Bayes}\approx 0\pm 0.01, \
+\hat{\beta}_\text{Bayes}\approx 0.971\pm 0.011,\
+\hat{\sigma}^2_\text{Bayes}\approx 0.204
 \]</span> <span class="math display">\[
-\hat{\alpha}_\text{0}\approx 0.079\pm 0.077, \
-\hat{\beta}_\text{0}\approx 0.58\pm 0.071, \
-\hat{\sigma}^2_\text{0}\approx 0.469
+\hat{\alpha}_\text{0}\approx -0.038\pm 0.057, \
+\hat{\beta}_\text{0}\approx 0.603\pm 0.065, \
+\hat{\sigma}^2_\text{0}\approx 0.25
 \]</span> <span class="math display">\[
-\hat{\alpha}_l\approx 0.001\pm 0.044, \
-\hat{\beta}_l\approx 1.032\pm 0.041, \
-\hat{\sigma}^2_l\approx 0.157
+\hat{\alpha}_l\approx 0.051\pm 0.041, \
+\hat{\beta}_l\approx 0.865\pm 0.047, \
+\hat{\sigma}^2_l\approx 0.131
 \]</span> <span class="math display">\[
-\hat{\alpha}_\text{N}\approx 0.002\pm 0.048, \
-\hat{\beta}_\text{N}\approx 1.03\pm 0.044, \
-\hat{\sigma}^2_\text{N}\approx 0.177
+\hat{\alpha}_\text{N}\approx 0.054\pm 0.044, \
+\hat{\beta}_\text{N}\approx 0.867\pm 0.05, \
+\hat{\sigma}^2_\text{N}\approx 0.144
 \]</span></p>
 </section>
 <section id="conclusion-1" class="slide level2">
@@ -1979,6 +2213,9 @@ Little, Roderick JA, and Donald B Rubin. 1976. <em>Statistical Analysis with Mis
 </div>
 <div id="ref-lorenzo2019supervised" class="csl-entry" role="listitem">
 LORENZO, Hadrien, Jérôme SARACCO, and Rodolphe THIÉBAUT. 2019. <span>“Supervised Learning for Multi-Block Incomplete Data.”</span> <em>arXiv Preprint arXiv:1901.04380</em>.
+</div>
+<div id="ref-metropolis1953equation" class="csl-entry" role="listitem">
+Metropolis, Nicholas, Arianna W Rosenbluth, Marshall N Rosenbluth, Augusta H Teller, and Edward Teller. 1953. <span>“Equation of State Calculations by Fast Computing Machines.”</span> <em>The Journal of Chemical Physics</em> 21 (6): 1087–92.
 </div>
 <div id="ref-neal1998view" class="csl-entry" role="listitem">
 Neal, Radford M, and Geoffrey E Hinton. 1998. <span>“A View of the EM Algorithm That Justifies Incremental, Sparse, and Other Variants.”</span> In <em>Learning in Graphical Models</em>, 355–68. Springer.
