@@ -1,20 +1,31 @@
 ---
 title: "Titre (sur une ou plusieurs lignes)"
-author: 
-  - "Prénom Nom, Affiliation, Pays et E-mail Auteur 1"
-  - "Prénom Nom, Affiliation, Pays et E-mail Auteur 2"
-date: "`r Sys.Date()`"
-output: pdf_document
+author:
+  - Prénom Nom:
+      email: paleomariomm@gmail.com
+      institute: [affA, affB]
+      correspondence: true
+  - name: Prénom Nom
+    institute: affC
+institute:
+  - affA: Affiliation A
+  - affB: Affiliation B
+  - affC: Affiliation C
+output: 
+    pdf_document:
+        number_sections: yes
+        pandoc_args:
+            - '--lua-filter=scholarly-metadata.lua'
+            - '--lua-filter=author-info-blocks.lua'
 bibliography: bib.bib
 geometry: left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm
 header-includes:
   - \usepackage{fancyhdr}
   - \pagestyle{fancy}
-  - \fancyfoot[CO,RE]{JdS2025}
-  - \fancyfoot[LE,RO]{\thepage}
+  - \renewcommand{\headrulewidth}{0pt}
+  - \fancyfoot[L]{ JdS2025}
+  - \fancyhead[R]{ }
 ---
-
-# Résumé
 
 **Résumé.** Reprendre ici le résumé court (500 mots maximum) de la communication.
 
@@ -23,8 +34,6 @@ header-includes:
 **Abstract.** Have here the short summary of the talk (maximum 500 words).
 
 **Keywords.** Keyword 1, Keyword 2, ...
-
----
 
 # Structure du texte long
 
@@ -36,7 +45,7 @@ Les références bibliographiques seront données dans le texte sous la forme pr
 
 ## Les titres des sous-sections seront placés ici
 
-Seules les formules utilisées par la suite seront numérotées comme le montre l'exemple de l'estimateur d'Horvitz-Thompson[ voir @horvitz] :
+Seules les formules utilisées par la suite seront numérotées comme le montre l'exemple de l'estimateur d'Horvitz-Thompson[voir @horvitz] :
 
 $$
 \hat{t}_{\pi} = \sum_{k \in s} \frac{y_k}{\pi_k}. \tag{1}
@@ -56,7 +65,7 @@ knitr::include_graphics("graph_taille_ech.pdf")
 
 La nécessité de produire des résumés clairs et bien référencés a été démontrée par @achin2000theorie. Le récent article de @noteur2003interet met en évidence ...
 
----
+
 
 # Bibliographie
 
