@@ -1,5 +1,6 @@
 ---
 title: "Titre (sur une ou plusieurs lignes)"
+subtitle: "JdS2025"
 author: 
   - "Prénom Nom, Affiliation, Pays et E-mail Auteur 1"
   - "Prénom Nom, Affiliation, Pays et E-mail Auteur 2"
