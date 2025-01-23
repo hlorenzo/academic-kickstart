@@ -1,0 +1,60 @@
+---
+title: "Titre (sur une ou plusieurs lignes)"
+author: 
+  - "Prénom Nom, Affiliation, Pays et E-mail Auteur 1"
+  - "Prénom Nom, Affiliation, Pays et E-mail Auteur 2"
+date: "`r Sys.Date()`"
+output: pdf_document
+bibliography: bib.bib
+geometry: left=2.5cm,right=2.5cm,top=2.5cm,bottom=2.5cm
+---
+
+# Résumé
+
+**Résumé.** Reprendre ici le résumé court (500 mots maximum) de la communication.
+
+**Mots-clés.** Mot-clé 1, Mot-clé 2, ...
+
+**Abstract.** Have here the short summary of the talk (maximum 500 words).
+
+**Keywords.** Keyword 1, Keyword 2, ...
+
+---
+
+# Structure du texte long
+
+Le texte long, d'une longueur de deux à six pages, sera mis en ligne sur le site du congrès. Ce texte devra respecter la mise en forme appliquée au présent document : il devra mentionner le titre, le ou les auteurs, leurs affiliations (+ pays) et leurs adresses électroniques. Le ou les intervenant(s) auront leur nom souligné dans la liste des auteurs ci-dessus. 
+
+Outre une description (en français si les auteurs sont francophones, en anglais sinon) de la communication, le texte comprendra le résumé court en français et en anglais, une liste de mots-clés et une bibliographie, selon le modèle appliqué dans ce document.
+
+Les références bibliographiques seront données dans le texte sous la forme présentée dans l'exemple suivant.
+
+## Les titres des sous-sections seront placés ici
+
+Seules les formules utilisées par la suite seront numérotées comme le montre l'exemple de l'estimateur d'Horvitz-Thompson[ voir @horvitz] :
+
+$$
+\hat{t}_{\pi} = \sum_{k \in s} \frac{y_k}{\pi_k}. \tag{1}
+$$
+
+## Graphiques
+
+Les graphiques seront numérotés. Vous trouverez ci-dessous un exemple de l'inclusion d'un graphique dans le texte.
+
+```{r fig.cap="Demi-longueur d'un intervalle de confiance en fonction de la taille $n$ de l'échantillon pour un écart-type $s=500000$ (en bleu) et $s=700000$ (en rouge).", echo=FALSE, out.width="60%", fig.align="center"}
+# Pour afficher un graphique, remplacez le chemin par le fichier correct
+knitr::include_graphics("graph_taille_ech.pdf")
+```
+
+
+# Exemples de références bibliographiques
+
+La nécessité de produire des résumés clairs et bien référencés a été démontrée par @achin2000theorie. Le récent article de @noteur2003interet met en évidence ...
+
+---
+
+# Bibliographie
+
+
+
+
